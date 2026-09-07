@@ -3377,9 +3377,33 @@
     </div>
   </div>
 
-  <!-- Mobile App Mockup Image -->
-  <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 mb-2 bg-slate-900">
-    <img src="assets/floodviser.png" alt="Flood Viser App UI" class="w-full h-auto object-contain max-h-[400px] mx-auto">
+  <!-- Interactive Flood Viser App UI Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 mb-4 bg-slate-950 relative group">
+    
+    <!-- Slide Container -->
+    <div id="flood-viser-slideshow-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden flex items-center justify-center bg-slate-950">
+      <img id="flood-viser-slide-img" src="assets/flood_viser_slide_1.png" alt="Flood Viser App UI 1" class="w-full h-full object-contain transition-all duration-300 ease-in-out">
+      
+      <!-- Slide Counter Badge -->
+      <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/10 z-10 shadow-md">
+        <span id="flood-viser-slide-index">1</span> / 3
+      </div>
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeFloodViserSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeFloodViserSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 z-10">
+      <button onclick="setFloodViserSlide(0); event.stopPropagation();" class="flood-viser-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm" data-idx="0"></button>
+      <button onclick="setFloodViserSlide(1); event.stopPropagation();" class="flood-viser-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="1"></button>
+      <button onclick="setFloodViserSlide(2); event.stopPropagation();" class="flood-viser-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="2"></button>
+    </div>
   </div>
 
   <div>
@@ -4672,6 +4696,40 @@
       setGisBillboardSlide(currentGisBillboardSlide + dir);
     }
 
+    const floodViserImages = [
+      'assets/flood_viser_slide_1.png',
+      'assets/flood_viser_slide_2.png',
+      'assets/flood_viser_slide_3.png'
+    ];
+    let currentFloodViserSlide = 0;
+
+    function setFloodViserSlide(idx) {
+      currentFloodViserSlide = (idx + floodViserImages.length) % floodViserImages.length;
+      const img = document.getElementById('flood-viser-slide-img');
+      const counter = document.getElementById('flood-viser-slide-index');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = floodViserImages[currentFloodViserSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (counter) counter.textContent = currentFloodViserSlide + 1;
+
+      const dots = document.querySelectorAll('.flood-viser-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentFloodViserSlide) {
+          dot.className = "flood-viser-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "flood-viser-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+        }
+      });
+    }
+
+    function changeFloodViserSlide(dir) {
+      setFloodViserSlide(currentFloodViserSlide + dir);
+    }
+
     function openProjectModal(projectId) {
       const project = MOCK_PROJECTS.find(p => p.id === projectId);
       if (!project) return;
@@ -4714,6 +4772,7 @@
         if (projectId === 'sparkling-kids-web') setTimeout(() => setSparklingWebSlide(0), 50);
         if (projectId === 'mock-2') setTimeout(() => setSparklingActivitySlide(0), 50);
         if (projectId === 'mock-4') setTimeout(() => setGisBillboardSlide(0), 50);
+        if (projectId === 'mock-1') setTimeout(() => setFloodViserSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -4740,6 +4799,7 @@
         if (projectId === 'sparkling-kids-web') setTimeout(() => setSparklingWebSlide(0), 50);
         if (projectId === 'mock-2') setTimeout(() => setSparklingActivitySlide(0), 50);
         if (projectId === 'mock-4') setTimeout(() => setGisBillboardSlide(0), 50);
+        if (projectId === 'mock-1') setTimeout(() => setFloodViserSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
