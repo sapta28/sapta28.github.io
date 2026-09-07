@@ -4175,6 +4175,24 @@
       }
     }, { passive: true });
 
+        function getFilteredProjects(tag) {
+      if (!tag || tag === 'ALL') return MOCK_PROJECTS;
+      const tagUpper = tag.toUpperCase();
+      return MOCK_PROJECTS.filter(p => {
+        if (!p.tech_stack || !Array.isArray(p.tech_stack)) return false;
+        return p.tech_stack.some(t => {
+          const tu = t.toUpperCase();
+          if (tu === tagUpper) return true;
+          if (tagUpper === 'MOBILE' && tu.includes('MOBILE')) return true;
+          if (tagUpper === 'WEBSITE' && (tu.includes('WEBSITE') || tu.includes('WEB'))) return true;
+          if (tagUpper === 'IOT' && tu.includes('IOT')) return true;
+          if (tagUpper === 'AI' && tu.includes('AI')) return true;
+          if (tagUpper === 'UI/UX' && (tu.includes('UI/UX') || tu.includes('FIGMA'))) return true;
+          return false;
+        });
+      });
+    }
+
     // Render Projects Gallery View
     function renderProjectsGallery() {
       const filterContainer = document.getElementById('filter-buttons');
@@ -4186,21 +4204,32 @@
       const allTags = ['ALL', 'MOBILE', 'WEBSITE', 'IOT', 'AI', 'UI/UX'];
 
       // Render filter buttons
-      filterContainer.innerHTML = allTags.map(tag => `
-        <button 
-          onclick="filterProjects('${tag}')"
-          class="px-6 py-2.5 text-xs font-bold rounded-full transition-all cursor-pointer border ${
-            selectedTag === tag
-              ? 'bg-[#6C5CE7] text-white border-[#6C5CE7] shadow-lg'
-              : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
-          }"
-        >
-          ${tag}
-        </button>
-      `).join('');
+      filterContainer.innerHTML = allTags.map(tag => {
+        const count = getFilteredProjects(tag).length;
+        const isActive = selectedTag === tag;
+        return `
+          <button 
+            onclick="filterProjects('${tag}')"
+            class="relative px-6 py-2.5 text-xs font-bold rounded-full transition-all cursor-pointer border ${
+              isActive
+                ? 'bg-[#6C5CE7] text-white border-[#6C5CE7] shadow-lg shadow-[#6C5CE7]/30'
+                : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+            }"
+          >
+            ${tag}
+            <span class="absolute -top-2 -right-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-[10px] font-black rounded-full shadow-md transition-all ${
+              isActive
+                ? 'bg-white text-[#6C5CE7] border border-[#6C5CE7]'
+                : 'bg-[#6C5CE7] text-white'
+            }">
+              ${count}
+            </span>
+          </button>
+        `;
+      }).join('');
 
       // Filter projects
-      const filtered = selectedTag === 'ALL' ? MOCK_PROJECTS : MOCK_PROJECTS.filter(p => p.tech_stack.some(t => t.toUpperCase() === selectedTag.toUpperCase() || (selectedTag.toUpperCase() === 'UI/UX' && t.toUpperCase().includes('UI/UX'))));
+      const filtered = getFilteredProjects(selectedTag);
 
       // Render grid
       if (filtered.length > 0) {
