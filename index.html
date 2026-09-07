@@ -4360,19 +4360,22 @@
     });
 
     // Contact Form Logic
-    function handleContactSubmit(e) {
+        async function handleContactSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('contact-name')?.value;
       const email = document.getElementById('contact-email')?.value;
       const msg = document.getElementById('contact-msg')?.value;
 
+      const err = document.getElementById('contact-error');
+
       if (!name || !email || !msg) {
-        const err = document.getElementById('contact-error');
-        if (err) err.classList.remove('hidden');
+        if (err) {
+          err.textContent = 'Semua kolom wajib diisi!';
+          err.classList.remove('hidden');
+        }
         return;
       }
 
-      const err = document.getElementById('contact-error');
       if (err) err.classList.add('hidden');
 
       const btnText = document.getElementById('contact-btn-text');
@@ -4381,13 +4384,47 @@
       if (btnText) btnText.textContent = 'Sedang mengirim...';
       if (btnIcon) btnIcon.classList.add('hidden');
 
-      setTimeout(() => {
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/saptaadzanipurnama@gmail.com", {
+          method: "POST",
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: msg,
+            _subject: `Pesan Portofolio Baru dari ${name}`
+          })
+        });
+
+        const result = await response.json();
+        
         const form = document.getElementById('contact-form');
         const success = document.getElementById('contact-success');
-        if (form) form.classList.add('hidden');
-        if (success) success.classList.remove('hidden');
-        showToast('Message sent successfully! Thank you.');
-      }, 1000);
+
+        if (response.ok || result.success === "true" || result.success === true) {
+          if (form) form.classList.add('hidden');
+          if (success) success.classList.remove('hidden');
+          showToast('Pesan berhasil terkirim ke email Sapta!');
+        } else {
+          if (err) {
+            err.textContent = result.message || 'Gagal mengirim pesan. Silakan coba lagi.';
+            err.classList.remove('hidden');
+          }
+          if (btnText) btnText.textContent = 'Kirim Pesan';
+          if (btnIcon) btnIcon.classList.remove('hidden');
+        }
+      } catch (error) {
+        console.error("Contact Form Error:", error);
+        if (err) {
+          err.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi.';
+          err.classList.remove('hidden');
+        }
+        if (btnText) btnText.textContent = 'Kirim Pesan';
+        if (btnIcon) btnIcon.classList.remove('hidden');
+      }
     }
 
     function resetContactForm() {
