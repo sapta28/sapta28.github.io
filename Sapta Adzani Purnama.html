@@ -4270,9 +4270,34 @@
     </div>
   </div>
 
-  <!-- Web Mockup Image -->
-  <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 mb-2 bg-slate-900">
-    <img src="assets/daily-news.png" alt="Daily News Portal UI" class="w-full h-auto object-contain max-h-[400px] mx-auto">
+  <!-- Interactive Daily News Portal UI Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 mb-4 bg-slate-950 relative group">
+    
+    <!-- Slide Container -->
+    <div id="daily-news-slideshow-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden flex items-center justify-center bg-slate-950">
+      <img id="daily-news-slide-img" src="assets/daily_news_slide_1.png" alt="Daily News Portal UI 1" class="w-full h-full object-contain transition-all duration-300 ease-in-out">
+      
+      <!-- Slide Counter Badge -->
+      <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/10 z-10 shadow-md">
+        <span id="daily-news-slide-index">1</span> / 4
+      </div>
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeDailyNewsSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeDailyNewsSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 z-10">
+      <button onclick="setDailyNewsSlide(0); event.stopPropagation();" class="daily-news-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm" data-idx="0"></button>
+      <button onclick="setDailyNewsSlide(1); event.stopPropagation();" class="daily-news-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="1"></button>
+      <button onclick="setDailyNewsSlide(2); event.stopPropagation();" class="daily-news-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="2"></button>
+      <button onclick="setDailyNewsSlide(3); event.stopPropagation();" class="daily-news-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="3"></button>
+    </div>
   </div>
 
   <div>
@@ -5030,6 +5055,41 @@
       setPharmacyQueueSlide(currentPharmacyQueueSlide + dir);
     }
 
+    const dailyNewsImages = [
+      'assets/daily_news_slide_1.png',
+      'assets/daily_news_slide_2.png',
+      'assets/daily_news_slide_3.png',
+      'assets/daily_news_slide_4.png'
+    ];
+    let currentDailyNewsSlide = 0;
+
+    function setDailyNewsSlide(idx) {
+      currentDailyNewsSlide = (idx + dailyNewsImages.length) % dailyNewsImages.length;
+      const img = document.getElementById('daily-news-slide-img');
+      const counter = document.getElementById('daily-news-slide-index');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = dailyNewsImages[currentDailyNewsSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (counter) counter.textContent = currentDailyNewsSlide + 1;
+
+      const dots = document.querySelectorAll('.daily-news-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentDailyNewsSlide) {
+          dot.className = "daily-news-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "daily-news-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+        }
+      });
+    }
+
+    function changeDailyNewsSlide(dir) {
+      setDailyNewsSlide(currentDailyNewsSlide + dir);
+    }
+
     function openProjectModal(projectId) {
       const project = MOCK_PROJECTS.find(p => p.id === projectId);
       if (!project) return;
@@ -5078,6 +5138,7 @@
         if (projectId === 'lamongan-culinary') setTimeout(() => setLamonganCulinarySlide(0), 50);
         if (projectId === 'school-bell-web') setTimeout(() => setSchoolBellWebSlide(0), 50);
         if (projectId === 'pharmacy-queue') setTimeout(() => setPharmacyQueueSlide(0), 50);
+        if (projectId === 'daily-news') setTimeout(() => setDailyNewsSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -5110,6 +5171,7 @@
         if (projectId === 'lamongan-culinary') setTimeout(() => setLamonganCulinarySlide(0), 50);
         if (projectId === 'school-bell-web') setTimeout(() => setSchoolBellWebSlide(0), 50);
         if (projectId === 'pharmacy-queue') setTimeout(() => setPharmacyQueueSlide(0), 50);
+        if (projectId === 'daily-news') setTimeout(() => setDailyNewsSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
