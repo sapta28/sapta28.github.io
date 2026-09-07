@@ -2741,7 +2741,7 @@
     </a>
   </div>
 </div>`,
-        tech_stack: ['Figma (UI/UX)', 'Wireframing', 'High-Fidelity Prototyping', 'Gamification Strategy', 'Information Architecture'],
+        tech_stack: ['UI/UX', 'Figma (UI/UX)', 'Wireframing', 'High-Fidelity Prototyping', 'Gamification Strategy', 'Information Architecture'],
         role: 'UI/UX Designer',
         client: 'Ministry of Education (Dikti) - PKM Grant Program',
         thumbnail_url: 'assets/wayanggo.png'
@@ -4183,7 +4183,7 @@
       if (!filterContainer || !gridContainer) return;
 
       // Extract unique tags
-      const allTags = ['ALL', 'MOBILE', 'WEBSITE', 'IOT', 'AI'];
+      const allTags = ['ALL', 'MOBILE', 'WEBSITE', 'IOT', 'AI', 'UI/UX'];
 
       // Render filter buttons
       filterContainer.innerHTML = allTags.map(tag => `
@@ -4200,7 +4200,7 @@
       `).join('');
 
       // Filter projects
-      const filtered = selectedTag === 'ALL' ? MOCK_PROJECTS : MOCK_PROJECTS.filter(p => p.tech_stack.some(t => t.toUpperCase() === selectedTag.toUpperCase()));
+      const filtered = selectedTag === 'ALL' ? MOCK_PROJECTS : MOCK_PROJECTS.filter(p => p.tech_stack.some(t => t.toUpperCase() === selectedTag.toUpperCase() || (selectedTag.toUpperCase() === 'UI/UX' && t.toUpperCase().includes('UI/UX'))));
 
       // Render grid
       if (filtered.length > 0) {
