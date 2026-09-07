@@ -3619,9 +3619,35 @@
     </div>
   </div>
 
-  <!-- Web Mockup Image -->
-  <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 mb-2 bg-slate-900">
-    <img src="assets/college-major.png" alt="College Major Finder UI" class="w-full h-auto object-contain max-h-[400px] mx-auto">
+  <!-- Interactive College Major Finder UI Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 mb-4 bg-slate-950 relative group">
+    
+    <!-- Slide Container -->
+    <div id="college-major-slideshow-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden flex items-center justify-center bg-slate-950">
+      <img id="college-major-slide-img" src="assets/college_major_slide_1.png" alt="College Major Finder UI 1" class="w-full h-full object-contain transition-all duration-300 ease-in-out">
+      
+      <!-- Slide Counter Badge -->
+      <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/10 z-10 shadow-md">
+        <span id="college-major-slide-index">1</span> / 5
+      </div>
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeCollegeMajorSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeCollegeMajorSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 z-10">
+      <button onclick="setCollegeMajorSlide(0); event.stopPropagation();" class="college-major-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm" data-idx="0"></button>
+      <button onclick="setCollegeMajorSlide(1); event.stopPropagation();" class="college-major-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="1"></button>
+      <button onclick="setCollegeMajorSlide(2); event.stopPropagation();" class="college-major-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="2"></button>
+      <button onclick="setCollegeMajorSlide(3); event.stopPropagation();" class="college-major-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="3"></button>
+      <button onclick="setCollegeMajorSlide(4); event.stopPropagation();" class="college-major-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="4"></button>
+    </div>
   </div>
 
   <div>
@@ -4792,6 +4818,42 @@
       setHipamSlide(currentHipamSlide + dir);
     }
 
+    const collegeMajorImages = [
+      'assets/college_major_slide_1.png',
+      'assets/college_major_slide_2.png',
+      'assets/college_major_slide_3.png',
+      'assets/college_major_slide_4.png',
+      'assets/college_major_slide_5.png'
+    ];
+    let currentCollegeMajorSlide = 0;
+
+    function setCollegeMajorSlide(idx) {
+      currentCollegeMajorSlide = (idx + collegeMajorImages.length) % collegeMajorImages.length;
+      const img = document.getElementById('college-major-slide-img');
+      const counter = document.getElementById('college-major-slide-index');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = collegeMajorImages[currentCollegeMajorSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (counter) counter.textContent = currentCollegeMajorSlide + 1;
+
+      const dots = document.querySelectorAll('.college-major-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentCollegeMajorSlide) {
+          dot.className = "college-major-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "college-major-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+        }
+      });
+    }
+
+    function changeCollegeMajorSlide(dir) {
+      setCollegeMajorSlide(currentCollegeMajorSlide + dir);
+    }
+
     function openProjectModal(projectId) {
       const project = MOCK_PROJECTS.find(p => p.id === projectId);
       if (!project) return;
@@ -4836,6 +4898,7 @@
         if (projectId === 'mock-4') setTimeout(() => setGisBillboardSlide(0), 50);
         if (projectId === 'mock-1') setTimeout(() => setFloodViserSlide(0), 50);
         if (projectId === 'hipam-app') setTimeout(() => setHipamSlide(0), 50);
+        if (projectId === 'college-major-finder') setTimeout(() => setCollegeMajorSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -4864,6 +4927,7 @@
         if (projectId === 'mock-4') setTimeout(() => setGisBillboardSlide(0), 50);
         if (projectId === 'mock-1') setTimeout(() => setFloodViserSlide(0), 50);
         if (projectId === 'hipam-app') setTimeout(() => setHipamSlide(0), 50);
+        if (projectId === 'college-major-finder') setTimeout(() => setCollegeMajorSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
