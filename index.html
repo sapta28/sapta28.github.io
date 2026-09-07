@@ -353,21 +353,25 @@
     }
 
     /* Modal Content Spacing Optimization */
-    #modal-content.prose > * + * {
+    #modal-content.prose>*+* {
       margin-top: 1.5rem !important;
     }
+
     #modal-content.prose h3 {
       margin-top: 1.25rem !important;
       margin-bottom: 0.5rem !important;
     }
+
     #modal-content.prose h4 {
       margin-top: 0.85rem !important;
       margin-bottom: 0.35rem !important;
     }
+
     #modal-content.prose p {
       margin-top: 0.4rem !important;
       margin-bottom: 0.75rem !important;
     }
+
     #modal-content.prose ul,
     #modal-content.prose ol {
       margin-top: 0.4rem !important;
@@ -3613,7 +3617,8 @@
 
         <!-- Case Study Content -->
         <div id="modal-content"
-          class="prose prose-slate max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-6 sm:space-y-7"></div>
+          class="prose prose-slate max-w-none text-xs md:text-sm text-slate-700 leading-relaxed space-y-6 sm:space-y-7">
+        </div>
 
         <!-- Modal Footer Actions -->
         <div class="pt-6 border-t border-slate-100 flex justify-end gap-3">
@@ -4629,7 +4634,6 @@
           <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-800 rounded-xl notranslate">Laravel (PHP)</span>
           <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-800 rounded-xl notranslate">Oracle Database</span>
           <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-800 rounded-xl notranslate">Interactive Mapping</span>
-          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Mobile App (iOS &amp; Android)</span>
         </div>
       </div>
     </div>
@@ -5618,12 +5622,12 @@
           <button 
             onclick="filterProjects('${tag}')"
             class="relative px-6 py-2.5 text-xs font-bold rounded-full transition-all cursor-pointer border ${isActive
-            ? 'bg-[#006BFF] text-white border-[#006BFF] shadow-lg shadow-[#006BFF]/30'
+            ? 'bg-[#006BFF] text-white border-[#006BFF]'
             : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
           }"
           >
             ${tag}
-            <span class="absolute -top-2 -right-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-[10px] font-black rounded-full shadow-md transition-all ${isActive
+            <span class="absolute -top-2 -right-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-[10px] font-black rounded-full transition-all ${isActive
             ? 'bg-white text-[#006BFF] border border-[#006BFF]'
             : 'bg-[#006BFF] text-white'
           }">
