@@ -4155,9 +4155,33 @@
     </div>
   </div>
 
-  <!-- Web Mockup Image -->
-  <div class="w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100 mb-2 bg-slate-900">
-    <img src="assets/pharmacy-queue.png" alt="Pharmacy Queue System UI" class="w-full h-auto object-contain max-h-[400px] mx-auto">
+  <!-- Interactive Pharmacy Queue System UI Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 mb-4 bg-slate-950 relative group">
+    
+    <!-- Slide Container -->
+    <div id="pharmacy-queue-slideshow-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden flex items-center justify-center bg-slate-950">
+      <img id="pharmacy-queue-slide-img" src="assets/pharmacy_queue_slide_1.png" alt="Pharmacy Queue System UI 1" class="w-full h-full object-contain transition-all duration-300 ease-in-out">
+      
+      <!-- Slide Counter Badge -->
+      <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/10 z-10 shadow-md">
+        <span id="pharmacy-queue-slide-index">1</span> / 3
+      </div>
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changePharmacyQueueSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changePharmacyQueueSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 z-10">
+      <button onclick="setPharmacyQueueSlide(0); event.stopPropagation();" class="pharmacy-queue-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm" data-idx="0"></button>
+      <button onclick="setPharmacyQueueSlide(1); event.stopPropagation();" class="pharmacy-queue-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="1"></button>
+      <button onclick="setPharmacyQueueSlide(2); event.stopPropagation();" class="pharmacy-queue-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all" data-idx="2"></button>
+    </div>
   </div>
 
   <div>
@@ -4972,6 +4996,40 @@
       setSchoolBellWebSlide(currentSchoolBellWebSlide + dir);
     }
 
+    const pharmacyQueueImages = [
+      'assets/pharmacy_queue_slide_1.png',
+      'assets/pharmacy_queue_slide_2.png',
+      'assets/pharmacy_queue_slide_3.png'
+    ];
+    let currentPharmacyQueueSlide = 0;
+
+    function setPharmacyQueueSlide(idx) {
+      currentPharmacyQueueSlide = (idx + pharmacyQueueImages.length) % pharmacyQueueImages.length;
+      const img = document.getElementById('pharmacy-queue-slide-img');
+      const counter = document.getElementById('pharmacy-queue-slide-index');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = pharmacyQueueImages[currentPharmacyQueueSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (counter) counter.textContent = currentPharmacyQueueSlide + 1;
+
+      const dots = document.querySelectorAll('.pharmacy-queue-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentPharmacyQueueSlide) {
+          dot.className = "pharmacy-queue-dot w-2.5 h-2.5 rounded-full bg-[#08C2FF] transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "pharmacy-queue-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+        }
+      });
+    }
+
+    function changePharmacyQueueSlide(dir) {
+      setPharmacyQueueSlide(currentPharmacyQueueSlide + dir);
+    }
+
     function openProjectModal(projectId) {
       const project = MOCK_PROJECTS.find(p => p.id === projectId);
       if (!project) return;
@@ -5019,6 +5077,7 @@
         if (projectId === 'college-major-finder') setTimeout(() => setCollegeMajorSlide(0), 50);
         if (projectId === 'lamongan-culinary') setTimeout(() => setLamonganCulinarySlide(0), 50);
         if (projectId === 'school-bell-web') setTimeout(() => setSchoolBellWebSlide(0), 50);
+        if (projectId === 'pharmacy-queue') setTimeout(() => setPharmacyQueueSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -5050,6 +5109,7 @@
         if (projectId === 'college-major-finder') setTimeout(() => setCollegeMajorSlide(0), 50);
         if (projectId === 'lamongan-culinary') setTimeout(() => setLamonganCulinarySlide(0), 50);
         if (projectId === 'school-bell-web') setTimeout(() => setSchoolBellWebSlide(0), 50);
+        if (projectId === 'pharmacy-queue') setTimeout(() => setPharmacyQueueSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
