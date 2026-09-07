@@ -4409,6 +4409,8 @@
 
       const modal = document.getElementById('project-modal');
       if (modal) {
+        const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
+        scrollContainer.scrollTop = 0;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -4417,6 +4419,8 @@
     function closeProjectModal() {
       const modal = document.getElementById('project-modal');
       if (modal) {
+        const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
+        scrollContainer.scrollTop = 0;
         modal.classList.add('hidden');
         document.body.style.overflow = '';
       }
@@ -4426,6 +4430,8 @@
     function openCVModal() {
       const modal = document.getElementById('cv-modal');
       if (modal) {
+        const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
+        scrollContainer.scrollTop = 0;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -4434,6 +4440,8 @@
     function closeCVModal() {
       const modal = document.getElementById('cv-modal');
       if (modal) {
+        const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
+        scrollContainer.scrollTop = 0;
         modal.classList.add('hidden');
         document.body.style.overflow = '';
       }
@@ -4931,12 +4939,22 @@ window.addEventListener('load', function() {
     document.getElementById('cert-modal-issuer').textContent = data.issuer;
     document.getElementById('cert-modal-context').textContent = data.context;
     document.getElementById('cert-modal-img').src = data.img;
-    document.getElementById('certificate-modal').classList.remove('hidden');
+    const certModal = document.getElementById('certificate-modal');
+    if (certModal) {
+      const scrollContainer = certModal.querySelector('.overflow-y-auto') || certModal;
+      scrollContainer.scrollTop = 0;
+      certModal.classList.remove('hidden');
+    }
     document.body.style.overflow = 'hidden';
   }
 
   function closeCertificateModal() {
-    document.getElementById('certificate-modal').classList.add('hidden');
+    const certModal = document.getElementById('certificate-modal');
+    if (certModal) {
+      const scrollContainer = certModal.querySelector('.overflow-y-auto') || certModal;
+      scrollContainer.scrollTop = 0;
+      certModal.classList.add('hidden');
+    }
     document.body.style.overflow = '';
   }
 
