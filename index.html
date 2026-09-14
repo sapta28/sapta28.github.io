@@ -2366,10 +2366,14 @@
               </div>
 
               <!-- Milestone 1 -->
-              <!-- Mobile Top Badge -->
-              <div class="lg:hidden flex justify-center my-2">
-                <div class="bg-slate-900 text-white font-bold text-xs tracking-widest px-4 py-2 rounded-full shadow-md flex items-center gap-2">
-                  <span class="animate-pulse text-[#CEF330]">●</span> To be continued...
+              <!-- Mobile Top Badge (On Top of Road) -->
+              <div class="lg:hidden flex justify-center my-3 relative z-30">
+                <div class="bg-slate-900 text-white font-bold text-xs tracking-widest px-5 py-2.5 rounded-full shadow-xl border-2 border-white flex items-center gap-3 whitespace-nowrap">
+                  <svg class="animate-spin h-4 w-4 text-[#CEF330]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span class="animate-pulse">To be continued...</span>
                 </div>
               </div>
               <div class="relative lg:absolute lg:top-[250px] lg:left-[60%] lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-auto px-1 sm:px-0">
@@ -2511,9 +2515,9 @@
                   </div>
                 </div>
               </div>
-              <!-- Mobile Bottom Badge -->
-              <div class="lg:hidden flex justify-center my-2">
-                <div class="bg-[#CEF330] text-slate-900 font-black text-xs tracking-widest px-6 py-2 rounded-full shadow-md uppercase">
+              <!-- Mobile Bottom Badge (On Top of Road) -->
+              <div class="lg:hidden flex justify-center my-3 relative z-30">
+                <div class="bg-[#CEF330] text-slate-900 font-black text-xs sm:text-sm tracking-[0.2em] px-7 py-2.5 sm:px-8 sm:py-3 rounded-full shadow-xl border-2 border-white uppercase whitespace-nowrap">
                   Start
                 </div>
               </div>
