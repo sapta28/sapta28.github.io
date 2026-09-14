@@ -449,8 +449,19 @@
           </a>
         </div>
 
-        <!-- Mobile Hamburger Toggle -->
-        <div class="md:hidden flex items-center">
+        <!-- Mobile Controls (Flag Switch + Hamburger Button) -->
+        <div class="md:hidden flex items-center space-x-2.5">
+          <!-- Compact Flag Switch for Mobile -->
+          <div
+            class="lang-switch-mobile flex items-center bg-white/10 rounded-full p-1 cursor-pointer shadow-inner border border-white/10"
+            onclick="toggleLanguage()">
+            <div id="lang-en-mob"
+              class="px-1.5 py-0.5 rounded-full text-xs bg-[#CEF330] transition-all grayscale-0 shadow-sm">🇬🇧</div>
+            <div id="lang-id-mob"
+              class="px-1.5 py-0.5 rounded-full text-xs opacity-40 hover:opacity-100 transition-all grayscale">🇮🇩</div>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
           <button id="mobile-menu-toggle" aria-label="Toggle menu"
             class="w-9 h-9 rounded-full bg-[#CEF330] text-slate-950 flex items-center justify-center shadow-md focus:outline-none transition-transform active:scale-90 cursor-pointer">
             <svg id="icon-menu" class="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="2.5"
@@ -485,18 +496,7 @@
             class="mobile-nav-link text-sm font-semibold px-4 py-2.5 rounded-2xl transition-all text-slate-300 hover:bg-white/5 hover:text-slate-950">Services</a>
           <a href="#about" data-route="about"
             class="mobile-nav-link w-full text-center py-3 bg-white/10 text-slate-300 border border-white/10 hover:bg-white/20 hover:text-slate-950 font-bold rounded-2xl text-xs uppercase tracking-wider transition-all duration-200 mt-1">About</a>
-          <!-- Mobile Language Toggle -->
-          <div class="w-full h-px bg-white/10 my-1"></div>
-          <div
-            class="lang-switch-mobile flex items-center justify-center bg-white/5 rounded-2xl p-1 cursor-pointer mt-1 border border-white/5"
-            onclick="toggleLanguage()">
-            <div id="lang-en-mob"
-              class="flex-1 text-center py-2 rounded-2xl text-sm bg-[#CEF330] transition-colors grayscale-0">🇬🇧
-              English</div>
-            <div id="lang-id-mob"
-              class="flex-1 text-center py-2 rounded-2xl text-sm opacity-40 hover:opacity-100 transition-colors grayscale">
-              🇮🇩 Indonesia</div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -6741,8 +6741,8 @@
       });
       const activeClass = "px-2 py-1 rounded-full text-base bg-[#CEF330] transition-colors grayscale-0";
       const inactiveClass = "px-2 py-1 rounded-full text-base opacity-40 hover:opacity-100 transition-colors grayscale";
-      const mobActiveClass = "flex-1 text-center py-2 rounded-2xl text-sm bg-[#CEF330] transition-colors grayscale-0";
-      const mobInactiveClass = "flex-1 text-center py-2 rounded-2xl text-sm opacity-40 hover:opacity-100 transition-colors grayscale";
+      const mobActiveClass = "px-1.5 py-0.5 rounded-full text-xs bg-[#CEF330] transition-all grayscale-0 shadow-sm";
+      const mobInactiveClass = "px-1.5 py-0.5 rounded-full text-xs opacity-40 hover:opacity-100 transition-all grayscale";
 
       if (lang === 'id') {
         if (document.getElementById('lang-en')) document.getElementById('lang-en').className = inactiveClass;
