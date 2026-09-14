@@ -2298,13 +2298,13 @@
 
           <!-- Right Column: Roadmap -->
           <div
-            class="col-span-1 lg:col-span-8 relative flex justify-center lg:justify-start mt-8 lg:-mt-4 pb-16 h-[1600px] lg:-ml-80">
+            class="col-span-1 lg:col-span-8 relative flex justify-center lg:justify-start mt-8 lg:-mt-4 pb-16 h-auto lg:h-[1600px] lg:-ml-80">
 
             <div
-              class="relative w-full h-full max-w-[1000px] mx-auto -translate-x-2 sm:-translate-x-4 lg:-translate-x-8">
+              class="relative w-full h-full max-w-[1000px] mx-auto flex flex-col space-y-6 lg:space-y-0 lg:-translate-x-8">
               <!-- The SVG Winding Road -->
               <svg
-                class="absolute inset-0 w-full h-full text-slate-900 drop-shadow-2xl overflow-visible pointer-events-none"
+                class="hidden lg:block absolute inset-0 w-full h-full text-slate-900 drop-shadow-2xl overflow-visible pointer-events-none"
                 viewBox="0 0 1000 1600" preserveAspectRatio="none">
                 <!-- Road Outline / Shadow -->
                 <path
@@ -2338,7 +2338,7 @@
 
 
               <!-- START Badge -->
-              <div class="absolute z-20" style="top: 1600px; left: 50%; transform: translate(-50%, -50%);">
+              <div class="hidden lg:block absolute z-20" style="top: 1600px; left: 50%; transform: translate(-50%, -50%);">
                 <div
                   class="bg-[#CEF330] text-slate-900 font-black text-xs sm:text-sm tracking-[0.2em] px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg border-2 sm:border-4 border-white uppercase whitespace-nowrap">
                   Start
@@ -2346,7 +2346,7 @@
               </div>
 
               <!-- TO BE CONTINUED Badge -->
-              <div class="absolute z-20" style="top: 0px; left: 50%; transform: translate(-50%, -50%);">
+              <div class="hidden lg:block absolute z-20" style="top: 0px; left: 50%; transform: translate(-50%, -50%);">
                 <div
                   class="bg-slate-900 text-white font-bold text-xs sm:text-sm tracking-widest px-5 py-2 sm:px-7 sm:py-3 rounded-full shadow-xl border-2 sm:border-4 border-white whitespace-nowrap flex items-center gap-3">
                   <svg class="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-[#CEF330]" xmlns="http://www.w3.org/2000/svg"
@@ -2361,9 +2361,15 @@
               </div>
 
               <!-- Milestone 1 -->
-              <div class="absolute" style="top: 250px; left: 60%; transform: translateY(-50%); z-index: 30;">
+              <!-- Mobile Top Badge -->
+              <div class="lg:hidden flex justify-center my-2">
+                <div class="bg-slate-900 text-white font-bold text-xs tracking-widest px-4 py-2 rounded-full shadow-md flex items-center gap-2">
+                  <span class="animate-pulse text-[#CEF330]">●</span> To be continued...
+                </div>
+              </div>
+              <div class="relative lg:absolute lg:top-[250px] lg:left-[60%] lg:-translate-y-1/2 z-30 w-full lg:w-auto">
                 <div
-                  class="bg-[#F8FDF5] rounded-3xl p-5 sm:p-6 shadow-sm border border-[#E8F5E2] flex gap-4 w-[280px] sm:w-[360px] lg:w-[420px] relative hover:shadow-lg transition-shadow">
+                  class="bg-[#F8FDF5] rounded-3xl p-5 sm:p-6 shadow-sm border border-[#E8F5E2] flex gap-4 w-full lg:w-[420px] relative hover:shadow-lg transition-shadow">
                   <!-- Pill -->
                   <div
                     class="hidden sm:flex w-10 shrink-0 bg-[#006BFF] rounded-full flex-col items-center justify-center py-6 relative overflow-hidden shadow-inner">
@@ -2399,9 +2405,9 @@
               </div>
 
               <!-- Milestone 2 -->
-              <div class="absolute" style="top: 600px; right: 60%; transform: translateY(-50%); z-index: 30;">
+              <div class="relative lg:absolute lg:top-[600px] lg:right-[60%] lg:-translate-y-1/2 z-30 w-full lg:w-auto">
                 <div
-                  class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 flex gap-4 w-[280px] sm:w-[360px] lg:w-[420px] relative hover:shadow-lg transition-shadow">
+                  class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 flex gap-4 w-full lg:w-[420px] relative hover:shadow-lg transition-shadow">
                   <!-- Content -->
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-1">
@@ -2432,9 +2438,9 @@
               </div>
 
               <!-- Milestone 3 -->
-              <div class="absolute" style="top: 950px; left: 60%; transform: translateY(-50%); z-index: 30;">
+              <div class="relative lg:absolute lg:top-[950px] lg:left-[60%] lg:-translate-y-1/2 z-30 w-full lg:w-auto">
                 <div
-                  class="bg-[#F8FDF5] rounded-3xl p-5 sm:p-6 shadow-sm border border-[#E8F5E2] flex gap-4 w-[280px] sm:w-[360px] lg:w-[420px] relative hover:shadow-lg transition-shadow">
+                  class="bg-[#F8FDF5] rounded-3xl p-5 sm:p-6 shadow-sm border border-[#E8F5E2] flex gap-4 w-full lg:w-[420px] relative hover:shadow-lg transition-shadow">
                   <!-- Pill -->
                   <div
                     class="hidden sm:flex w-10 shrink-0 bg-[#006BFF] rounded-full flex-col items-center justify-center py-6 relative shadow-inner overflow-hidden">
@@ -2467,9 +2473,9 @@
               </div>
 
               <!-- Milestone 4 -->
-              <div class="absolute" style="top: 1300px; right: 60%; transform: translateY(-50%); z-index: 30;">
+              <div class="relative lg:absolute lg:top-[1300px] lg:right-[60%] lg:-translate-y-1/2 z-30 w-full lg:w-auto">
                 <div
-                  class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 flex gap-4 w-[280px] sm:w-[360px] lg:w-[420px] relative hover:shadow-lg transition-shadow">
+                  class="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-100 flex gap-4 w-full lg:w-[420px] relative hover:shadow-lg transition-shadow">
                   <!-- Content -->
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-1">
@@ -2498,6 +2504,12 @@
                     <span class="text-slate-900 text-[10px] font-bold tracking-widest whitespace-nowrap rotate-90">JAN
                       2024 - PRESENT</span>
                   </div>
+                </div>
+              </div>
+              <!-- Mobile Bottom Badge -->
+              <div class="lg:hidden flex justify-center my-2">
+                <div class="bg-[#CEF330] text-slate-900 font-black text-xs tracking-widest px-6 py-2 rounded-full shadow-md uppercase">
+                  Start
                 </div>
               </div>
 
