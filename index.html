@@ -2301,7 +2301,12 @@
             class="col-span-1 lg:col-span-8 relative flex justify-center lg:justify-start mt-8 lg:-mt-4 pb-16 h-auto lg:h-[1600px] lg:-ml-80">
 
             <div
-              class="relative w-full h-full max-w-[1000px] mx-auto flex flex-col space-y-6 lg:space-y-0 lg:-translate-x-8">
+              class="relative w-full h-full max-w-[1000px] mx-auto flex flex-col space-y-6 lg:space-y-0 lg:-translate-x-8 pl-4 sm:pl-6 lg:pl-0">
+              
+              <!-- Vertical Road Line Graphic for Mobile & Tablet (< 1024px) -->
+              <div class="lg:hidden absolute left-2 sm:left-3 top-10 bottom-10 w-6 sm:w-7 bg-[#1E232F] rounded-full shadow-lg border border-slate-700 flex flex-col items-center justify-between py-2 z-0 pointer-events-none">
+                <div class="w-0.5 h-full border-r-2 border-dashed border-white opacity-85"></div>
+              </div>
               <!-- The SVG Winding Road -->
               <svg
                 class="hidden lg:block absolute inset-0 w-full h-full text-slate-900 drop-shadow-2xl overflow-visible pointer-events-none"
