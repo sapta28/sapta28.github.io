@@ -4094,6 +4094,202 @@
     // Projects Data
     const MOCK_PROJECTS = [
       {
+        id: 'neuromatrix-labs',
+        title: 'NeuroMatrix Labs: Computational Psychometrics & Cognitive Evaluation Platform',
+        title_id: 'NeuroMatrix Labs: Platform Asesmen Psikometri Komputasional & Evaluasi Kognitif',
+        slug: 'neuromatrix-labs',
+        description: "An academic-grade, culture-fair computational psychometrics platform measuring fluid intelligence (g-factor) using Raven's Progressive Matrices (RPM) with Wechsler Scale standardization and zero-trace client-side privacy.",
+        description_id: "Platform asesmen psikometri komputasional berstandar akademis untuk evaluasi kecerdasan murni (fluid intelligence / g-factor) berbasis Raven's Progressive Matrices (RPM), standardisasi Skala Wechsler, dan privasi client-side tanpa jejak.",
+        tech_stack: ['Website', 'React 19', 'TypeScript', 'Tailwind CSS', 'Vite', 'Psychometrics', 'SVG Graphics', 'Zero Paywall', 'Client-Side Engine'],
+        role: 'Frontend Architect & Psychometric Algorithm Engineer',
+        role_id: 'Frontend Architect & Psychometric Algorithm Engineer',
+        client: 'Open-Source Psychometrics Platform & Scientific Research Initiative',
+        client_id: 'Inisiatif Riset Sains Terbuka & Platform Psikometri Komputasional',
+        thumbnail_url: 'assets/neuromatrix-showcase.webp',
+        content: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Project Title</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">NeuroMatrix Labs: Computational Psychometrics &amp; Cognitive Evaluation Platform</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Role</span>
+          <p class="text-sm font-semibold text-slate-700">Frontend Architect &amp; Psychometric Algorithm Engineer</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Client</span>
+          <p class="text-sm font-semibold text-slate-700">Open-Source Psychometrics Platform &amp; Scientific Research Initiative</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 19</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Vite</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Tailwind CSS</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">SVG Vector Graphics</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Wechsler Scale</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Item Response Theory (IRT)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Zero-Trace Privacy</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Canvas Confetti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Project Showcase Image Container -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <div class="relative w-full text-center">
+      <img loading="lazy" decoding="async" src="assets/neuromatrix-showcase.webp" alt="NeuroMatrix Labs Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Problem</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      The digital psychometric landscape is saturated with predatory commercial IQ assessment websites that deploy manipulative dark patterns—forcing users through lengthy evaluations only to lock results behind deceptive subscription paywalls and credit card gates. Furthermore, these platforms harvest sensitive personal data without academic calibration, relying on arbitrary scoring that lacks scientific rigor. Users, educators, and researchers urgently needed a fully transparent, scientifically grounded, and culture-fair cognitive testing platform that adheres to academic psychometric standards while guaranteeing 100% client-side privacy without tracking pixels or server-stored records.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Key Technical Implementation</h3>
+    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+      <li><strong class="text-slate-800">React 19 &amp; TypeScript Pure Client-Side Architecture:</strong> Engineered a modular, type-safe single-page application leveraging React 19, Vite, and TypeScript. All 7 platform views (Hero, RPM Methodology, Normative Cohort, Transparency, FAQ, Test Interface, and Results Reporting) execute in-browser with zero API latency and zero external dependency bottlenecks.</li>
+      <li><strong class="text-slate-800">Dynamic Raven's Progressive Matrices (RPM) SVG Engine:</strong> Developed a custom vector component (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">MatrixCellSVG</code>) that renders 3x3 geometric puzzle matrices and symbol transformations using pure SVG math, guaranteeing pixel-perfect rendering across all retina and mobile display resolutions without raster compression artifacts.</li>
+      <li><strong class="text-slate-800">Wechsler-Standardized Psychometric Evaluation Engine:</strong> Formulated a rigorous computational scoring algorithm grounded in the Wechsler Scale (Mean = 100, SD = 15) and Item Response Theory (IRT). The algorithm computes weighted scores across 5 core cognitive domains: Visual-Spatial, Pattern Recognition, Logical Deduction, Abstract Reasoning, and Working Memory.</li>
+      <li><strong class="text-slate-800">Interactive Gaussian Bell Curve &amp; Normative Cohort Visualization:</strong> Created an animated mathematical Gaussian distribution curve plotting empirical population percentiles (from SD &lt; -2 / IQ &lt; 70 to SD &gt; +2 / Superior IQ &gt; 130) with real-time numeric counter animations and dynamic score demarcation.</li>
+      <li><strong class="text-slate-800">3 Adaptive Assessment Modes &amp; Zero-Trace Local Privacy:</strong> Architected three distinct test modes—Clinical Standard (12 min, 30 items, high reliability r = 0.91), Mobile Speed (6 min, 18 items), and Free Practice (untimed with real-time logic explanations)—paired with a local-first test history drawer (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">localStorage</code>) that leaves zero digital footprints on external servers.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Outcome</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Successfully built and launched a production-grade, zero-paywall psychometric evaluation hub that restores scientific integrity to online cognitive testing. The platform delivers instant, academically validated fluid intelligence reports, interactive domain breakdowns, and a seamless client-side experience that has earned praise for its mathematical transparency, privacy-first architecture, and sleek design system.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo is temporarily disabled">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/iq-test-app" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="View Source Code on GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`,
+        content_id: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Judul Proyek</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">NeuroMatrix Labs: Platform Asesmen Psikometri Komputasional &amp; Evaluasi Kognitif</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Peran</span>
+          <p class="text-sm font-semibold text-slate-700">Frontend Architect &amp; Psychometric Algorithm Engineer</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Klien</span>
+          <p class="text-sm font-semibold text-slate-700">Inisiatif Riset Sains Terbuka &amp; Platform Psikometri Komputasional</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 19</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Vite</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Tailwind CSS</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">SVG Vector Graphics</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Skala Wechsler</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Item Response Theory (IRT)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Privasi Zero-Trace</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Canvas Confetti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Project Showcase Image Container -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <div class="relative w-full text-center">
+      <img loading="lazy" decoding="async" src="assets/neuromatrix-showcase.webp" alt="Tampilan Antarmuka NeuroMatrix Labs" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Masalah (The Problem)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Lanskap psikometri digital saat ini dipenuhi situs tes IQ komersial yang menjebak pengguna dengan <em>dark patterns</em> manipulatif—memaksa pengguna menyelesaikan puluhan soal hanya untuk mengunci hasil di balik <em>paywall</em> langganan kartu kredit terselubung. Selain itu, platform komersial tersebut mengumpulkan data pribadi secara invasif tanpa kalibrasi akademis, menggunakan skoring acak yang tidak dapat dipertanggungjawabkan secara ilmiah. Pengguna, pendidik, dan peneliti membutuhkan platform asesmen kognitif yang transparan, bebas bias bahasa maupun budaya (<em>Culture-Fair</em>), serta aman secara privasi tanpa pelacak pihak ketiga maupun penyimpanan data ke server eksternal.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Implementasi Teknis Utama</h3>
+    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+      <li><strong class="text-slate-800">Arsitektur React 19 &amp; TypeScript Client-Side Penuh:</strong> Membangun aplikasi web modern berbasis React 19, Vite, dan TypeScript dengan arsitektur modular yang mengelola 7 halaman utama (Beranda, Metodologi RPM, Kohort Normatif, Transparansi, FAQ, Antarmuka Tes, dan Laporan Hasil) dengan latensi nol di peramban tanpa hambatan server.</li>
+      <li><strong class="text-slate-800">Mesin Vektor Matriks Geometris Raven (RPM) Dinamis:</strong> Mengembangkan komponen SVG murni (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">MatrixCellSVG</code>) untuk merender pola matriks geometris 3x3 dan transformasi visual secara matematis, menjamin tampilan tajam di seluruh resolusi layar gawai tanpa artefak kompresi gambar raster.</li>
+      <li><strong class="text-slate-800">Algoritma Skoring Psikometri Terstandarisasi Wechsler (Mean 100, SD 15):</strong> Merancang mesin evaluasi kognitif berbasis <em>Item Response Theory</em> (IRT) dan Skala Wechsler yang memetakan skor mentah berbobot ke dalam 5 domain kognitif utama: <em>Visual-Spatial, Pattern Recognition, Logical Deduction, Abstract Reasoning,</em> dan <em>Working Memory</em>.</li>
+      <li><strong class="text-slate-800">Visualisasi Kurva Distribusi Normal Gaussian (Bell Curve) Interaktif:</strong> Mengembangkan grafik kurva normal Gaussian SVG interaktif yang memetakan persentil populasi empiris (dari SD &lt; -2 / IQ &lt; 70 hingga superior SD &gt; +2 / IQ &gt; 130) dilengkapi animasi penghitung angka waktu-nyata (<em>real-time numeric counter</em>).</li>
+      <li><strong class="text-slate-800">3 Mode Asesmen Adaptif &amp; Privasi Tanpa Jejak (Zero-Trace):</strong> Mengarsiteksi tiga mode pengujian berbeda—Tes Standar Klinis (12 menit, 30 soal, reliabilitas tinggi r = 0.91), Mode Kilat Mobile (6 menit, 18 soal), dan Mode Latihan Bebas (<em>untimed</em> dengan pembahasan logika)—serta laci riwayat tes lokal (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">localStorage</code>) tanpa meninggalkan jejak data ke server eksternal.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Hasil &amp; Dampak (The Outcome)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Berhasil membangun dan merilis platform evaluasi psikometri berstandar ilmiah tanpa <em>paywall</em> yang memulihkan integritas pengujian kecerdasan kognitif di internet. Platform ini menyediakan laporan kecerdasan cair (<em>fluid intelligence</em>) yang instan dan terkalibrasi secara akademis, rincian domain kognitif yang interaktif, serta antarmuka modern yang mendapat apresiasi atas transparansi matematis dan arsitektur privasi terdepannya.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo saat ini dinonaktifkan sementara">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/iq-test-app" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="Lihat Source Code di GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`
+      },
+      {
         id: 'personal-portfolio',
         title: 'Personal Portfolio & Interactive Engineering Showcase',
         slug: 'personal-portfolio',
@@ -6133,8 +6329,11 @@
       // Render grid
       if (filtered.length > 0) {
         gridContainer.innerHTML = filtered.map((project, index) => {
-          const role = project.role || 'Developer';
-          const client = project.client || 'Client';
+          const currentLang = localStorage.getItem('lang') || 'en';
+          const title = (currentLang === 'id' && project.title_id) ? project.title_id : project.title;
+          const desc = (currentLang === 'id' && project.description_id) ? project.description_id : project.description;
+          const role = (currentLang === 'id' && project.role_id) ? project.role_id : (project.role || 'Developer');
+          const client = (currentLang === 'id' && project.client_id) ? project.client_id : (project.client || 'Client');
           return `
             <div class="scard center-dark cursor-pointer !w-full hover:-translate-y-2 transition-transform duration-300 group" style="min-height: 420px; transform: scale(1);" onclick="openProjectModal('${project.id}')">
               
@@ -6143,13 +6342,13 @@
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                   <span class="notranslate">${project.tech_stack[0]}</span>
                 </span>
-                <img loading="lazy" decoding="async" src="${project.thumbnail_url}" alt="${project.title}" class="w-full h-full object-contain">
+                <img loading="lazy" decoding="async" src="${project.thumbnail_url}" alt="${title}" class="w-full h-full object-contain">
               </div>
 
               <div class="px-1 pb-2 flex flex-col flex-grow">
-                <h3 class="scard-title line-clamp-2">${project.title}</h3>
+                <h3 class="scard-title line-clamp-2">${title}</h3>
                 
-                <p class="scard-desc line-clamp-2 flex-grow">${project.description}</p>
+                <p class="scard-desc line-clamp-2 flex-grow">${desc}</p>
                 
                 <div class="mb-3 text-[9px] md:text-[10px] text-slate-400 leading-tight">
                   <span class="block"><strong class="text-white font-bold">Role:</strong> ${role}</span>
@@ -6642,7 +6841,10 @@
       setDailyNewsSlide(currentDailyNewsSlide + dir);
     }
 
+    let currentOpenProjectId = null;
+
     function openProjectModal(projectId) {
+      currentOpenProjectId = projectId;
       const project = MOCK_PROJECTS.find(p => p.id === projectId);
       if (!project) return;
 
@@ -6650,12 +6852,13 @@
       const modalTitle = document.getElementById('modal-title');
       const modalTech = document.getElementById('modal-tech');
       const modalContent = document.getElementById('modal-content');
+      const currentLang = localStorage.getItem('lang') || 'en';
 
       if (modalImg) modalImg.src = project.thumbnail_url;
-      if (modalTitle) modalTitle.textContent = project.title;
+      if (modalTitle) modalTitle.textContent = (currentLang === 'id' && project.title_id) ? project.title_id : project.title;
 
       if (modalTech) {
-        if (project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
+        if (project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
           modalTech.classList.add('hidden');
         } else {
           modalTech.classList.remove('hidden');
@@ -6666,7 +6869,7 @@
       }
 
       if (modalContent) {
-        let formatted = project.content;
+        let formatted = (currentLang === 'id' && project.content_id) ? project.content_id : project.content;
         if (!formatted.trim().startsWith("<")) {
           formatted = formatted
             .replace(/### (.*)/g, '<h3 class="text-lg font-bold text-slate-800 mt-4 mb-2">$1</h3>')
@@ -6700,6 +6903,7 @@
     }
 
     function closeProjectModal() {
+      currentOpenProjectId = null;
       const modal = document.getElementById('project-modal');
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
@@ -7228,6 +7432,13 @@
         if (document.getElementById('lang-id')) document.getElementById('lang-id').className = inactiveClass;
         if (document.getElementById('lang-en-mob')) document.getElementById('lang-en-mob').className = mobActiveClass;
         if (document.getElementById('lang-id-mob')) document.getElementById('lang-id-mob').className = mobInactiveClass;
+      }
+
+      // Refresh project gallery and open modal if active for instant bilingual rendering
+      renderProjectsGallery();
+      const projModal = document.getElementById('project-modal');
+      if (projModal && !projModal.classList.contains('hidden') && currentOpenProjectId) {
+        openProjectModal(currentOpenProjectId);
       }
     }
 
