@@ -4094,6 +4094,250 @@
     // Projects Data
     const MOCK_PROJECTS = [
       {
+        id: 'simagent-office',
+        title: 'SimAgent Office: 2D Isometric AI Agent Visualizer & Virtual Workplace Simulator',
+        title_id: 'SimAgent Office: Visualisator AI Agent 2D Isometrik & Simulator Kantor Virtual',
+        slug: 'simagent-office',
+        description: 'An interactive 2D isometric pixel-art observability canvas visualizing autonomous multi-agent AI workflows in real time, featuring Phaser 3, A* pathfinding (EasyStar.js), dual WebSocket & in-browser simulator engines, and real-time LLM cost telemetry.',
+        description_id: 'Kanvas observabilitas 2D isometrik bergaya pixel-art interaktif untuk visualisasi orkestrasi multi-agent AI secara real-time, ditenagai Phaser 3, algoritma navigasi A* (EasyStar.js), engine ganda WebSocket & simulator in-browser, serta telemetri biaya LLM live.',
+        tech_stack: ['AI', 'Website', 'React 18', 'Phaser 3', 'TypeScript', 'Python FastAPI', 'WebSockets', 'A* Pathfinding', 'Tailwind CSS', 'LLM Telemetry'],
+        role: 'AI Frontend Engineer & Creative Tech Architect',
+        role_id: 'AI Frontend Engineer & Creative Tech Architect',
+        client: 'Open-Source Developer Tooling & AI Observability Initiative',
+        client_id: 'Inisiatif Developer Tools Open-Source & Observabilitas AI',
+        thumbnail_url: 'assets/simagent_office_slide_1.webp',
+        content: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Project Title</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">SimAgent Office: 2D Isometric AI Agent Visualizer &amp; Virtual Workplace Simulator</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Role</span>
+          <p class="text-sm font-semibold text-slate-700">AI Frontend Engineer &amp; Creative Tech Architect</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Client / Domain</span>
+          <p class="text-sm font-semibold text-slate-700">Open-Source Developer Tooling &amp; AI Observability Initiative</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Phaser 3 Canvas</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 18</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">A* Pathfinding (EasyStar.js)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Python FastAPI</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Native WebSockets</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Claude 3.5 &amp; GPT-4o</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">2D Isometric Pixel Art</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Real-Time Cost Telemetry</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive SimAgent Office Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="simagent-office-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="simagent-office-slide-img" src="assets/simagent_office_slide_1.webp" alt="SimAgent Office AI Visualizer" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeSimagentOfficeSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Previous Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeSimagentOfficeSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Next Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setSimagentOfficeSlide(0); event.stopPropagation();" class="simagent-office-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Challenge</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Modern multi-agent AI frameworks (such as LangGraph, CrewAI, AutoGen, and OpenAI Swarm) orchestrate sophisticated collaborative workflows across multiple LLMs. However, observability remains locked behind cryptic terminal logs, dense JSON traces, or abstract static DAG graphs. Engineers, stakeholders, and clients struggle to intuitively perceive agent state transitions, tool calls, context handoffs, and resource consumption. Developers urgently required an engaging, visual observability platform that humanizes autonomous AI collaboration into a tangible virtual workplace without introducing heavy framework lock-in.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Solution &amp; System Architecture</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Architected <strong>SimAgent Office</strong>, a decoupled 2D isometric pixel-art virtual workplace simulator inspired by classic simulation titles (such as <em>The Sims</em> and <em>Habbo Hotel</em>). The system combines a high-performance <strong>Phaser 3</strong> canvas running at 60 FPS embedded within a modern <strong>React 18 &amp; TypeScript</strong> HUD, backed by an asynchronous <strong>Python FastAPI WebSocket</strong> broadcaster. Autonomous AI agents are rendered as animated pixel sprites navigating functional office zones via <strong>A* Pathfinding (EasyStar.js)</strong>, expressing dynamic tool actions via contextual speech bubbles. Furthermore, an in-browser local simulator fallback (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">WS: LOCAL SIM</code>) enables zero-cost static web deployments and instant interactive demonstrations.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Key Features &amp; Engineering Highlights</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">2D Isometric Office Tilemap &amp; Zone Architecture:</strong> Designed interactive office zones mapped to agent operational roles: Executive Planning Room (glass meeting area for architecture &amp; prompt design), Dual-Monitor Workstations (active coding &amp; generation), Server &amp; Archive Library (RAG &amp; web search), QA Testing Room (pytest execution), and Lounge/Gym/Cafeteria (idle state).</li>
+      <li><strong class="text-slate-800">A* Pathfinding &amp; Obstacle Avoidance (EasyStar.js):</strong> Engineered intelligent 4/8-direction isometric pathfinding that dynamically calculates shortest collision-free routes around desks, office chairs, glass partitions, and decorative plants.</li>
+      <li><strong class="text-slate-800">Finite State Machine (FSM) &amp; Speech Bubbles:</strong> Managed agent state transitions across <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">PLANNING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">WORKING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">SEARCHING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">TESTING</code>, and <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">IDLE</code>, complete with real-time reactive dialogue bubbles (<em class="text-slate-700">"Coding implementation..."</em>, <em class="text-slate-700">"Running pytest..."</em>).</li>
+      <li><strong class="text-slate-800">Live HUD Telemetry &amp; LLM Cost Tracking:</strong> Programmed a persistent telemetry HUD monitoring runtime duration, model selection (Claude 3.5 Sonnet / GPT-4o), live API expenditure in USD (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">$0.065</code>), generation throughput (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">48 Tok/s</code>), total tokens (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">7.1K</code>), execution stage progress, and event stream logs.</li>
+      <li><strong class="text-slate-800">Decoupled Dual-Mode WebSocket Engine:</strong> Programmed resilient auto-reconnecting WebSocket client communication to the Python FastAPI event server, coupled with an automatic in-browser mock simulator for instant client-side showcases.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Outcome</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Successfully revolutionized multi-agent observability by translating complex distributed AI agent workflows into an engaging, gamified visual environment. Dramatically elevated technical presentations for executive stakeholders, eliminated confusion during multi-agent handoffs, and established an innovative visual benchmark for the developer tooling ecosystem.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo interaktif sedang disiapkan untuk deployment web">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/AI_Agent_Visualisasi" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="Lihat Source Code di GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`,
+        content_id: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Judul Proyek</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">SimAgent Office: Visualisator AI Agent 2D Isometrik &amp; Simulator Kantor Virtual</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Peran</span>
+          <p class="text-sm font-semibold text-slate-700">AI Frontend Engineer &amp; Creative Tech Architect</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Klien / Domain</span>
+          <p class="text-sm font-semibold text-slate-700">Inisiatif Developer Tools Open-Source &amp; Observabilitas AI</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Phaser 3 Canvas</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 18</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">A* Pathfinding (EasyStar.js)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Python FastAPI</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Native WebSockets</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Claude 3.5 &amp; GPT-4o</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">2D Isometric Pixel Art</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Real-Time Cost Telemetry</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive SimAgent Office Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="simagent-office-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="simagent-office-slide-img" src="assets/simagent_office_slide_1.webp" alt="SimAgent Office AI Visualizer" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeSimagentOfficeSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Sebelumnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeSimagentOfficeSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Selanjutnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setSimagentOfficeSlide(0); event.stopPropagation();" class="simagent-office-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Tantangan &amp; Latar Belakang (The Challenge)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Perkembangan arsitektur <em>Multi-Agent AI</em> (seperti LangGraph, CrewAI, AutoGen, dan OpenAI Swarm) memungkinkan kolaborasi otonom antar berbagai model LLM untuk menyelesaikan tugas-tugas rekayasa perangkat lunak yang rumit. Namun, observabilitas kerja agen selama ini terkunci di balik terminal log teks CLI yang kaku atau diagram grafik DAG abstrak. Pengembang, klien, maupun pemangku kepentingan non-teknis kesulitan memahami bagaimana agen berpindah peran, kapan agen melakukan pencarian RAG, kapan agen mengetik kode, dan bagaimana handoff antar agen terjadi. Diperlukan antarmuka visual yang menyenangkan, intuitif, dan mampu memanusiakan eksekusi AI ke dalam lingkungan kerja virtual.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Solusi &amp; Arsitektur Sistem (The Solution)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Mengarsiteksi <strong>SimAgent Office</strong>, simulator kantor virtual 2D isometrik bergaya pixel-art terinspirasi gim simulasi legendaris (*The Sims* &amp; *Habbo Hotel*). Menggabungkan kanvas <strong>Phaser 3</strong> berkinerja tinggi 60 FPS dengan lapisan antarmuka <strong>React 18 &amp; TypeScript</strong>, terhubung ke backend broadcaster <strong>Python FastAPI</strong> via protokol WebSocket asli. Setiap agen dianimasikan sebagai sprite piksel cerdas yang berpindah ruangan secara alami menggunakan algoritma <strong>A* Pathfinding (EasyStar.js)</strong>, menampilkan balon dialog interaktif sesuai status eksekusi. Selain itu, dilengkapi engine simulator lokal browser (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">WS: LOCAL SIM</code>) untuk demo interaktif tanpa ketergantungan server berbayar.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Fitur Utama &amp; Keunggulan Teknis</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">Denah Kantor Isometrik &amp; Pemetaan Zona Fungsional:</strong> Merancang ruangan kantor tematik sesuai peran operasional agen: Ruang Rapat Kaca (fase <em>Planning</em> arsitektur), Meja Kerja Monitor Ganda (fase <em>Coding</em> &amp; pengetikan kode), Ruang Server &amp; Perpustakaan (fase <em>Searching</em> pencarian RAG), Ruang QA Testing (eksekusi pengujian <em>pytest</em>), serta Kafetaria/Gym (status istirahat <em>Idle</em>).</li>
+      <li><strong class="text-slate-800">Algoritma Navigasi A* Pathfinding (EasyStar.js):</strong> Menghitung rute terpendek pergerakan karakter 4/8 arah isometrik secara cerdas dengan menghindari tabrakan rintangan fisik (meja, kursi putar, sekat partisi kaca, dan tanaman hias).</li>
+      <li><strong class="text-slate-800">Finite State Machine (FSM) &amp; Balon Dialog Dinamis:</strong> Mengelola status transisi agen (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">PLANNING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">WORKING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">SEARCHING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">TESTING</code>, <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">IDLE</code>) dilengkapi balon ucapan interaktif waktu-nyata (<em class="text-slate-700">"Coding implementation..."</em>, <em class="text-slate-700">"Running pytest..."</em>).</li>
+      <li><strong class="text-slate-800">HUD Telemetri Waktu-Nyata &amp; Pelacak Biaya LLM:</strong> Panel telemetri lengkap yang memantau durasi runtime, model LLM aktif (Claude 3.5 Sonnet / GPT-4o), estimasi pengeluaran API dalam mata uang USD (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">$0.065</code>), throughput kecepatan generasi (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">48 Tok/s</code>), total token (<code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">7.1K</code>), progress stage alur kerja, dan riwayat log event.</li>
+      <li><strong class="text-slate-800">Arsitektur Decoupled Dual-Mode WebSocket:</strong> Mengimplementasikan koneksi WebSocket tangguh dengan fitur auto-reconnect otomatis ke server event FastAPI Python, serta fallback otomatis ke in-browser local simulator saat mode luring.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Hasil &amp; Dampak Operasional (The Outcome)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Mendobrak cara pengembang memantau dan mempresentasikan orkestrasi kecerdasan buatan otonom. Log multi-agen yang sebelumnya kaku berubah menjadi representasi visual yang hidup dan menyenangkan, mempercepat proses presentasi ke klien eksekutif, serta membuka paradigma baru dalam observabilitas ekosistem AI Developer Tooling.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo interaktif sedang disiapkan untuk deployment web">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/AI_Agent_Visualisasi" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="Lihat Source Code di GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`
+      },
+      {
         id: 'csa-offboarding-siapik',
         title: 'CSA PeopleHub: SI-APIK Enterprise HR Offboarding & Multi-Tier Clearance System',
         title_id: 'CSA PeopleHub: Modul Offboarding SI-APIK & Sistem Clearance Aset Berjenjang',
@@ -6999,6 +7243,37 @@
       setCsaOffboardingSlide(currentCsaOffboardingSlide + dir);
     }
 
+    // SimAgent Office Showcase Slideshow Logic
+    const simagentOfficeImages = [
+      'assets/simagent_office_slide_1.webp'
+    ];
+    let currentSimagentOfficeSlide = 0;
+
+    function setSimagentOfficeSlide(idx) {
+      currentSimagentOfficeSlide = (idx + simagentOfficeImages.length) % simagentOfficeImages.length;
+      const img = document.getElementById('simagent-office-slide-img');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = simagentOfficeImages[currentSimagentOfficeSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+
+      const dots = document.querySelectorAll('.simagent-office-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentSimagentOfficeSlide) {
+          dot.className = "simagent-office-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "simagent-office-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all";
+        }
+      });
+    }
+
+    function changeSimagentOfficeSlide(dir) {
+      setSimagentOfficeSlide(currentSimagentOfficeSlide + dir);
+    }
+
     // HIPAM Open Ledger Showcase Slideshow Logic
     const hipamReportImages = [
       'assets/hipam_report_slide_1.webp',
@@ -7550,7 +7825,7 @@
       if (modalTitle) modalTitle.textContent = (currentLang === 'id' && project.title_id) ? project.title_id : project.title;
 
       if (modalTech) {
-        if (project.id === 'csa-offboarding-siapik' || project.id === 'hipam-report-system' || project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
+        if (project.id === 'simagent-office' || project.id === 'csa-offboarding-siapik' || project.id === 'hipam-report-system' || project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
           modalTech.classList.add('hidden');
         } else {
           modalTech.classList.remove('hidden');
@@ -7576,6 +7851,8 @@
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
+        if (projectId === 'simagent-office') setTimeout(() => setSimagentOfficeSlide(0), 50);
+        if (projectId === 'simagent-office') setTimeout(() => setSimagentOfficeSlide(0), 50);
         if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
         if (projectId === 'hipam-report-system') setTimeout(() => setHipamReportSlide(0), 50);
         if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
