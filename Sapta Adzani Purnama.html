@@ -4362,6 +4362,252 @@
 </div>`
       },
       {
+        id: 'hipam-report-system',
+        title: 'HIPAM Open Ledger: Public Financial Reporting & Community Water Management System',
+        title_id: 'Sistem Informasi Kas & Pelaporan Terbuka HIPAM Desa Nogojatisari',
+        slug: 'hipam-report-system',
+        description: 'A modern, zero-cost public ledger and financial transparency portal for village water management (HIPAM RT 006 Desa Nogojatisari), featuring a multi-pocket balance architecture, instant mobile collection checklist, and client-side PDF reporting.',
+        description_id: 'Sistem pencatatan kas dan pelaporan keuangan terbuka HIPAM RT 006 Desa Nogojatisari dengan arsitektur multi-pocket balance, checklist tarikan cepat bendahara via smartphone, dan generator SPJ PDF otomatis berbasis Next.js 15 dan Supabase.',
+        tech_stack: ['Website', 'Next.js 15', 'React 19', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'jsPDF', 'Zod', 'Zero-Cost Infra'],
+        role: 'Full-Stack Web Architect & Open-Source Contributor',
+        role_id: 'Full-Stack Web Architect & Inisiator Digitalisasi Warga',
+        client: 'HIPAM RT 006 Desa Nogojatisari (Community Water Governance)',
+        client_id: 'Pengurus HIPAM RT 006 Desa Nogojatisari (Tata Kelola Air Warga)',
+        thumbnail_url: 'assets/hipam_report_slide_1.webp',
+        content: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Project Title</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">HIPAM Open Ledger: Public Financial Reporting &amp; Community Water Management System</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Role</span>
+          <p class="text-sm font-semibold text-slate-700">Full-Stack Web Architect &amp; Open-Source Contributor</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Client / Community</span>
+          <p class="text-sm font-semibold text-slate-700">HIPAM RT 006 Desa Nogojatisari (Community Water Governance)</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Next.js 15 (App Router)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 19</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase (PostgreSQL)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase Storage</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase Auth</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Tailwind CSS</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">jsPDF + AutoTable</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Zod Validation</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">100% Zero-Cost Infra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive HIPAM Open Ledger Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="hipam-report-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="hipam-report-slide-img" src="assets/hipam_report_slide_1.webp" alt="HIPAM Open Ledger Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeHipamReportSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Previous Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeHipamReportSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Next Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setHipamReportSlide(0); event.stopPropagation();" class="hipam-report-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Challenge</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Community-run drinking water management systems (HIPAM) in rural Indonesian neighborhoods—such as RT 006 Desa Nogojatisari covering 42 households—rely heavily on voluntary neighborhood treasurers. Managing operational finances faced persistent challenges: commingling pure pipeline repair funds with community social savings (e.g. Independence Day / Agustusan event dues), physical hardware receipts getting lost or damaged on repair sites, manual calculation errors during door-to-door monthly fee collections, and community suspicion arising from lack of transparent ledger access. Furthermore, village associations operate on zero software budget, eliminating the possibility of paid cloud hosting.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Solution &amp; System Architecture</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Designed and implemented a <strong>Dual-Portal Open Financial Ledger</strong> built with <strong>Next.js 15 (App Router, React 19)</strong>, <strong>TypeScript</strong>, and <strong>Supabase (PostgreSQL, Auth &amp; Storage)</strong>. The system provides an unauthenticated, zero-friction public portal where any citizen can view live multi-pocket balances, itemized expenses, and payment statuses without creating accounts. Simultaneously, an authenticated admin panel equips the treasurer with a mobile-first collection checklist, cloud receipt photo uploads, and automatic client-side PDF balance sheet generation via <strong>jsPDF</strong>—all running on a 100% zero-cost cloud architecture ($0/month on Vercel &amp; Supabase free tiers).
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Key Features &amp; Engineering Highlights</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">Multi-Pocket Balance Engine:</strong> Programmed real-time dynamic balance isolation across three distinct financial reserves: Pure Water Maintenance Reserve (emergency pipe &amp; pump repairs), Social Event Escrow (Agustusan savings), and Total Physical Cash In-Hand.</li>
+      <li><strong class="text-slate-800">Mobile-First Door-to-Door Collection Checklist:</strong> Designed a streamlined touchscreen checklist for the treasurer with instantaneous mathematical formula: <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">Gross Income - Collection Fee - Social Savings = Net Operating Water Reserve</code>.</li>
+      <li><strong class="text-slate-800">Direct-to-Cloud Receipt Capture (Supabase Storage):</strong> Integrated real-time receipt scanning allowing the treasurer to take mobile photos of hardware store invoices and pump repair bills on site, uploading them instantly to Supabase Storage with public audit previews.</li>
+      <li><strong class="text-slate-800">Automated Legal A4 PDF Statement Generator (jsPDF):</strong> Programmed instantaneous client-side rendering of official financial accountability reports (SPJ) formatted for standard A4 printing, complete with signature blocks for the HIPAM Chairman and Treasurer.</li>
+      <li><strong class="text-slate-800">Layered Clean Architecture &amp; Type-Safe Calculations:</strong> Structured the codebase into separated View, Action, Service, and Repository layers using TypeScript and Zod schema validations to prevent precision loss, null pointer exceptions, and financial discrepancy.</li>
+      <li><strong class="text-slate-800">100% Zero-Cost Serverless Infrastructure:</strong> Engineered the entire system to run within free-tier quotas on Vercel and Supabase PostgreSQL with automated CI/CD deployment from GitHub.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Outcome</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Successfully deployed for the 42 households of RT 006 Desa Nogojatisari, establishing 100% audit transparency and eliminating bookkeeping discrepancies. Monthly fee collection speed doubled, lost physical receipt disputes dropped to zero, and the community gained complete trust in local water infrastructure administration without incurring any server or software hosting fees.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo dibatasi untuk jaringan portal komunitas warga">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/Information_System_HIPAM_Report" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="Lihat Source Code di GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`,
+        content_id: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Judul Proyek</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">Sistem Informasi Kas &amp; Pelaporan Terbuka HIPAM Desa Nogojatisari</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Peran</span>
+          <p class="text-sm font-semibold text-slate-700">Full-Stack Web Architect &amp; Inisiator Digitalisasi Warga</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Klien / Komunitas</span>
+          <p class="text-sm font-semibold text-slate-700">Pengurus HIPAM RT 006 Desa Nogojatisari (Tata Kelola Air Warga)</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Next.js 15 (App Router)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">React 19</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">TypeScript</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase (PostgreSQL)</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase Storage</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Supabase Auth</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Tailwind CSS</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">jsPDF + AutoTable</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Zod Validation</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">100% Zero-Cost Infra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive HIPAM Open Ledger Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="hipam-report-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="hipam-report-slide-img" src="assets/hipam_report_slide_1.webp" alt="HIPAM Open Ledger Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeHipamReportSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Sebelumnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeHipamReportSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Selanjutnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setHipamReportSlide(0); event.stopPropagation();" class="hipam-report-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Tantangan &amp; Latar Belakang (The Challenge)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Pengelolaan air minum warga (HIPAM) skala rukun tetangga di RT 006 Desa Nogojatisari (mencakup 42 Kepala Keluarga) selama bertahun-tahun mengandalkan pembukuan manual di buku tulis oleh bendahara sukarela. Muncul sejumlah kendala krusial: bercampurnya uang kas pokok operasional pemeliharaan pipa dengan dana titipan kegiatan warga (tabungan Agustusan), nota belanja toko bangunan rawan hilang atau basah saat perbaikan pipa di lapangan, serta kekhawatiran warga akan transparansi uang kas jika laporan hanya dibacakan setahun sekali. Di samping itu, pengurus tidak memiliki anggaran kas untuk menyewa cloud server hosting bulanan.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Solusi &amp; Arsitektur Sistem (The Solution)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Membangun aplikasi web <strong>Buku Kas Terbuka &amp; Pelaporan HIPAM</strong> menggunakan <strong>Next.js 15 (App Router, React 19)</strong>, <strong>TypeScript</strong>, dan <strong>Supabase (PostgreSQL, Auth &amp; Storage)</strong>. Sistem menerapkan arsitektur <em>Dual-Portal</em>: <strong>Portal Publik Terbuka</strong> yang dapat diakses warga dari smartphone tanpa perlu login untuk melihat posisi kas terkini, serta <strong>Panel Khusus Bendahara</strong> terproteksi autentikasi dengan antarmuka checklist tarikan cepat keliling, upload foto nota langsung via kamera HP, dan generator dokumen laporan keuangan siap cetak A4 berbasis <strong>jsPDF</strong>—semuanya berjalan di atas infrastruktur serverless 100% gratis selamanya (Zero-Cost Infra).
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Fitur Utama &amp; Keunggulan Teknis</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">Arsitektur Multi-Pocket Balance:</strong> Memisahkan saldo kas secara otomatis ke dalam 3 pos dana: Pos 1 Kas Pemeliharaan Air (prioritas servis pipa &amp; pompa), Pos 2 Titipan Tabungan Warga (Agustusan), dan Pos 3 Total Kas Fisik Riil di tangan bendahara.</li>
+      <li><strong class="text-slate-800">Checklist Tarikan Cepat Mobile di Lapangan:</strong> Antarmuka input tarikan iuran bulanan dari pintu ke pintu yang responsif di smartphone dengan rumus kalkulasi live: <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">Pemasukan Kotor - Ongkos Tarik - Tabungan Agustusan = Kas Pokok Bersih</code>.</li>
+      <li><strong class="text-slate-800">Unggah Nota Belanja Langsung ke Cloud (Supabase Storage):</strong> Bendahara dapat memotret kuitansi material pipa langsung dari kamera HP di toko dan tersimpan otomatis ke cloud storage dengan fitur pratinjau bukti nota untuk audit warga.</li>
+      <li><strong class="text-slate-800">Generator Laporan Resmi Format Cetak A4 (jsPDF):</strong> Menghasilkan lembar pertanggungjawaban kas (SPJ) format standar A4 siap cetak langsung dari browser, lengkap dengan tabel rincian transaksi dan kolom tanda tangan basah Ketua &amp; Bendahara.</li>
+      <li><strong class="text-slate-800">Layered Clean Architecture &amp; Type Safety:</strong> Memisahkan logika kode ke dalam lapisan View, Action, Service, dan Repository dengan validasi skema ketat menggunakan Zod dan TypeScript untuk mencegah galat kalkulasi nominal desimal rupiah.</li>
+      <li><strong class="text-slate-800">Infrastruktur Serverless 100% Bebas Biaya (Zero Cost):</strong> Memanfaatkan kuota gratis Vercel dan Supabase PostgreSQL Free Tier secara optimal tanpa membebani kas warga sedikit pun.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Hasil &amp; Dampak Operasional (The Outcome)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Berhasil diimplementasikan untuk 42 KK warga RT 006 Desa Nogojatisari dengan transparansi tata kelola 100%. Waktu perekapan iuran bulanan terpangkas hingga 50%, potensi selisih kas fisik dan catatan nihil, serta terbangunnya kepercayaan penuh warga terhadap transparansi pemeliharaan air bersih desa tanpa biaya hosting server.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo dibatasi untuk jaringan portal komunitas warga">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Coming Soon</span>
+      </div>
+    </div>
+    
+    <!-- Active Code Repository Button -->
+    <a href="https://github.com/sapta28/Information_System_HIPAM_Report" target="_blank" class="flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl transition-all shadow-md group" title="Lihat Source Code di GitHub">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="group-hover:scale-105 transition-transform"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-80 leading-none">Code Repository</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-100">View on GitHub</span>
+      </div>
+    </a>
+  </div>
+</div>`
+      },
+      {
         id: 'neuromatrix-labs',
         title: 'NeuroMatrix Labs: Computational Psychometrics & Cognitive Evaluation Platform',
         title_id: 'NeuroMatrix Labs: Platform Asesmen Psikometri Komputasional & Evaluasi Kognitif',
@@ -6741,6 +6987,37 @@
       setCsaOffboardingSlide(currentCsaOffboardingSlide + dir);
     }
 
+    // HIPAM Open Ledger Showcase Slideshow Logic
+    const hipamReportImages = [
+      'assets/hipam_report_slide_1.webp'
+    ];
+    let currentHipamReportSlide = 0;
+
+    function setHipamReportSlide(idx) {
+      currentHipamReportSlide = (idx + hipamReportImages.length) % hipamReportImages.length;
+      const img = document.getElementById('hipam-report-slide-img');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = hipamReportImages[currentHipamReportSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+
+      const dots = document.querySelectorAll('.hipam-report-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentHipamReportSlide) {
+          dot.className = "hipam-report-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "hipam-report-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all";
+        }
+      });
+    }
+
+    function changeHipamReportSlide(dir) {
+      setHipamReportSlide(currentHipamReportSlide + dir);
+    }
+
     // NeuroMatrix Labs Showcase Slideshow Logic
     const neuromatrixImages = [
       'assets/neuromatrix_slide_1.webp',
@@ -7255,7 +7532,7 @@
       if (modalTitle) modalTitle.textContent = (currentLang === 'id' && project.title_id) ? project.title_id : project.title;
 
       if (modalTech) {
-        if (project.id === 'csa-offboarding-siapik' || project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
+        if (project.id === 'csa-offboarding-siapik' || project.id === 'hipam-report-system' || project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
           modalTech.classList.add('hidden');
         } else {
           modalTech.classList.remove('hidden');
@@ -7282,7 +7559,10 @@
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
         if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
+        if (projectId === 'hipam-report-system') setTimeout(() => setHipamReportSlide(0), 50);
         if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
+        if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
+        if (projectId === 'hipam-report-system') setTimeout(() => setHipamReportSlide(0), 50);
         if (projectId === 'neuromatrix-labs') setTimeout(() => setNeuromatrixSlide(0), 50);
         if (projectId === 'personal-portfolio') setTimeout(() => setPortfolioSlide(0), 50);
         if (projectId === 'mock-3') setTimeout(() => setKioskSlide(0), 50);
