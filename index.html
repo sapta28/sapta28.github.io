@@ -4141,10 +4141,31 @@
     </div>
   </div>
 
-  <!-- Interactive Project Showcase Image Container -->
+  <!-- Interactive NeuroMatrix Showcase Gallery Slideshow -->
   <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
-    <div class="relative w-full text-center">
-      <img loading="lazy" decoding="async" src="assets/neuromatrix-showcase.webp" alt="NeuroMatrix Labs Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    <!-- Slide Container -->
+    <div id="neuromatrix-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="neuromatrix-slide-img" src="assets/neuromatrix_slide_1.webp" alt="NeuroMatrix Labs Showcase 1" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeNeuromatrixSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Previous Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeNeuromatrixSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Next Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setNeuromatrixSlide(0); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+        <button onclick="setNeuromatrixSlide(1); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="1"></button>
+        <button onclick="setNeuromatrixSlide(2); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="2"></button>
+        <button onclick="setNeuromatrixSlide(3); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="3"></button>
+        <button onclick="setNeuromatrixSlide(4); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="4"></button>
+        <button onclick="setNeuromatrixSlide(5); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="5"></button>
+      </div>
     </div>
   </div>
 
@@ -4232,10 +4253,31 @@
     </div>
   </div>
 
-  <!-- Interactive Project Showcase Image Container -->
+  <!-- Interactive NeuroMatrix Showcase Gallery Slideshow -->
   <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
-    <div class="relative w-full text-center">
-      <img loading="lazy" decoding="async" src="assets/neuromatrix-showcase.webp" alt="Tampilan Antarmuka NeuroMatrix Labs" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    <!-- Slide Container -->
+    <div id="neuromatrix-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="neuromatrix-slide-img" src="assets/neuromatrix_slide_1.webp" alt="Tampilan Antarmuka NeuroMatrix Labs" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeNeuromatrixSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Previous Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeNeuromatrixSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Next Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setNeuromatrixSlide(0); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+        <button onclick="setNeuromatrixSlide(1); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="1"></button>
+        <button onclick="setNeuromatrixSlide(2); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="2"></button>
+        <button onclick="setNeuromatrixSlide(3); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="3"></button>
+        <button onclick="setNeuromatrixSlide(4); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="4"></button>
+        <button onclick="setNeuromatrixSlide(5); event.stopPropagation();" class="neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="5"></button>
+      </div>
     </div>
   </div>
 
@@ -6384,6 +6426,44 @@
     }
 
     // Case Study Modal Logic
+    // NeuroMatrix Labs Showcase Slideshow Logic
+    const neuromatrixImages = [
+      'assets/neuromatrix_slide_1.webp',
+      'assets/neuromatrix_slide_2.webp',
+      'assets/neuromatrix_slide_3.webp',
+      'assets/neuromatrix_slide_4.webp',
+      'assets/neuromatrix_slide_5.webp',
+      'assets/neuromatrix_slide_6.webp'
+    ];
+    let currentNeuromatrixSlide = 0;
+
+    function setNeuromatrixSlide(idx) {
+      currentNeuromatrixSlide = (idx + neuromatrixImages.length) % neuromatrixImages.length;
+      const img = document.getElementById('neuromatrix-slide-img');
+      const counter = document.getElementById('neuromatrix-slide-index');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = neuromatrixImages[currentNeuromatrixSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (counter) counter.textContent = currentNeuromatrixSlide + 1;
+
+      const dots = document.querySelectorAll('.neuromatrix-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentNeuromatrixSlide) {
+          dot.className = "neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "neuromatrix-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all";
+        }
+      });
+    }
+
+    function changeNeuromatrixSlide(dir) {
+      setNeuromatrixSlide(currentNeuromatrixSlide + dir);
+    }
+
     // Personal Portfolio Showcase Slideshow Logic
     const portfolioImages = [
       'assets/portfolio_slide_1.webp',
@@ -6884,6 +6964,7 @@
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
+        if (projectId === 'neuromatrix-labs') setTimeout(() => setNeuromatrixSlide(0), 50);
         if (projectId === 'personal-portfolio') setTimeout(() => setPortfolioSlide(0), 50);
         if (projectId === 'mock-3') setTimeout(() => setKioskSlide(0), 50);
         if (projectId === 'sparkling-kids-ai') setTimeout(() => setSparklingAISlide(0), 50);
@@ -6919,6 +7000,7 @@
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
+        if (projectId === 'neuromatrix-labs') setTimeout(() => setNeuromatrixSlide(0), 50);
         if (projectId === 'personal-portfolio') setTimeout(() => setPortfolioSlide(0), 50);
         if (projectId === 'mock-3') setTimeout(() => setKioskSlide(0), 50);
         if (projectId === 'sparkling-kids-ai') setTimeout(() => setSparklingAISlide(0), 50);
