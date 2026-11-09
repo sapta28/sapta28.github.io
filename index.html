@@ -3177,30 +3177,30 @@
                   </svg>
                 </span>
                 <div>
-                  <h4 class="text-sm md:text-base font-extrabold text-slate-800 leading-tight notranslate" translate="no">
-                    Momen Wisuda PENS (Graduation Ceremony)
+                  <h4 id="grad-section-title" class="text-sm md:text-base font-extrabold text-slate-800 leading-tight">
+                    Graduation Moments (Wisuda PENS)
                   </h4>
-                  <p class="text-[11px] text-slate-500 font-medium notranslate" translate="no">
-                    Politeknik Elektronika Negeri Surabaya &bull; D3 Teknik Informatika
+                  <p id="grad-section-sub" class="text-[11px] text-slate-500 font-medium">
+                    Electronic Engineering Polytechnic Institute of Surabaya (EEPIS) &bull; Informatics Engineering
                   </p>
                 </div>
               </div>
-              <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 bg-slate-100/80 px-2.5 py-1 rounded-full w-fit">
+              <span id="grad-click-hint" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 bg-slate-100/80 px-2.5 py-1 rounded-full w-fit">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                Klik foto untuk perbesar
+                <span id="grad-click-hint-text">Click photo to enlarge</span>
               </span>
             </div>
 
             <!-- 2 Graduation Photos Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <!-- Photo 1: Prosesi Pemindahan Toga & Penyerahan Ijazah -->
-              <div onclick="openImagePreview('assets/pens_graduation_moment_1.webp', 'Wisuda PENS – Prosesi Pemindahan Toga &amp; Penyerahan Ijazah')"
+              <!-- Photo 1: Pemindahan Toga & Penyerahan Ijazah -->
+              <div onclick="openGraduationPhoto(1)"
                 class="group cursor-pointer bg-slate-50/90 hover:bg-white rounded-2xl border border-slate-200/80 hover:border-[#253DE8]/50 p-2.5 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
                 <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-900 flex items-center justify-center">
-                  <img loading="lazy" decoding="async" src="assets/pens_graduation_moment_1.webp" alt="Wisuda PENS - Prosesi Pemindahan Toga dan Penyerahan Ijazah"
+                  <img loading="lazy" decoding="async" src="assets/pens_graduation_moment_1.webp" alt="Wisuda PENS - Toga and Degree Presentation"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="px-3.5 py-1.5 bg-slate-950/85 backdrop-blur-md text-white text-[11px] font-bold rounded-xl border border-white/20 flex items-center gap-1.5 shadow-xl transform translate-y-1 group-hover:translate-y-0 transition-transform">
@@ -3210,28 +3210,29 @@
                         <line x1="11" y1="8" x2="11" y2="14"></line>
                         <line x1="8" y1="11" x2="14" y2="11"></line>
                       </svg>
-                      Perbesar Foto
+                      <span class="grad-hover-zoom">Enlarge Photo</span>
                     </span>
                   </div>
-                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-slate-950/75 backdrop-blur-md text-[#CEF330] text-[9px] font-extrabold rounded-lg border border-white/10 uppercase tracking-wider notranslate" translate="no">
-                    Wisuda PENS
+                  <!-- Badge samakan dengan foto 2 -->
+                  <span class="grad-badge-1 absolute top-2.5 left-2.5 px-2.5 py-1 bg-slate-950/75 backdrop-blur-md text-[#CEF330] text-[9px] font-extrabold rounded-lg border border-white/10 uppercase tracking-wider">
+                    PENS Graduation
                   </span>
                 </div>
                 <div class="pt-3 pb-1 px-1">
-                  <p class="text-xs sm:text-sm font-extrabold text-slate-800 line-clamp-1 group-hover:text-[#253DE8] transition-colors notranslate" translate="no">
-                    Prosesi Pemindahan Toga &amp; Ijazah
+                  <p id="grad-p1-title" class="text-xs sm:text-sm font-extrabold text-slate-800 line-clamp-1 group-hover:text-[#253DE8] transition-colors">
+                    Toga &amp; Degree Presentation Procession
                   </p>
-                  <p class="text-[11px] text-slate-500 mt-0.5 font-medium notranslate" translate="no">
-                    Sidang Terbuka Senat Wisuda PENS
+                  <p id="grad-p1-sub" class="text-[11px] text-slate-500 mt-0.5 font-medium">
+                    Open Senate Session &bull; PENS
                   </p>
                 </div>
               </div>
 
               <!-- Photo 2: Momen Wisudawan Ahli Madya Komputer -->
-              <div onclick="openImagePreview('assets/pens_graduation_moment_2.webp', 'Wisuda PENS – Kelulusan D3 Teknik Informatika (A.Md.Kom.)')"
+              <div onclick="openGraduationPhoto(2)"
                 class="group cursor-pointer bg-slate-50/90 hover:bg-white rounded-2xl border border-slate-200/80 hover:border-[#253DE8]/50 p-2.5 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
                 <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-900 flex items-center justify-center">
-                  <img loading="lazy" decoding="async" src="assets/pens_graduation_moment_2.webp" alt="Wisuda PENS - Momen Kelulusan Ahli Madya Komputer"
+                  <img loading="lazy" decoding="async" src="assets/pens_graduation_moment_2.webp" alt="Wisuda PENS - D3 Informatics Engineering Graduation"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="px-3.5 py-1.5 bg-slate-950/85 backdrop-blur-md text-white text-[11px] font-bold rounded-xl border border-white/20 flex items-center gap-1.5 shadow-xl transform translate-y-1 group-hover:translate-y-0 transition-transform">
@@ -3241,25 +3242,25 @@
                         <line x1="11" y1="8" x2="11" y2="14"></line>
                         <line x1="8" y1="11" x2="14" y2="11"></line>
                       </svg>
-                      Perbesar Foto
+                      <span class="grad-hover-zoom">Enlarge Photo</span>
                     </span>
                   </div>
-                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 bg-slate-950/75 backdrop-blur-md text-[#CEF330] text-[9px] font-extrabold rounded-lg border border-white/10 uppercase tracking-wider notranslate" translate="no">
-                    Wisudawan PENS
+                  <!-- Badge sama dengan foto 1 -->
+                  <span class="grad-badge-2 absolute top-2.5 left-2.5 px-2.5 py-1 bg-slate-950/75 backdrop-blur-md text-[#CEF330] text-[9px] font-extrabold rounded-lg border border-white/10 uppercase tracking-wider">
+                    PENS Graduation
                   </span>
                 </div>
                 <div class="pt-3 pb-1 px-1">
-                  <p class="text-xs sm:text-sm font-extrabold text-slate-800 line-clamp-1 group-hover:text-[#253DE8] transition-colors notranslate" translate="no">
-                    Wisuda D3 Teknik Informatika
+                  <p id="grad-p2-title" class="text-xs sm:text-sm font-extrabold text-slate-800 line-clamp-1 group-hover:text-[#253DE8] transition-colors">
+                    D3 Informatics Engineering Graduation
                   </p>
-                  <p class="text-[11px] text-slate-500 mt-0.5 font-medium notranslate" translate="no">
-                    Gelar Ahli Madya Komputer (A.Md.Kom.) &bull; PENS
+                  <p id="grad-p2-sub" class="text-[11px] text-slate-500 mt-0.5 font-medium">
+                    Associate Degree (A.Md.Kom.) &bull; PENS
                   </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div>        </div>
       </section>
 
       <!-- 2. Technical Skills & Stack Grid -->
@@ -6949,6 +6950,39 @@
           ? 'Politeknik Elektronika Negeri Surabaya (PENS)'
           : 'Electronic Engineering Polytechnic Institute of Surabaya (EEPIS)';
       });
+
+      // Bilingual graduation gallery
+      const isId = (lang === 'id');
+      const gradSecTitle = document.getElementById('grad-section-title');
+      if (gradSecTitle) gradSecTitle.textContent = isId ? 'Momen Wisuda PENS (Graduation Ceremony)' : 'Graduation Moments (Wisuda PENS)';
+
+      const gradSecSub = document.getElementById('grad-section-sub');
+      if (gradSecSub) gradSecSub.innerHTML = isId
+        ? 'Politeknik Elektronika Negeri Surabaya (PENS) &bull; D3 Teknik Informatika'
+        : 'Electronic Engineering Polytechnic Institute of Surabaya (EEPIS) &bull; Informatics Engineering';
+
+      const gradHint = document.getElementById('grad-click-hint-text');
+      if (gradHint) gradHint.textContent = isId ? 'Klik foto untuk perbesar' : 'Click photo to enlarge';
+
+      document.querySelectorAll('.grad-hover-zoom').forEach(el => {
+        el.textContent = isId ? 'Perbesar Foto' : 'Enlarge Photo';
+      });
+
+      document.querySelectorAll('.grad-badge-1, .grad-badge-2').forEach(el => {
+        el.textContent = isId ? 'Wisuda PENS' : 'PENS Graduation';
+      });
+
+      const gradP1Title = document.getElementById('grad-p1-title');
+      if (gradP1Title) gradP1Title.textContent = isId ? 'Prosesi Pemindahan Toga & Ijazah' : 'Toga & Degree Presentation Procession';
+
+      const gradP1Sub = document.getElementById('grad-p1-sub');
+      if (gradP1Sub) gradP1Sub.innerHTML = isId ? 'Sidang Terbuka Senat Wisuda PENS' : 'Open Senate Session &bull; PENS';
+
+      const gradP2Title = document.getElementById('grad-p2-title');
+      if (gradP2Title) gradP2Title.textContent = isId ? 'Wisuda D3 Teknik Informatika' : 'D3 Informatics Engineering Graduation';
+
+      const gradP2Sub = document.getElementById('grad-p2-sub');
+      if (gradP2Sub) gradP2Sub.innerHTML = isId ? 'Gelar Ahli Madya Komputer (A.Md.Kom.) &bull; PENS' : 'Associate Degree (A.Md.Kom.) &bull; PENS';
       const activeClass = "px-2 py-1 rounded-full text-base bg-[#CEF330] transition-colors grayscale-0";
       const inactiveClass = "px-2 py-1 rounded-full text-base opacity-40 hover:opacity-100 transition-colors grayscale";
       const mobActiveClass = "px-1.5 py-0.5 rounded-full text-xs bg-[#CEF330] transition-all grayscale-0 shadow-sm";
@@ -7109,6 +7143,21 @@
         certModal.classList.add('hidden');
       }
       document.body.style.overflow = '';
+    }
+
+    function openGraduationPhoto(num) {
+      const isId = (localStorage.getItem('lang') === 'id');
+      if (num === 1) {
+        const title = isId
+          ? 'Wisuda PENS – Prosesi Pemindahan Toga & Penyerahan Ijazah'
+          : 'PENS Graduation – Toga & Degree Presentation Procession';
+        openImagePreview('assets/pens_graduation_moment_1.webp', title);
+      } else {
+        const title = isId
+          ? 'Wisuda PENS – Kelulusan D3 Teknik Informatika (A.Md.Kom.)'
+          : 'PENS Graduation – D3 Informatics Engineering (A.Md.Kom.)';
+        openImagePreview('assets/pens_graduation_moment_2.webp', title);
+      }
     }
 
     // Universal Lightbox Fullscreen Preview Logic
