@@ -4094,6 +4094,250 @@
     // Projects Data
     const MOCK_PROJECTS = [
       {
+        id: 'csa-offboarding-siapik',
+        title: 'CSA PeopleHub: SI-APIK Enterprise HR Offboarding & Multi-Tier Clearance System',
+        title_id: 'CSA PeopleHub: Modul Offboarding SI-APIK & Sistem Clearance Aset Berjenjang',
+        slug: 'csa-offboarding-siapik',
+        description: 'An enterprise HR offboarding and asset clearance automation module integrated into the PeopleHub super-app portal at PT Catur Sentosa Adiprana Tbk, supporting nationwide branches, distribution centers, and corporate HQ.',
+        description_id: 'Modul digitalisasi offboarding dan clearance aset karyawan terintegrasi di portal PeopleHub PT Catur Sentosa Adiprana Tbk, melayani operasional multi-cabang ritel, Distribution Center, dan Head Office se-Indonesia.',
+        tech_stack: ['Website', 'PHP 8.2 Native MVC', 'MySQL', 'AdminLTE 3', 'Bootstrap 4', 'Dompdf', 'PhpSpreadsheet', 'PHPMailer', 'Enterprise RBAC'],
+        role: 'Full-Stack Web Architect & Workflow Engineer',
+        role_id: 'Full-Stack Web Architect & Workflow Engineer',
+        client: 'PT Catur Sentosa Adiprana Tbk (Building Materials Distributor & Modern Retail)',
+        client_id: 'PT Catur Sentosa Adiprana Tbk (Distributor & Ritel Bahan Bangunan)',
+        thumbnail_url: 'assets/csa_offboarding_slide_1.webp',
+        content: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Project Title</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">CSA PeopleHub: SI-APIK Enterprise HR Offboarding &amp; Multi-Tier Clearance System</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Role</span>
+          <p class="text-sm font-semibold text-slate-700">Full-Stack Web Architect &amp; Workflow Engineer</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Client / Organization</span>
+          <p class="text-sm font-semibold text-slate-700">PT Catur Sentosa Adiprana Tbk (Building Materials Distributor &amp; Modern Retail)</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PHP 8.2 Native MVC</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">MySQL</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">AdminLTE 3</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Bootstrap 4</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Dompdf 3.1</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PhpSpreadsheet 5.2</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PHPMailer 7.0</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">DataTables BS4</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">3-Tier RBAC Scoping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive CSA Offboarding Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="csa-offboarding-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="csa-offboarding-slide-img" src="assets/csa_offboarding_slide_1.webp" alt="CSA PeopleHub SI-APIK Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeCsaOffboardingSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Previous Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeCsaOffboardingSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Next Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setCsaOffboardingSlide(0); event.stopPropagation();" class="csa-offboarding-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Challenge</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      PT Catur Sentosa Adiprana Tbk operates as Indonesia\'s premier distributor of chemicals, consumer goods, and building materials (notably Mitra10 &amp; Atria retail chains), employing thousands of staff across 50+ branches, regional distribution centers (DCs), and corporate headquarters. Historically, employee separation was administered via fragmented paper documents. Resignation requests, asset tracking, and exit clearance suffered from extended turnaround times (2–3 weeks), untracked company assets, manual calculation of financial obligations, and lack of central visibility for HR business partners and executive management.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Solution &amp; System Architecture</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Architected and developed <strong>SI-APIK</strong> (<em>Sistem Informasi Administrasi Pengunduran Diri Karyawan</em>) integrated into the corporate <strong>PeopleHub</strong> app launcher portal. The system utilizes a lightweight, high-performance <strong>PHP 8.2 Native MVC Architecture</strong> with PSR-4 compliance, zero bloated third-party framework overhead, and secure transactional MySQL database schemas. It enforces automated sequential stage locks—guaranteeing that clearance items and exit surveys cannot be executed until preceding approvals are fully granted.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Key Features &amp; Engineering Highlights</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">Adaptive Multi-Unit Approval Matrix:</strong> Engineered a flexible resignation approval engine with location-specific authorization rules: 3-step authorization for Retail Branches (Supervisor &rarr; CAF &rarr; Branch Manager), 3-step for Distribution Centers (Supervisor &rarr; CAF &rarr; HR Regional Manager), and 5-step for Head Office (Supervisor &rarr; HR Recruitment &rarr; Division Head &rarr; Corporate F&amp;A &rarr; HR Head).</li>
+      <li><strong class="text-slate-800">Cross-Department Asset Clearance Tracking (Form HR009):</strong> Integrated real-time clearance checklists across IT (laptops, email/ERP access revocation), Finance/CAF (unpaid expenses, travel advances), and HR/General Affairs (employee ID badges, medical cards, vehicles), preventing company asset loss.</li>
+      <li><strong class="text-slate-800">Digital Exit Interview Questionnaire (Form HR010):</strong> Built an Employee Self-Service (ESS) feedback module capturing structured employee sentiments, career drivers, and organizational insights for executive HR retention strategy.</li>
+      <li><strong class="text-slate-800">Automated Legal Document Generation (Dompdf &amp; ZipArchive):</strong> Programmed instantaneous server-side rendering of official clearance certificates (Form HR009), exit interview summaries (Form HR010), and Certificates of Employment (Surat Keterangan Kerja / SKK), bundled automatically into compressed ZIP dossiers upon completion.</li>
+      <li><strong class="text-slate-800">Event-Driven Email SLA Notifications (PHPMailer):</strong> Configured transactional email alerts triggered automatically at each workflow stage transition to notify pending verifiers and prevent approval bottlenecks.</li>
+      <li><strong class="text-slate-800">3-Tier Hierarchical Scoping &amp; 13 RBAC Master Roles:</strong> Enforced strict data visibility across <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">NATIONAL</code> (Directors, HR Head), <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">REGIONAL</code> (Regional Managers, HRBPM, FA RM, WH RM), and <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">BRANCH</code> (Branch Managers, Admin Branch) scopes.</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">The Outcome</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Successfully replaced paper-based resignation workflows across PT Catur Sentosa Adiprana Tbk\'s nationwide operations. Offboarding lifecycle turnaround was cut from over 14 days down to 2–3 days with 100% digital asset reconciliation audit trails, verified financial settlements, and automated executive attrition analytics via PhpSpreadsheet.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo dibatasi untuk jaringan internal perusahaan (Internal Enterprise Portal)">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Internal Enterprise</span>
+      </div>
+    </div>
+    
+    <!-- Private Code Repository Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Source code bersifat proprietary &amp; konfidensial perusahaan PT Catur Sentosa Adiprana Tbk">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="text-slate-400"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Source Code</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Private Repository</span>
+      </div>
+    </div>
+  </div>
+</div>`,
+        content_id: `<div class="space-y-1">
+  <!-- Metadata Header -->
+  <div class="bg-slate-50 border border-slate-100 p-2 sm:p-3 rounded-2xl mb-5 sm:mb-6 shadow-sm">
+    <div class="flex flex-col gap-1.5">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Judul Proyek</span>
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">CSA PeopleHub: Modul Offboarding SI-APIK &amp; Sistem Clearance Aset Berjenjang</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-200/60">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Peran</span>
+          <p class="text-sm font-semibold text-slate-700">Full-Stack Web Architect &amp; Workflow Engineer</p>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Klien / Organisasi</span>
+          <p class="text-sm font-semibold text-slate-700">PT Catur Sentosa Adiprana Tbk (Distributor &amp; Ritel Bahan Bangunan)</p>
+        </div>
+      </div>
+      <div class="pt-1.5 border-t border-slate-200/60">
+        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Tech Stack</span>
+        <div class="flex flex-wrap gap-1.5 mt-1">
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PHP 8.2 Native MVC</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">MySQL</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">AdminLTE 3</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Bootstrap 4</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">Dompdf 3.1</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PhpSpreadsheet 5.2</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">PHPMailer 7.0</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">DataTables BS4</span>
+          <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-800 rounded-xl notranslate">3-Tier RBAC Scoping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive CSA Offboarding Showcase Gallery Slideshow -->
+  <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
+    <!-- Slide Container -->
+    <div id="csa-offboarding-slideshow-container" class="relative w-full text-center">
+      <img loading="lazy" decoding="async" id="csa-offboarding-slide-img" src="assets/csa_offboarding_slide_1.webp" alt="CSA PeopleHub SI-APIK Showcase" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
+    </div>
+
+    <!-- Prev & Next Navigation Buttons -->
+    <button onclick="changeCsaOffboardingSlide(-1); event.stopPropagation();" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Sebelumnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button onclick="changeCsaOffboardingSlide(1); event.stopPropagation();" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 shadow-lg border border-white/20 z-10 cursor-pointer" title="Slide Selanjutnya">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
+      <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
+        <button onclick="setCsaOffboardingSlide(0); event.stopPropagation();" class="csa-offboarding-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 sm:mt-6">
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Tantangan &amp; Latar Belakang (The Challenge)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      PT Catur Sentosa Adiprana Tbk merupakan perusahaan distribusi bahan bangunan, kimia, dan barang konsumsi terbesar di Indonesia sekaligus pemilik jaringan ritel modern Mitra10 &amp; Atria dengan puluhan cabang dan ribuan karyawan se-Indonesia. Sebelum sistem ini diimplementasikan, administrasi pengunduran diri karyawan masih mengandalkan formulir kertas manual. Proses pengajuan, persetujuan atasan berjenjang, penagihan kewajiban kasbon, hingga pengembalian aset kantor (laptop, ID card, inventaris) memakan waktu 2–3 minggu serta rawan selisih data akibat tidak adanya visibilitas terpusat bagi tim HR Corporate dan Regional.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Solusi &amp; Arsitektur Sistem (The Solution)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Mengarsiteksi dan membangun modul <strong>SI-APIK</strong> (<em>Sistem Informasi Administrasi Pengunduran Diri Karyawan</em>) yang terintegrasi langsung pada launcher <strong>PeopleHub</strong>. Dibangun di atas arsitektur <strong>PHP 8.2 Native MVC</strong> berstandar PSR-4 yang ringan, tangguh, dan minim overhead dependensi pihak ketiga, didukung basis data relasional MySQL transaksional. Sistem menerapkan mekanisme <em>Sequential Barrier Locks</em>—karyawan tidak dapat mengisi formulir clearance aset atau wawancara exit interview sebelum persetujuan resign pada tahap sebelumnya diverifikasi secara resmi.
+    </p>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-2">Fitur Utama &amp; Keunggulan Teknis</h3>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside">
+      <li><strong class="text-slate-800">Matriks Approval Multi-Unit Adaptif:</strong> Merancang alur persetujuan resign dinamis sesuai klasifikasi penempatan: alur 3 tahap untuk Cabang Ritel (Atasan Langsung &rarr; CAF &rarr; Branch Manager), alur 3 tahap untuk Distribution Center / Pergudangan (Atasan &rarr; CAF &rarr; HR Regional Manager), dan alur 5 tahap untuk Head Office (Atasan &rarr; HR Recruitment &rarr; Division Head &rarr; Corporate F&amp;A &rarr; HR Head).</li>
+      <li><strong class="text-slate-800">Tracking Serah Terima &amp; Clearance Aset (Form HR009):</strong> Melacak checklist verifikasi pengembalian inventaris lintas divisi secara real-time mencakup divisi IT (laptop, akun email, akses ERP), Keuangan/CAF (pelunasan hutang, kasbon, klaim expense), serta HR &amp; Umum (ID card, kartu asuransi, inventaris seragam/kunci).</li>
+      <li><strong class="text-slate-800">Formulir Kuesioner Exit Interview Mandiri (Form HR010):</strong> Layanan mandiri karyawan (<em>Employee Self-Service</em>) untuk mengisi kuesioner wawancara akhir, faktor pendorong kepindahan, dan umpan balik objektif guna analitik retensi talenta manajemen HR.</li>
+      <li><strong class="text-slate-800">Otomatisasi Dokumen Legal (Dompdf &amp; ZipArchive):</strong> Mengintegrasikan pembuatan dokumen PDF resmi secara otomatis (Form HR009 Clearance, Form HR010 Exit Interview, dan Surat Keterangan Kerja / SKK) serta pengemasan bundel arsip digital (ZIP dossier) saat karyawan selesai offboarding.</li>
+      <li><strong class="text-slate-800">Notifikasi Email SLA &amp; Pengingat Antrean (PHPMailer):</strong> Mengonfigurasi engine notifikasi otomatis berbasis event yang mengirimkan email pengingat kepada para verifikator ketika ada berkas yang membutuhkan persetujuan agar tidak terjadi penumpukan.</li>
+      <li><strong class="text-slate-800">Hak Akses Hierarki 3 Level Scope &amp; 13 Role Master:</strong> Mengimplementasikan Role-Based Access Control (RBAC) ketat dengan pemisahan cakupan data: <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">NATIONAL</code> (Direksi &amp; HR Head), <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">REGIONAL</code> (Regional Manager, HRBPM, FA RM, WH RM), dan <code class="text-xs bg-slate-100 text-slate-700 px-1 py-0.5 rounded notranslate">BRANCH</code> (Branch Manager, Admin Cabang).</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-lg font-bold text-slate-800 mb-1.5">Hasil &amp; Dampak Operasional (The Outcome)</h3>
+    <p class="text-sm text-slate-600 leading-snug">
+      Berhasil memodernisasi seluruh rantai administrasi offboarding di PT Catur Sentosa Adiprana Tbk se-Indonesia. Durasi penyelesaian administrasi resign dipangkas dari 14+ hari kerja menjadi hanya 2–3 hari kerja dengan jaminan 100% kepatuhan pengembalian aset, rekonsiliasi finansial yang akurat, serta rekapitulasi analitik turnover SDM otomatis berbasis PhpSpreadsheet.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-slate-200/60">
+    <!-- Disabled Live Demo Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Live demo dibatasi untuk jaringan internal perusahaan (Internal Enterprise Portal)">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Live Demo</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Internal Enterprise</span>
+      </div>
+    </div>
+    
+    <!-- Private Code Repository Button -->
+    <div class="flex items-center gap-3 bg-slate-100 text-slate-400 border border-slate-200 px-5 py-2.5 rounded-xl cursor-not-allowed shadow-sm opacity-90 select-none" title="Source code bersifat proprietary &amp; konfidensial perusahaan PT Catur Sentosa Adiprana Tbk">
+      <svg viewBox="0 0 496 512" width="24" height="24" fill="currentColor" class="text-slate-400"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <div class="text-left flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider opacity-70 leading-none">Source Code</span>
+        <span class="text-sm font-bold leading-none mt-1 text-slate-500">Private Repository</span>
+      </div>
+    </div>
+  </div>
+</div>`
+      },
+      {
         id: 'neuromatrix-labs',
         title: 'NeuroMatrix Labs: Computational Psychometrics & Cognitive Evaluation Platform',
         title_id: 'NeuroMatrix Labs: Platform Asesmen Psikometri Komputasional & Evaluasi Kognitif',
@@ -6430,6 +6674,37 @@
     }
 
     // Case Study Modal Logic
+    // CSA PeopleHub SI-APIK Showcase Slideshow Logic
+    const csaOffboardingImages = [
+      'assets/csa_offboarding_slide_1.webp'
+    ];
+    let currentCsaOffboardingSlide = 0;
+
+    function setCsaOffboardingSlide(idx) {
+      currentCsaOffboardingSlide = (idx + csaOffboardingImages.length) % csaOffboardingImages.length;
+      const img = document.getElementById('csa-offboarding-slide-img');
+      if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = csaOffboardingImages[currentCsaOffboardingSlide];
+          img.style.opacity = '1';
+        }, 150);
+      }
+
+      const dots = document.querySelectorAll('.csa-offboarding-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentCsaOffboardingSlide) {
+          dot.className = "csa-offboarding-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm";
+        } else {
+          dot.className = "csa-offboarding-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all";
+        }
+      });
+    }
+
+    function changeCsaOffboardingSlide(dir) {
+      setCsaOffboardingSlide(currentCsaOffboardingSlide + dir);
+    }
+
     // NeuroMatrix Labs Showcase Slideshow Logic
     const neuromatrixImages = [
       'assets/neuromatrix_slide_1.webp',
@@ -6944,7 +7219,7 @@
       if (modalTitle) modalTitle.textContent = (currentLang === 'id' && project.title_id) ? project.title_id : project.title;
 
       if (modalTech) {
-        if (project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
+        if (project.id === 'csa-offboarding-siapik' || project.id === 'neuromatrix-labs' || project.id === 'personal-portfolio' || project.id === 'mock-1' || project.id === 'mock-2' || project.id === 'mock-3' || project.id === 'mock-4' || project.id === 'hipam-app' || project.id === 'college-major-finder' || project.id === 'lamongan-culinary' || project.id === 'pharmacy-queue' || project.id === 'school-bell' || project.id === 'school-bell-web' || project.id === 'daily-news' || project.id === 'sparkling-kids-web' || project.id === 'sparkling-kids-ai' || project.id === 'wayanggo-app') {
           modalTech.classList.add('hidden');
         } else {
           modalTech.classList.remove('hidden');
@@ -6970,6 +7245,8 @@
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
+        if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
+        if (projectId === 'csa-offboarding-siapik') setTimeout(() => setCsaOffboardingSlide(0), 50);
         if (projectId === 'neuromatrix-labs') setTimeout(() => setNeuromatrixSlide(0), 50);
         if (projectId === 'personal-portfolio') setTimeout(() => setPortfolioSlide(0), 50);
         if (projectId === 'mock-3') setTimeout(() => setKioskSlide(0), 50);
