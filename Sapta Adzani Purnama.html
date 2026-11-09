@@ -4139,7 +4139,7 @@
   <div class="w-full rounded-2xl overflow-hidden mt-2 sm:mt-3 mb-0 relative group bg-white border border-slate-200/80 shadow-sm">
     <!-- Slide Container -->
     <div id="portfolio-slideshow-container" class="relative w-full text-center">
-      <img loading="lazy" decoding="async" id="portfolio-slide-img" src="assets/portfolio_slide_1.webp" alt="Personal Portfolio Showcase 1" onclick="openPortfolioSlideLightbox()" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out cursor-zoom-in hover:scale-[1.01]" title="Click to view full size">
+      <img loading="lazy" decoding="async" id="portfolio-slide-img" src="assets/portfolio_slide_1.webp" alt="Personal Portfolio Showcase 1" class="block mx-auto w-auto max-w-full h-auto max-h-[65vh] object-contain transition-all duration-300 ease-in-out">
     </div>
 
     <!-- Prev & Next Navigation Buttons -->
@@ -4150,17 +4150,16 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </button>
 
-    <!-- Thumbnail Dots Indicator & Slide Counter -->
-    <div class="w-full py-2.5 bg-white flex flex-col items-center justify-center gap-1.5 z-10 border-t border-slate-100">
+    <!-- Thumbnail Dots Indicator -->
+    <div class="w-full py-2.5 bg-white flex items-center justify-center z-10">
       <div class="flex items-center gap-2 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
-        <button onclick="setPortfolioSlide(0); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0" title="Home & Hero"></button>
-        <button onclick="setPortfolioSlide(1); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="1" title="Projects"></button>
-        <button onclick="setPortfolioSlide(2); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="2" title="Certificates"></button>
-        <button onclick="setPortfolioSlide(3); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="3" title="Experience Roadmap"></button>
-        <button onclick="setPortfolioSlide(4); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="4" title="Digital Services"></button>
-        <button onclick="setPortfolioSlide(5); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="5" title="About & Education"></button>
+        <button onclick="setPortfolioSlide(0); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-900 transition-all scale-125 shadow-sm" data-idx="0"></button>
+        <button onclick="setPortfolioSlide(1); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="1"></button>
+        <button onclick="setPortfolioSlide(2); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="2"></button>
+        <button onclick="setPortfolioSlide(3); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="3"></button>
+        <button onclick="setPortfolioSlide(4); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="4"></button>
+        <button onclick="setPortfolioSlide(5); event.stopPropagation();" class="portfolio-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-idx="5"></button>
       </div>
-      <span class="text-[11px] font-medium text-slate-400">Click image to enlarge • <span id="portfolio-slide-label" class="font-semibold text-slate-600">Home &amp; Hero</span> (<span id="portfolio-slide-index">1</span>/6)</span>
     </div>
   </div>
 
@@ -6194,29 +6193,12 @@
       'assets/portfolio_slide_5.webp',
       'assets/portfolio_slide_6.webp'
     ];
-    const portfolioSlideTitles = [
-      'Personal Portfolio – Home & Hero Showcase',
-      'Personal Portfolio – Curated Projects & Works',
-      'Personal Portfolio – Verified Credentials & Research',
-      'Personal Portfolio – Interactive Career Roadmap (5 Milestones)',
-      'Personal Portfolio – Digital Services Showcase',
-      'Personal Portfolio – About & Academic Qualifications'
-    ];
-    const portfolioSlideLabels = [
-      'Home & Hero',
-      'Projects Section',
-      'Certificates & Research',
-      'Experience Roadmap',
-      'Services Section',
-      'About & Education'
-    ];
     let currentPortfolioSlide = 0;
 
     function setPortfolioSlide(idx) {
       currentPortfolioSlide = (idx + portfolioImages.length) % portfolioImages.length;
       const img = document.getElementById('portfolio-slide-img');
       const counter = document.getElementById('portfolio-slide-index');
-      const label = document.getElementById('portfolio-slide-label');
       if (img) {
         img.style.opacity = '0';
         setTimeout(() => {
@@ -6225,7 +6207,6 @@
         }, 150);
       }
       if (counter) counter.textContent = currentPortfolioSlide + 1;
-      if (label) label.textContent = portfolioSlideLabels[currentPortfolioSlide];
 
       const dots = document.querySelectorAll('.portfolio-dot');
       dots.forEach((dot, i) => {
@@ -6239,12 +6220,6 @@
 
     function changePortfolioSlide(dir) {
       setPortfolioSlide(currentPortfolioSlide + dir);
-    }
-
-    function openPortfolioSlideLightbox() {
-      const src = portfolioImages[currentPortfolioSlide];
-      const title = portfolioSlideTitles[currentPortfolioSlide];
-      openImagePreview(src, title);
     }
 
     const kioskImages = [
