@@ -3028,7 +3028,7 @@
           <!-- Bio Header & Content -->
           <div class="text-center md:text-left space-y-4">
             <h1 class="text-3xl md:text-5xl font-extrabold text-slate-800">
-              Saya <span class="text-primary">Sapta Adzani Purnama.</span>
+              <span id="about-greeting-prefix">I am</span> <span class="text-primary notranslate" translate="no">Sapta Adzani Purnama.</span>
             </h1>
 
             <h2 class="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider">
@@ -6971,6 +6971,10 @@
       document.querySelectorAll('.grad-badge-1, .grad-badge-2').forEach(el => {
         el.textContent = isId ? 'Wisuda PENS' : 'PENS Graduation';
       });
+
+      // About greeting prefix
+      const aboutPrefix = document.getElementById('about-greeting-prefix');
+      if (aboutPrefix) aboutPrefix.textContent = isId ? 'Saya' : 'I am';
 
       const gradP1Title = document.getElementById('grad-p1-title');
       if (gradP1Title) gradP1Title.textContent = isId ? 'Prosesi Pemindahan Toga & Ijazah' : 'Toga & Degree Presentation Procession';
