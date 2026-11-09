@@ -3185,13 +3185,7 @@
                   </p>
                 </div>
               </div>
-              <span id="grad-click-hint" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 bg-slate-100/80 px-2.5 py-1 rounded-full w-fit">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-                <span id="grad-click-hint-text">Click photo to enlarge</span>
-              </span>
+
             </div>
 
             <!-- 2 Graduation Photos Grid -->
@@ -6961,9 +6955,6 @@
         ? 'Politeknik Elektronika Negeri Surabaya (PENS) &bull; D3 Teknik Informatika'
         : 'Electronic Engineering Polytechnic Institute of Surabaya (EEPIS) &bull; Informatics Engineering';
 
-      const gradHint = document.getElementById('grad-click-hint-text');
-      if (gradHint) gradHint.textContent = isId ? 'Klik foto untuk perbesar' : 'Click photo to enlarge';
-
       document.querySelectorAll('.grad-hover-zoom').forEach(el => {
         el.textContent = isId ? 'Perbesar Foto' : 'Enlarge Photo';
       });
@@ -6977,7 +6968,7 @@
       if (aboutPrefix) aboutPrefix.textContent = isId ? 'Saya' : 'I am';
 
       const gradP1Title = document.getElementById('grad-p1-title');
-      if (gradP1Title) gradP1Title.textContent = isId ? 'Prosesi Pemindahan Toga & Ijazah' : 'Toga & Degree Presentation Procession';
+      if (gradP1Title) gradP1Title.textContent = isId ? 'Wisuda D3 Teknik Informatika' : 'D3 Informatics Engineering Graduation';
 
       const gradP1Sub = document.getElementById('grad-p1-sub');
       if (gradP1Sub) gradP1Sub.innerHTML = isId ? 'Sidang Terbuka Senat Wisuda PENS' : 'Open Senate Session &bull; PENS';
