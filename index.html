@@ -50,16 +50,18 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Fonts -->
+  <!-- Performance Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+  <!-- Preload Critical Above-The-Fold Hero Image -->
+  <link rel="preload" as="image" href="assets/profile_sapta_crossed_arms.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
-  <!-- Swiper JS & CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -673,8 +675,12 @@
               </div>
             </div>
             <div class="relative z-10 -mt-4 sm:-mt-8 lg:-mt-16 -mb-4 sm:-mb-12 lg:-mb-20">
-              <img src="assets/profile_sapta_crossed_arms.png" alt="Sapta - Developer Portrait (Bersedekap)"
-                class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block drop-shadow-2xl relative z-10">
+              <picture>
+                <source srcset="assets/profile_sapta_crossed_arms.webp" type="image/webp">
+                <img src="assets/profile_sapta_crossed_arms.png" alt="Sapta - Developer Portrait (Bersedekap)"
+                  width="655" height="1024" fetchpriority="high" decoding="async"
+                  class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block drop-shadow-2xl relative z-10">
+              </picture>
 
               <!-- ICONS REMOVED FROM HERE -->
             </div>
@@ -3062,7 +3068,7 @@
               <div class="w-full h-full bg-gradient-to-tr from-[#253DE8] to-[#08C2FF] rounded-[28px] p-[3px]">
                 <div
                   class="w-full h-full bg-slate-100 rounded-[25px] overflow-hidden flex items-center justify-center relative">
-                  <img decoding="async" src="assets/profile_sapta_formal.jpg" alt="Sapta Adzani Purnama"
+                  <img loading="lazy" decoding="async" src="assets/profile_sapta_formal.jpg" alt="Sapta Adzani Purnama"
                     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
                 </div>
               </div>
@@ -8807,12 +8813,14 @@
       updateLangUI(currentLang);
 
       if (currentLang === 'id') {
-        // Wait for Google Translate widget to fully initialize, then force translate
-        forceTranslate('id', 0);
+        // Smooth non-blocking translation after initial UI paint
+        setTimeout(function () {
+          forceTranslate('id', 0);
+        }, 150);
       }
     });
   </script>
-  <script type="text/javascript"
+  <script defer type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
