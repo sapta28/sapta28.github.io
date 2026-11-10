@@ -619,8 +619,8 @@
               </svg>
             </a>
             <button type="button" onclick="openCVModal()"
-              class="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all text-sm cursor-pointer">
-              <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" stroke-width="2" fill="none"
+              class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all text-sm cursor-pointer">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
                 stroke-linecap="round" stroke-linejoin="round" class="text-[#253DE8]">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -629,17 +629,6 @@
               </svg>
               <span>View CV</span>
             </button>
-            <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=6" download="CV_Sapta_Adzani_Purnama.pdf"
-              class="inline-flex items-center justify-center gap-2 px-5 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl border border-slate-200 shadow-sm hover:scale-105 active:scale-95 transition-all text-sm cursor-pointer"
-              title="Download PDF Version">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round" class="text-slate-800">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              <span>Download PDF</span>
-            </a>
           </div>
 
           <!-- Info Bar matching screenshot -->
@@ -8376,8 +8365,17 @@
         class="px-6 py-4 bg-slate-50 border-t border-slate-200 rounded-b-3xl flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-[11px] text-slate-500 notranslate">Sapta Adzani Purnama — Curriculum Vitae (CV)</p>
         <div class="flex items-center gap-3">
+          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=6" download="CV_Sapta_Adzani_Purnama.pdf"
+            class="px-4 py-2 bg-[#253DE8] hover:bg-[#1a2ec0] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PDF</span>
+          </a>
           <button onclick="closeCVModal(); navigateTo('contact');"
-            class="px-5 py-2 bg-[#253DE8] hover:bg-[#1a2ec0] text-white text-xs font-bold rounded-xl transition-all cursor-pointer shadow-sm">
+            class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer shadow-sm">
             Contact Sapta
           </button>
           <button onclick="closeCVModal()"
