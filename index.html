@@ -7907,20 +7907,6 @@
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
         scrollContainer.scrollTop = 0;
-        if (projectId === 'neuromatrix-labs') setTimeout(() => setNeuromatrixSlide(0), 50);
-        if (projectId === 'personal-portfolio') setTimeout(() => setPortfolioSlide(0), 50);
-        if (projectId === 'mock-3') setTimeout(() => setKioskSlide(0), 50);
-        if (projectId === 'sparkling-kids-ai') setTimeout(() => setSparklingAISlide(0), 50);
-        if (projectId === 'sparkling-kids-web') setTimeout(() => setSparklingWebSlide(0), 50);
-        if (projectId === 'mock-2') setTimeout(() => setSparklingActivitySlide(0), 50);
-        if (projectId === 'mock-4') setTimeout(() => setGisBillboardSlide(0), 50);
-        if (projectId === 'mock-1') setTimeout(() => setFloodViserSlide(0), 50);
-        if (projectId === 'hipam-app') setTimeout(() => setHipamSlide(0), 50);
-        if (projectId === 'college-major-finder') setTimeout(() => setCollegeMajorSlide(0), 50);
-        if (projectId === 'lamongan-culinary') setTimeout(() => setLamonganCulinarySlide(0), 50);
-        if (projectId === 'school-bell-web') setTimeout(() => setSchoolBellWebSlide(0), 50);
-        if (projectId === 'pharmacy-queue') setTimeout(() => setPharmacyQueueSlide(0), 50);
-        if (projectId === 'daily-news') setTimeout(() => setDailyNewsSlide(0), 50);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
@@ -8054,7 +8040,7 @@
   </div>
 
   <!-- Interactive CV Preview Modal -->
-  <div id="cv-modal"
+  <div id="cv-modal" onclick="if(event.target === this) closeCVModal()"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden transition-opacity duration-300">
     <div
       class="relative w-full max-w-4xl max-h-[92vh] bg-white rounded-3xl shadow-2xl flex flex-col animate-in fade-in zoom-in-95 border border-slate-200">
