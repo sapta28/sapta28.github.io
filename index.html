@@ -618,7 +618,7 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
-            <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" target="_blank" rel="noopener noreferrer"
+            <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" target="_blank" rel="noopener noreferrer" id="hero-cv-btn"
               class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all text-sm cursor-pointer">
               <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
                 stroke-linecap="round" stroke-linejoin="round" class="text-[#253DE8]">
@@ -627,7 +627,7 @@
                 <line x1="16" y1="13" x2="8" y2="13"></line>
                 <line x1="16" y1="17" x2="8" y2="17"></line>
               </svg>
-              <span>View CV</span>
+              <span id="hero-cv-btn-text">View CV</span>
             </a>
           </div>
 
@@ -7903,6 +7903,18 @@
 
     // CV Modal Logic
     function openCVModal() {
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const cvEn = document.getElementById('cv-content-en');
+      const cvId = document.getElementById('cv-content-id');
+      if (cvEn && cvId) {
+        if (currentLang === 'id') {
+          cvEn.classList.add('hidden');
+          cvId.classList.remove('hidden');
+        } else {
+          cvEn.classList.remove('hidden');
+          cvId.classList.add('hidden');
+        }
+      }
       const modal = document.getElementById('cv-modal');
       if (modal) {
         const scrollContainer = modal.querySelector('.overflow-y-auto') || modal;
@@ -8061,14 +8073,14 @@
           </h3>
         </div>
         <div class="flex items-center gap-2">
-          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf"
+          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf" id="modal-cv-download-top"
             class="px-3.5 py-1.5 bg-[#253DE8] text-white hover:bg-[#1a2ec0] text-xs font-extrabold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
             <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span>Download PDF</span>
+            <span id="modal-cv-download-top-text">Download PDF</span>
           </a>
           <button onclick="window.print()"
             class="px-3.5 py-1.5 bg-slate-900 text-slate-200 hover:bg-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border border-slate-700">
@@ -8090,9 +8102,11 @@
       </div>
 
       <!-- CV Body Content -->
-      <div class="p-6 sm:p-10 overflow-y-auto modal-scroll space-y-8 text-slate-800 text-xs sm:text-sm leading-relaxed">
+      <div class="p-6 sm:p-10 overflow-y-auto modal-scroll text-slate-800 text-xs sm:text-sm leading-relaxed">
 
-        <!-- Header Info -->
+        <!-- English CV Content -->
+        <div id="cv-content-en" class="space-y-8">
+<!-- Header Info -->
         <div class="text-center border-b border-slate-200 pb-6 space-y-2">
           <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
           </h1>
@@ -8367,6 +8381,250 @@
             <li>LKMM PRA-TD (2023)</li>
           </ul>
         </section>
+        </div>
+
+        <!-- Indonesian CV Content -->
+        <div id="cv-content-id" class="space-y-8 hidden">
+        <!-- Header Info -->
+        <div class="text-center border-b border-slate-200 pb-6 space-y-2">
+          <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
+          </h1>
+          <p class="text-base font-bold text-[#253DE8]">Fullstack Developer</p>
+          <p class="text-slate-600 text-xs sm:text-sm">
+            Dsn. Nogo, Ds. Nogojatisari, Kec. Sambeng, Kab. Lamongan, Jawa Timur
+          </p>
+          <div
+            class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 pt-1">
+            <span>📧 <a href="mailto:saptaadzanipurnama@gmail.com"
+                class="hover:text-[#253DE8] underline">saptaadzanipurnama@gmail.com</a></span>
+            <span>📞 0821-4332-3186</span>
+            <span>🌐 GitHub: <a href="https://github.com/sapta28" target="_blank"
+                class="text-[#253DE8] hover:underline">github.com/sapta28</a></span>
+            <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/saptaadzanipurnama" target="_blank"
+                class="text-[#253DE8] hover:underline">linkedin.com/in/saptaadzanipurnama</a></span>
+            <span>🚀 Portofolio: <a href="https://sapta28.github.io" target="_blank"
+                class="text-[#253DE8] hover:underline">sapta28.github.io</a></span>
+          </div>
+        </div>
+
+        <!-- 1. Ringkasan Profesional -->
+        <section class="space-y-2">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Ringkasan Profesional
+          </h2>
+          <p class="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
+            Lulusan D3 Teknik Informatika dari <strong>Politeknik Elektronika Negeri Surabaya (PENS)</strong> dengan IPK 3.60 yang memiliki minat mendalam dalam <strong>Pengembangan Aplikasi Mobile</strong> dan <strong>Pengembangan Web</strong>. Berpengalaman dalam Desain UI/UX (Figma) serta pengembangan aplikasi mobile menggunakan <strong>Flutter &amp; Dart</strong>. Aktif pula sebagai Frontend dan Backend Developer dengan keahlian <strong>PHP, Laravel, JavaScript, Java, Python, dan MySQL</strong>. Selain pengembangan perangkat lunak, saya memiliki pemahaman kuat dalam dukungan operasional IT, termasuk <strong>manajemen jaringan dasar (TCP/IP, Routing &amp; Switching, Mikrotik/Cisco)</strong> serta kemampuan <strong>troubleshooting</strong> untuk menjaga stabilitas dan konektivitas sistem. Terbiasa membangun aplikasi yang dinamis, responsif, dan ramah pengguna, didukung kerja sama tim yang solid, pemikiran kritis, serta pemecahan masalah yang efektif.
+          </p>
+        </section>
+
+        <!-- 2. Pendidikan -->
+        <section class="space-y-3">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Pendidikan
+          </h2>
+          <div class="space-y-2">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">Politeknik Elektronika Negeri Surabaya (PENS)</h3>
+                <p class="text-slate-600 text-xs italic">D3 Teknik Informatika, PSDKU Lamongan &mdash; IPK: 3.60 / 4.00</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">2023 - 2026</span>
+            </div>
+
+            <div class="flex justify-between items-start pt-1">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">SMA Negeri 1 Ngimbang, Lamongan</h3>
+                <p class="text-slate-600 text-xs italic">Jurusan: Matematika dan Ilmu Pengetahuan Alam (MIPA)</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">2020 - 2023</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Pengalaman Kerja -->
+        <section class="space-y-4">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Pengalaman Kerja
+          </h2>
+
+          <!-- Job 1: PT Catur Sentosa Adiprana Tbk -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">Project Digitalization</h3>
+                <p class="text-slate-700 text-xs font-semibold notranslate" translate="no">PT Catur Sentosa Adiprana Tbk</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">Sep 2026 – Sekarang</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+              <li>Merancang dan meluncurkan <strong>SI-APIK</strong> (Sistem Informasi Administrasi Pengunduran Diri Karyawan), platform web terpusat untuk manajemen offboarding dan clearance karyawan perusahaan.</li>
+              <li>Memimpin modernisasi UI/UX dashboard peluncur aplikasi HR internal perusahaan (<strong>PeopleHub</strong>) dari navigasi legacy menjadi portal berbasis kartu yang intuitif.</li>
+              <li>Mengimplementasikan alur otentikasi Single Sign-On (SSO) dan kontrol akses berbasis peran (RBAC) pada 13 master role dan 3 lingkup teritorial (Nasional, Regional, Cabang).</li>
+              <li>Menyusun dokumentasi teknis standar enterprise mencakup Sequence Diagram, skema basis data relasional, dan arsitektur keamanan menyeluruh guna mendukung skalabilitas organisasi.</li>
+            </ul>
+          </div>
+
+          <!-- Job 2: PT. Pompa DEX Indoguna (Software Engineer) -->
+          <div class="space-y-1.5 pt-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">Software Engineer (Divisi R&amp;D)</h3>
+                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">Jan 2026 – Jul 2026</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+              <li>Mengembangkan dan memelihara <strong>Flood Viser</strong>, aplikasi mobile internal untuk mengontrol dan memonitor instalasi pompa air milik perusahaan di seluruh Indonesia secara jarak jauh.</li>
+              <li>Memimpin pengembangan berkelanjutan dan pemeliharaan aplikasi mobile dan website <strong>Sparkling Kids</strong>, termasuk integrasi fitur Live Attendance dan AI Report Control Center.</li>
+              <li>Mengembangkan kios absensi biometrik sidik jari berbasis IoT yang terintegrasi penuh dengan aplikasi web dan mobile.</li>
+              <li>Menganalisis dan mengoptimalkan efisiensi konsumsi energi pompa air melalui solusi perangkat lunak terintegrasi.</li>
+            </ul>
+          </div>
+
+          <!-- Job 3: PT. Pompa DEX Indoguna (R&D Intern) -->
+          <div class="space-y-1.5 pt-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">R&amp;D Intern</h3>
+                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">Jul 2025 – Jan 2026</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+              <li>Menginisiasi tahap awal pengembangan platform <strong>Sparkling Kids</strong> dari nol, meliputi perancangan alur bisnis, aplikasi mobile, website, logika inti, dan arsitektur database.</li>
+              <li>Memperbarui alur fungsional dan mendesain ulang antarmuka pengguna pada aplikasi web <strong>Flood Viser</strong> untuk meningkatkan kenyamanan pengguna dan efisiensi sistem.</li>
+            </ul>
+          </div>
+
+          <!-- Job 4: Academic & Personal Projects -->
+          <div class="space-y-1.5 pt-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm">Frontend &amp; Backend Developer</h3>
+                <p class="text-slate-700 text-xs font-semibold">Proyek Akademik &amp; Mandiri</p>
+              </div>
+              <span class="text-xs font-semibold text-slate-500 italic">2023 – Sekarang</span>
+            </div>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+              <li>Mendesain antarmuka menggunakan Figma dan mengembangkan aplikasi mobile pembayaran tagihan air HIPAM menggunakan Flutter, Laravel, dan Oracle.</li>
+              <li>Membangun sistem bel sekolah otomatis berbasis IoT yang dapat dikontrol melalui website dengan Arduino IDE, PHP, JavaScript, dan MySQL.</li>
+              <li>Mengembangkan website portal berita harian berbasis Laravel dengan fitur CRUD dan dashboard admin terintegrasi MySQL.</li>
+              <li>Membangun sistem antrean klinik berbasis web untuk mempercepat proses registrasi dan administrasi pasien menggunakan PHP, JavaScript, dan MySQL.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 4. Publikasi Ilmiah -->
+        <section class="space-y-3">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Publikasi Ilmiah
+          </h2>
+          <div class="space-y-1.5">
+            <h3 class="font-bold text-slate-900 text-sm">
+              Design and Implementation of an IoT-Based Biometric Attendance Kiosk: A Case Study of Sparkling Kids at PT Pompa DEX Indoguna
+            </h3>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+              <li><strong>Dipublikasikan di:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/11702552/proceeding" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] font-semibold hover:underline">2026 International Electronics Symposium (IES)</a></li>
+              <li><strong>Penerbit:</strong> IEEE</li>
+              <li><strong>Tanggal Konferensi:</strong> 01&ndash;03 Agustus 2026</li>
+              <li><strong>Lokasi Konferensi:</strong> Yogyakarta, Indonesia</li>
+              <li><strong>Ditambahkan ke IEEE Xplore:</strong> 30 September 2026</li>
+              <li><strong>DOI:</strong> <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] hover:underline font-semibold font-mono">10.1109/IES71033.2026.11702662</a></li>
+              <li><strong>Informasi ISBN:</strong> Electronic: 979-8-3195-0556-9 | Print: 979-8-3195-0554-5 | USB: 979-8-3195-0555-2 | PoD: 979-8-3195-0557-6</li>
+              <li><strong>Informasi ISSN:</strong> Electronic: 2994-368X | PoD: 2994-3698</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 5. Proyek Portofolio -->
+        <section class="space-y-3">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Proyek Pilihan
+          </h2>
+          <ul class="list-disc list-inside space-y-2.5 text-slate-700 text-xs">
+            <li>
+              <strong>SI-APIK (Portal Offboarding &amp; Clearance Karyawan)</strong> – <em>Modul HR Enterprise, PT Catur Sentosa Adiprana Tbk</em><br>
+              <span class="pl-4 block">Merancang platform web terpusat untuk pengajuan pengunduran diri dan serah terima aset karyawan, mengintegrasikan alur persetujuan bertingkat, kontrol akses berbasis peran (RBAC), dan analitik exit interview untuk jaringan kantor cabang nasional.</span>
+            </li>
+            <li>
+              <strong>Flood Viser App &amp; Website</strong> – <em>Proyek Internal, PT. Pompa DEX Indoguna</em><br>
+              <span class="pl-4 block">Platform web dan mobile internal untuk memonitor serta mengontrol performa instalasi pompa air industri di seluruh Indonesia secara real-time. <strong>(Aplikasi mobile dirilis resmi di App Store &amp; Play Store)</strong></span>
+            </li>
+            <li>
+              <strong>Sparkling Kids Mobile App &amp; Web</strong> – <em>Flutter, Laravel, PT. Pompa DEX Indoguna</em><br>
+              <span class="pl-4 block">Aplikasi terpadu manajemen jadwal dan aktivitas kelas anak, dilengkapi fitur Live Attendance, Kalender Jadwal Paralel, serta AI Report Control Center. <strong>(Aplikasi mobile dirilis resmi di App Store &amp; Play Store)</strong></span>
+            </li>
+            <li>
+              <strong>Aplikasi Pembayaran Tagihan Air HIPAM</strong> – <em>Flutter, Laravel, Oracle</em><br>
+              <span class="pl-4 block">Aplikasi mobile untuk mempermudah pelanggan dalam membayar tagihan air secara online, menampilkan antarmuka modern hasil rancangan Figma dan backend Laravel terhubung basis data Oracle.</span>
+            </li>
+            <li>
+              <strong>Aplikasi Pemesanan Reklame Berbasis GIS</strong> – <em>Flutter, Next.js, Laravel (PHP), PostgreSQL</em><br>
+              <span class="pl-4 block">Aplikasi mobile pemesanan ruang iklan reklame terintegrasi Geographic Information System (GIS), dibangun dengan Flutter pada sisi mobile, serta Next.js dan Laravel untuk manajemen backend dan database.</span>
+            </li>
+            <li>
+              <strong>Website Rekomendasi Jurusan Kuliah</strong> – <em>Laravel, Oracle</em><br>
+              <span class="pl-4 block">Platform interaktif bagi siswa SMA untuk memilih program studi perguruan tinggi yang sesuai, dilengkapi fitur pencarian pintar dan pemetaan profil kampus.</span>
+            </li>
+            <li>
+              <strong>Website Kuliner Khas Lamongan</strong> – <em>JavaScript, Java (Spring Boot), MongoDB</em><br>
+              <span class="pl-4 block">Website direktori dan rekomendasi kuliner lokal Lamongan dengan integrasi basis data NoSQL MongoDB dan backend Java Spring Boot.</span>
+            </li>
+            <li>
+              <strong>Website Sistem Antrean Apotek Otomatis</strong> – <em>HTML, CSS, JavaScript, PHP, MySQL</em><br>
+              <span class="pl-4 block">Sistem antrean apotek otomatis berbasis web yang dirancang untuk mempercepat registrasi pasien dan efisiensi waktu pengambilan obat resep.</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 6. Keterampilan Teknis -->
+        <section class="space-y-2">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Keterampilan Teknis
+          </h2>
+          <div class="space-y-1.5 text-xs text-slate-800">
+            <p><strong>Pengembangan Web:</strong> HTML, CSS, JavaScript, PHP, Laravel, Next.js, Java Spring Boot, Python, Bootstrap</p>
+            <p><strong>Pengembangan Mobile:</strong> Flutter, Dart, Figma (UI/UX)</p>
+            <p><strong>Manajemen State:</strong> GetX, Provider, BLoC</p>
+            <p><strong>Basis Data:</strong> MySQL, PostgreSQL, Oracle, MongoDB, Supabase</p>
+            <p><strong>Jaringan &amp; Sistem:</strong> Linux, DHCP, DNS, NAT, NTP, CISCO</p>
+            <p><strong>IoT &amp; Embedded:</strong> Arduino IDE, Sensor Integration, C++</p>
+            <p><strong>Kontrol Versi:</strong> Git, GitHub</p>
+            <p><strong>AI Agents &amp; Tools:</strong> Gemini, ChatGPT, Anthropic, Open Code, Claude Code, DeepSeek, Blackbox, Grok</p>
+          </div>
+        </section>
+
+        <!-- 7. Keterampilan Interpersonal -->
+        <section class="space-y-2">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Keterampilan Interpersonal
+          </h2>
+          <p class="text-xs text-slate-800">
+            Kerja Sama Tim, Komunikasi, Kepemimpinan, Pemikiran Kritis, Manajemen Waktu
+          </p>
+        </section>
+
+        <!-- 8. Sertifikasi & Pelatihan -->
+        <section class="space-y-2">
+          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+            Sertifikasi &amp; Pelatihan
+          </h2>
+          <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs">
+            <li>Certified General Security Associate (CGSA - CCTV), Hikvision Digital Technology (Nov 2026)</li>
+            <li>Webinar: Membangun Bisnis Digital Tanpa Menunggu Modal Besar, PENS (Okt 2026)</li>
+            <li>Author, International Electronics Symposium (IES) 2026, PENS &amp; IEEE Indonesia Section (2026)</li>
+            <li>PENS English Proficiency Test (PEPT), Skor Keseluruhan: 473, Pusat Bahasa dan Budaya PENS (2026)</li>
+            <li>Sertifikat Penghargaan Tugas Akhir, 5 Solae Group (2026)</li>
+            <li>Magang 5 Solae Group Batch 4 (2026)</li>
+            <li>Magang 5 Solae Group Batch 3 (2025)</li>
+            <li>Digital Talent Scholarship (DTS) VSGA - Komunikasi Digital, Kominfo (2025)</li>
+            <li>Pelatihan Frontend dan Backend Developer (2024)</li>
+            <li>LKMM TD (2024)</li>
+            <li>OSJUR IT MMB PSDKU Lamongan (2024)</li>
+            <li>LKMM PRA-TD (2023)</li>
+          </ul>
+        </section>
+        </div>
 
       </div>
 
@@ -8375,16 +8633,16 @@
         class="px-6 py-4 bg-slate-50 border-t border-slate-200 rounded-b-3xl flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-[11px] text-slate-500 notranslate">Sapta Adzani Purnama — Curriculum Vitae (CV)</p>
         <div class="flex items-center gap-3">
-          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf"
+          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf" id="modal-cv-download-bottom"
             class="px-4 py-2 bg-[#253DE8] hover:bg-[#1a2ec0] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
             <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span>Download PDF</span>
+            <span id="modal-cv-download-bottom-text">Download PDF</span>
           </a>
-          <button onclick="closeCVModal(); navigateTo('contact');"
+          <button onclick="closeCVModal(); navigateTo('contact');" id="modal-contact-sapta-btn"
             class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer shadow-sm">
             Contact Sapta
           </button>
@@ -8461,6 +8719,47 @@
         if (document.getElementById('lang-id')) document.getElementById('lang-id').className = inactiveClass;
         if (document.getElementById('lang-en-mob')) document.getElementById('lang-en-mob').className = mobActiveClass;
         if (document.getElementById('lang-id-mob')) document.getElementById('lang-id-mob').className = mobInactiveClass;
+      }
+
+      // Update CV links & bilingual modal content based on language
+      const isIndo = (lang === 'id');
+      const heroCvBtn = document.getElementById('hero-cv-btn');
+      const heroCvBtnText = document.getElementById('hero-cv-btn-text');
+      const modalCvTop = document.getElementById('modal-cv-download-top');
+      const modalCvTopText = document.getElementById('modal-cv-download-top-text');
+      const modalCvBottom = document.getElementById('modal-cv-download-bottom');
+      const modalCvBottomText = document.getElementById('modal-cv-download-bottom-text');
+      const modalContactBtn = document.getElementById('modal-contact-sapta-btn');
+      const cvEn = document.getElementById('cv-content-en');
+      const cvId = document.getElementById('cv-content-id');
+
+      const cvPdfUrl = isIndo ? 'assets/CV_Sapta_Adzani_Purnama_ID.pdf?v=14' : 'assets/CV_Sapta_Adzani_Purnama.pdf?v=14';
+      const cvDownloadName = isIndo ? 'CV_Sapta_Adzani_Purnama_ID.pdf' : 'CV_Sapta_Adzani_Purnama.pdf';
+      const viewCvLabel = isIndo ? 'Lihat CV' : 'View CV';
+      const downloadCvLabel = isIndo ? 'Unduh PDF' : 'Download PDF';
+
+      if (heroCvBtn) heroCvBtn.setAttribute('href', cvPdfUrl);
+      if (heroCvBtnText) heroCvBtnText.textContent = viewCvLabel;
+      if (modalCvTop) {
+        modalCvTop.setAttribute('href', cvPdfUrl);
+        modalCvTop.setAttribute('download', cvDownloadName);
+      }
+      if (modalCvTopText) modalCvTopText.textContent = downloadCvLabel;
+      if (modalCvBottom) {
+        modalCvBottom.setAttribute('href', cvPdfUrl);
+        modalCvBottom.setAttribute('download', cvDownloadName);
+      }
+      if (modalCvBottomText) modalCvBottomText.textContent = downloadCvLabel;
+      if (modalContactBtn) modalContactBtn.textContent = isIndo ? 'Hubungi Sapta' : 'Contact Sapta';
+
+      if (cvEn && cvId) {
+        if (isIndo) {
+          cvEn.classList.add('hidden');
+          cvId.classList.remove('hidden');
+        } else {
+          cvEn.classList.remove('hidden');
+          cvId.classList.add('hidden');
+        }
       }
 
       // Refresh project gallery and open modal if active for instant bilingual rendering
