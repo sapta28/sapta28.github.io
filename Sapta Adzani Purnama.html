@@ -298,7 +298,7 @@
 
 
     /* Career roadmap: sequential scroll-linked reveal (start -> present) */
-    .exp-anim [data-exp-road-desktop],
+    .exp-anim .exp-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
     .exp-anim [data-exp-road-mobile] { will-change: clip-path; }
     .exp-anim [data-exp-card] > div {
       opacity: 0;
@@ -2428,17 +2428,25 @@
           <svg data-exp-road-desktop
             class="hidden lg:block absolute inset-0 w-full h-full text-slate-900 drop-shadow-2xl overflow-visible pointer-events-none"
             viewBox="0 0 1000 2020" preserveAspectRatio="none">
+            <defs>
+              <mask id="exp-road-mask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1400" height="2420">
+                <path class="exp-draw" d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020" pathLength="1"
+                  fill="none" stroke="#fff" stroke-width="80" stroke-linecap="round" />
+              </mask>
+            </defs>
             <!-- Road Outline / Shadow -->
-            <path
-              d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020"
+            <path class="exp-draw"
+              d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020" pathLength="1"
               fill="none" stroke="#E2E8F0" stroke-width="60" stroke-linecap="round" />
-            <path
-              d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020"
+            <path class="exp-draw"
+              d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020" pathLength="1"
               fill="none" stroke="#1E232F" stroke-width="52" stroke-linecap="round" />
             <!-- White Dashed Line -->
-            <path
-              d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020"
-              fill="none" stroke="white" stroke-width="4" stroke-dasharray="24 24" stroke-linecap="round" />
+            <g mask="url(#exp-road-mask)">
+              <path
+                d="M 500,0 C 500,130 440,130 440,260 C 440,445 560,445 560,630 C 560,815 440,815 440,1000 C 440,1185 560,1185 560,1370 C 560,1555 440,1555 440,1740 C 440,1880 500,1880 500,2020"
+                fill="none" stroke="white" stroke-width="4" stroke-dasharray="24 24" stroke-linecap="round" />
+            </g>
 
             <!-- Connector Lines (From Road to Cards) -->
             <!-- Stop 1 (Curve at 440, Card on RIGHT at 590) -->
@@ -8960,16 +8968,16 @@
 
 
   <script>
-    // Career roadmap: reveal road + stops progressively from Start down to Present while scrolling
+    // Career roadmap: road draws itself from Start to Present, stops reveal as the road reaches them
     (function () {
       const view = document.getElementById('view-experience');
       const wrap = view && view.querySelector('[data-exp-roadmap]');
       if (!wrap) return;
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const roadD = wrap.querySelector('[data-exp-road-desktop]');
+      const drawPaths = Array.from(wrap.querySelectorAll('.exp-draw'));
       const roadM = wrap.querySelector('[data-exp-road-mobile]');
       const items = Array.from(wrap.querySelectorAll('[data-exp-card], [data-exp-badge], .exp-stop'));
-      let ticking = false;
+      let target = 0, drawn = 0, raf = 0, last = 0;
 
       function centerY(el, wr) {
         if (el.classList.contains('exp-stop')) {
@@ -8978,33 +8986,47 @@
         const r = el.getBoundingClientRect();
         return r.top + r.height / 2 - wr.top;
       }
-      function clip(el, p, h) {
-        if (!el) return;
-        el.style.clipPath = p >= 1 ? 'none' : 'inset(-60px -60px ' + (p <= 0 ? '100%' : 'calc(' + ((1 - p) * 100) + '% - 36px)') + ' -60px)';
-      }
-      function update() {
-        ticking = false;
-        if (!view.classList.contains('active-view')) return;
-        const wr = wrap.getBoundingClientRect();
-        const front = reduce ? Infinity : window.innerHeight * 0.85 - wr.top;
-        const p = reduce ? 1 : Math.min(1, Math.max(0, front / wr.height));
-        clip(roadD, p); clip(roadM, p);
+      function paint(p, wr) {
+        const off = String(1 - p);
+        drawPaths.forEach(function (el) { el.style.strokeDashoffset = off; });
+        if (roadM) roadM.style.clipPath = p >= 1 ? 'none' : 'inset(0 0 ' + ((1 - p) * 100) + '% 0 round 9999px)';
         let n = 0;
         items.forEach(function (el) {
           if (el.classList.contains('exp-in')) return;
-          if (centerY(el, wr) <= front - 24) {
-            const target = el.hasAttribute('data-exp-card') ? el.firstElementChild : el;
-            if (target && target !== el) target.style.transitionDelay = (n * 90) + 'ms';
+          if (centerY(el, wr) <= p * wr.height + 8) {
             el.style.transitionDelay = (n * 90) + 'ms';
             el.classList.add('exp-in');
             n++;
           }
         });
       }
-      function request() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      function readTarget() {
+        const wr = wrap.getBoundingClientRect();
+        // the road may extend down to just above the bottom edge of the viewport
+        const front = reduce ? Infinity : window.innerHeight * 0.88 - wr.top;
+        return { wr: wr, t: Math.min(1, Math.max(0, front / wr.height)) };
+      }
+      function tick(now) {
+        raf = 0;
+        if (!view.classList.contains('active-view')) return;
+        const dt = Math.min(64, now - (last || now)); last = now;
+        const r = readTarget(); target = r.t;
+        if (reduce) drawn = target;
+        else if (drawn < target) {
+          // eased follow with a speed cap (~1000px/s) so the road visibly "drives" forward
+          const maxStep = (1000 / r.wr.height) * (dt / 1000);
+          const step = Math.max(Math.min((target - drawn) * 0.09 + 0.0008, maxStep), 0);
+          drawn = Math.min(target, drawn + step);
+        }
+        paint(drawn, r.wr);
+        if (drawn < target) raf = requestAnimationFrame(tick); else last = 0;
+      }
+      function request() { if (!raf) raf = requestAnimationFrame(tick); }
       function reset() {
+        drawn = 0; target = 0; last = 0;
         items.forEach(function (el) { el.classList.remove('exp-in'); el.style.transitionDelay = ''; });
-        clip(roadD, 0); clip(roadM, 0);
+        drawPaths.forEach(function (el) { el.style.strokeDashoffset = '1'; });
+        if (roadM) roadM.style.clipPath = 'inset(0 0 100% 0 round 9999px)';
       }
 
       wrap.classList.add('exp-anim');
@@ -9012,10 +9034,10 @@
       window.addEventListener('scroll', request, { passive: true });
       window.addEventListener('resize', request);
       new MutationObserver(function () {
-        if (view.classList.contains('active-view')) { reset(); setTimeout(request, 120); }
-        else reset();
+        reset();
+        if (view.classList.contains('active-view')) setTimeout(request, 250);
       }).observe(view, { attributes: true, attributeFilter: ['class'] });
-      if (view.classList.contains('active-view')) setTimeout(request, 120);
+      if (view.classList.contains('active-view')) setTimeout(request, 250);
     })();
   </script>
 
