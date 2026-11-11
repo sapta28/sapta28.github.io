@@ -296,6 +296,38 @@
       transform: translateY(0);
     }
 
+
+    /* Career roadmap: sequential scroll-linked reveal (start -> present) */
+    .exp-anim [data-exp-road-desktop],
+    .exp-anim [data-exp-road-mobile] { will-change: clip-path; }
+    .exp-anim [data-exp-card] > div {
+      opacity: 0;
+      transform: translate3d(var(--exp-x, 0), var(--exp-y, 0), 0) scale(.97);
+      transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+      will-change: opacity, transform;
+    }
+    .exp-anim [data-exp-card][data-exp-side="right"] > div { --exp-x: 56px; }
+    .exp-anim [data-exp-card][data-exp-side="left"] > div { --exp-x: -56px; }
+    @media (max-width: 1023px) {
+      .exp-anim [data-exp-card][data-exp-side] > div { --exp-x: 0px; --exp-y: 28px; }
+    }
+    .exp-anim [data-exp-card].exp-in > div { opacity: 1; transform: none; }
+    .exp-anim [data-exp-badge] {
+      opacity: 0; transform: scale(.85);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.34,1.56,.64,1);
+    }
+    .exp-anim [data-exp-badge].exp-in { opacity: 1; transform: none; }
+    .exp-anim .exp-stop { opacity: 0; transition: opacity .6s ease; }
+    .exp-anim .exp-stop.exp-in { opacity: 1; }
+    .exp-anim .exp-stop circle {
+      transform-box: fill-box; transform-origin: center; transform: scale(0);
+      transition: transform .6s cubic-bezier(.34,1.56,.64,1);
+    }
+    .exp-anim .exp-stop.exp-in circle { transform: scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .exp-anim [data-exp-card] > div, .exp-anim [data-exp-badge], .exp-anim .exp-stop, .exp-anim .exp-stop circle { transition: none !important; }
+    }
+
     /* SPA View switching */
     .view-page {
       display: none !important;
@@ -2005,15 +2037,23 @@
                 </div>
 
                 <div class="pt-1">
-                  <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"
-                    class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white/5 hover:bg-[#CEF330] text-slate-200 hover:text-slate-950 border border-white/10 hover:border-[#CEF330] rounded-xl text-xs transition-all duration-300 shadow-sm group notranslate" title="Open IEEE DOI Journal Paper">
+                  <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank" rel="noopener noreferrer"
+                    onclick="event.stopPropagation();"
+                    class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white/5 hover:bg-[#CEF330] text-slate-200 hover:text-slate-950 border border-white/10 hover:border-[#CEF330] rounded-xl text-xs transition-all duration-300 shadow-sm group notranslate"
+                    title="Open IEEE DOI Journal Paper">
                     <div class="flex items-center gap-2 min-w-0">
-                      <span class="px-2 py-0.5 bg-[#CEF330]/20 text-[#CEF330] group-hover:bg-slate-950/20 group-hover:text-slate-950 text-[10px] font-black rounded-md uppercase tracking-wider shrink-0">DOI</span>
-                      <span class="font-mono text-[11px] sm:text-xs tracking-tight truncate">10.1109/IES71033.2026.11702662</span>
+                      <span
+                        class="px-2 py-0.5 bg-[#CEF330]/20 text-[#CEF330] group-hover:bg-slate-950/20 group-hover:text-slate-950 text-[10px] font-black rounded-md uppercase tracking-wider shrink-0">DOI</span>
+                      <span
+                        class="font-mono text-[11px] sm:text-xs tracking-tight truncate">10.1109/IES71033.2026.11702662</span>
                     </div>
-                    <div class="flex items-center gap-1 text-[11px] font-bold shrink-0 ml-2 text-[#CEF330] group-hover:text-slate-950">
+                    <div
+                      class="flex items-center gap-1 text-[11px] font-bold shrink-0 ml-2 text-[#CEF330] group-hover:text-slate-950">
                       <span class="hidden sm:inline">Open Paper</span>
-                      <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <svg
+                        class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7"></line>
                         <polyline points="7 7 17 7 17 17"></polyline>
                       </svg>
@@ -2334,7 +2374,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
         <!-- Unified Roadmap Container (Aligned Straight with Navbar Left & Right) -->
-        <div class="relative w-full h-auto lg:h-[2020px] flex flex-col space-y-8 lg:space-y-0">
+        <div data-exp-roadmap class="relative w-full h-auto lg:h-[2020px] flex flex-col space-y-8 lg:space-y-0">
 
           <!-- Left Typography Block (Aligned with Navbar Left) -->
           <div class="relative lg:absolute lg:top-0 lg:left-0 lg:w-[440px] flex flex-col justify-start z-10">
@@ -2379,13 +2419,13 @@
           </div>
 
           <!-- Vertical Road Line Graphic for Mobile (< 1024px) -->
-          <div
+          <div data-exp-road-mobile
             class="lg:hidden absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-12 sm:w-16 bg-[#1E232F] rounded-full shadow-2xl border-2 border-slate-700/60 flex flex-col items-center justify-between py-4 z-0 pointer-events-none">
             <div class="w-1 h-full border-r-2 border-dashed border-white/80 opacity-90"></div>
           </div>
 
           <!-- The SVG Winding Road (Centered at 50%, Perfectly Between Left & Right Cards) -->
-          <svg
+          <svg data-exp-road-desktop
             class="hidden lg:block absolute inset-0 w-full h-full text-slate-900 drop-shadow-2xl overflow-visible pointer-events-none"
             viewBox="0 0 1000 2020" preserveAspectRatio="none">
             <!-- Road Outline / Shadow -->
@@ -2402,37 +2442,47 @@
 
             <!-- Connector Lines (From Road to Cards) -->
             <!-- Stop 1 (Curve at 440, Card on RIGHT at 590) -->
-            <line x1="440" y1="260" x2="590" y2="260" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
-            <circle cx="440" cy="260" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            <g class="exp-stop" data-exp-y="260">
+              <line x1="440" y1="260" x2="590" y2="260" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
+              <circle cx="440" cy="260" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            </g>
 
             <!-- Stop 2 (Curve at 560, Card on LEFT at 410) -->
-            <line x1="560" y1="630" x2="410" y2="630" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
-            <circle cx="560" cy="630" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            <g class="exp-stop" data-exp-y="630">
+              <line x1="560" y1="630" x2="410" y2="630" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
+              <circle cx="560" cy="630" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            </g>
 
             <!-- Stop 3 (Curve at 440, Card on RIGHT at 590) -->
-            <line x1="440" y1="1000" x2="590" y2="1000" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
-            <circle cx="440" cy="1000" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            <g class="exp-stop" data-exp-y="1000">
+              <line x1="440" y1="1000" x2="590" y2="1000" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
+              <circle cx="440" cy="1000" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            </g>
 
             <!-- Stop 4 (Curve at 560, Card on LEFT at 410) -->
-            <line x1="560" y1="1370" x2="410" y2="1370" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
-            <circle cx="560" cy="1370" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            <g class="exp-stop" data-exp-y="1370">
+              <line x1="560" y1="1370" x2="410" y2="1370" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
+              <circle cx="560" cy="1370" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            </g>
 
             <!-- Stop 5 (Curve at 440, Card on RIGHT at 590) -->
-            <line x1="440" y1="1740" x2="590" y2="1740" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
-            <circle cx="440" cy="1740" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            <g class="exp-stop" data-exp-y="1740">
+              <line x1="440" y1="1740" x2="590" y2="1740" stroke="#253DE8" stroke-width="4" stroke-dasharray="6 6" />
+              <circle cx="440" cy="1740" r="12" fill="#253DE8" stroke="white" stroke-width="4" />
+            </g>
           </svg>
 
           <!-- START Badge (Desktop) -->
-          <div class="hidden lg:block absolute z-20" style="top: 2020px; left: 50%; transform: translate(-50%, -50%);">
-            <div
+          <div class="hidden lg:block absolute z-30" style="top: 0px; left: 50%; transform: translate(-50%, -50%);">
+            <div data-exp-badge
               class="bg-[#CEF330] text-slate-900 font-black text-xs sm:text-sm tracking-[0.2em] px-6 py-2 sm:px-8 sm:py-3 rounded-full shadow-lg border-2 sm:border-4 border-white uppercase whitespace-nowrap">
               Start
             </div>
           </div>
 
           <!-- PRESENT Badge (Desktop Active Peak) -->
-          <div class="hidden lg:block absolute z-30" style="top: 0px; left: 50%; transform: translate(-50%, -50%);">
-            <div
+          <div class="hidden lg:block absolute z-30" style="top: 2020px; left: 50%; transform: translate(-50%, -50%);">
+            <div data-exp-badge
               class="bg-slate-900 text-white px-5 py-2.5 sm:px-7 sm:py-3 rounded-full shadow-2xl border-2 sm:border-4 border-white whitespace-nowrap flex items-center gap-3">
               <span class="relative flex h-2.5 w-2.5">
                 <span
@@ -2448,60 +2498,121 @@
 
           <!-- Mobile Top Badge (On Top of Road) -->
           <div class="lg:hidden flex justify-center my-3 relative z-30">
-            <div
-              class="bg-slate-900 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-xl border-2 border-white flex items-center gap-2.5 whitespace-nowrap">
-              <span class="relative flex h-2 w-2">
-                <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CEF330] opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#CEF330]"></span>
-              </span>
-              <span class="text-[#CEF330] font-black text-xs uppercase tracking-wider">Present</span>
-              <span class="text-white/30 text-[10px]">|</span>
-              <span class="text-slate-100 font-bold text-[11px] notranslate" translate="no">PT Catur Sentosa Adiprana
-                Tbk</span>
+            <div data-exp-badge
+              class="bg-[#CEF330] text-slate-900 font-black text-xs sm:text-sm tracking-[0.2em] px-7 py-2.5 sm:px-8 sm:py-3 rounded-full shadow-xl border-2 border-white uppercase whitespace-nowrap">
+              Start
             </div>
           </div>
 
-          <!-- Milestone 5 (Stop 1: SEP 2026 - PRESENT | PT Catur Sentosa Adiprana Tbk) - Aligned Straight with Navbar Right -->
-          <div
+          <!-- Milestone 1 (Stop 1: JAN 2024 - PRESENT | Academic & Personal Projects) - Aligned Straight with Navbar Right -->
+          <div data-exp-card data-exp-side="right"
             class="relative lg:absolute lg:top-[260px] lg:right-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
             <div
-              class="bg-[#F8FDF5]/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-[#E8F5E2] flex gap-4 w-full relative hover:shadow-2xl transition-all">
+              class="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/80 flex gap-4 w-full relative hover:shadow-2xl transition-all">
               <!-- Pill (Facing Road) -->
               <div
-                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative overflow-hidden shadow-inner">
-                <span class="text-slate-950 text-[10px] font-black tracking-widest whitespace-nowrap -rotate-90">SEP
-                  2026 - PRESENT</span>
+                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative shadow-inner">
+                <span class="text-slate-900 text-[10px] font-bold tracking-widest whitespace-nowrap -rotate-90">JAN 2024
+                  - PRESENT</span>
               </div>
               <!-- Content -->
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-1">
                   <div
-                    class="w-8 h-8 rounded-xl bg-slate-900 shadow-sm flex items-center justify-center text-[#CEF330] shrink-0 border border-slate-800">
-                    <span class="font-black text-sm">5</span>
+                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#111] shrink-0 border border-slate-200">
+                    <span class="font-black text-sm">1</span>
                   </div>
-                  <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">Project Digitalization</h3>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">Fullstack Developer</h3>
                 </div>
-                <p class="text-[11px] font-bold text-[#006BFF] mb-3">PT Catur Sentosa Adiprana Tbk<span
-                    class="sm:hidden font-normal text-slate-400 block mt-1">| Sep 2026 - Present</span></p>
+                <p class="text-[11px] font-bold text-[#111] mb-3">Academic &amp; Personal Projects<span
+                    class="sm:hidden font-normal text-slate-400 block mt-1">| Jan 2024 - Present</span></p>
                 <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
-                  <li>Architected and delivered &ldquo;SI-APIK&rdquo; (Sistem Informasi Administrasi Pengunduran Diri
-                    Karyawan), a centralized web-based employee offboarding and clearance management platform.</li>
-                  <li>Spearheaded the end-to-end UI/UX modernization of the internal corporate HR App Launcher
-                    dashboard, transforming legacy multi-level navigation into an intuitive, minimalist card-based
-                    portal.</li>
-                  <li>Implemented robust Single Sign-On (SSO) authentication workflows and role-based access control
-                    (RBAC) to securely unify disparate internal HR modules.</li>
-                  <li>Formulated enterprise-grade technical documentation including Sequence Diagrams, database schemas,
-                    and end-to-end security architectures to support seamless organizational scaling.</li>
+                  <li>Developed a diverse portfolio of full-stack ecosystems, including a GIS-based Billboard Booking
+                    App, an Automated Pharmacy Queuing System, and a Daily News CMS.</li>
+                  <li>Engineered complex database architectures utilizing MySQL, PostgreSQL, Oracle, and MongoDB to
+                    support varied business logic requirements.</li>
+                  <li>Built and consumed RESTful APIs to bridge server-side logic (Laravel, Java Spring Boot, Node.js)
+                    with responsive frontends.</li>
+                  <li>Implemented real-time data synchronization utilizing AJAX and hardware integration for IoT-based
+                    systems like the Automated School Bell.</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- Milestone 4 (Stop 2: JAN 2026 - JUL 2026 | PT. Pompa Dex Indoguna & PENS) - Aligned Straight with Navbar Left -->
-          <div
+          <!-- Milestone 2 (Stop 2: MAR 2024 - JUN 2024 | Concept Projects) - Aligned Straight with Navbar Left -->
+          <div data-exp-card data-exp-side="left"
             class="relative lg:absolute lg:top-[630px] lg:left-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
+            <div
+              class="bg-[#F8FDF5]/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-[#E8F5E2] flex gap-4 w-full relative hover:shadow-2xl transition-all">
+              <!-- Content -->
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <div
+                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#006BFF] shrink-0 border border-slate-100">
+                    <span class="font-black text-sm">2</span>
+                  </div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-800">UI/UX Designer</h3>
+                </div>
+                <p class="text-[11px] font-bold text-[#006BFF] mb-3">Concept Projects<span
+                    class="sm:hidden font-normal text-slate-400 block mt-1">| Mar 2024 - Jun 2024</span></p>
+                <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
+                  <li>Conceptualized and designed &ldquo;WayangGo,&rdquo; a gamified mobile application for cultural
+                    education featuring interactive quizzes and reward systems.</li>
+                  <li>Designed the complete end-to-end user journey for &ldquo;HIPAM,&rdquo; modernizing traditional
+                    community water bill payments into a streamlined mobile checkout experience.</li>
+                  <li>Developed high-fidelity interactive prototypes and mapped complex information architecture using
+                    Figma.</li>
+                  <li>Applied user-centric design principles to translate traditional, manual workflows into highly
+                    accessible modern digital platforms.</li>
+                </ul>
+              </div>
+              <!-- Pill (Facing Road) -->
+              <div
+                class="hidden sm:flex w-10 shrink-0 bg-[#006BFF] rounded-full flex-col items-center justify-center py-6 relative shadow-inner overflow-hidden">
+                <span class="text-white text-[10px] font-bold tracking-widest whitespace-nowrap rotate-90">MAR 2024 -
+                  JUN 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 3 (Stop 3: AUG 2025 - DEC 2025 | PT. Pompa Dex Indoguna) - Aligned Straight with Navbar Right -->
+          <div data-exp-card data-exp-side="right"
+            class="relative lg:absolute lg:top-[1000px] lg:right-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
+            <div
+              class="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/80 flex gap-4 w-full relative hover:shadow-2xl transition-all">
+              <!-- Pill (Facing Road) -->
+              <div
+                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative shadow-inner">
+                <span class="text-slate-900 text-[10px] font-bold tracking-widest whitespace-nowrap -rotate-90">AUG 2025
+                  - DEC 2025</span>
+              </div>
+              <!-- Content -->
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-1">
+                  <div
+                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#111] shrink-0 border border-slate-200">
+                    <span class="font-black text-sm">3</span>
+                  </div>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-800">Mobile Developer</h3>
+                </div>
+                <p class="text-[11px] font-bold text-[#111] mb-3">PT. Pompa Dex Indoguna (5Solae Group)<span
+                    class="sm:hidden font-normal text-slate-400 block mt-1">| Aug 2025 - Dec 2025</span></p>
+                <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
+                  <li>Led the initial UI/UX translation and core system implementation of the &ldquo;Sparkling
+                    Kids&rdquo; cross-platform mobile application from scratch using Flutter.</li>
+                  <li>Finalized development and successfully published the &ldquo;Flood Viser&rdquo; remote pump control
+                    and monitoring app to major digital storefronts.</li>
+                  <li>Integrated complex RESTful APIs and implemented efficient state management (GetX/Riverpod) to
+                    ensure stable, real-time data synchronization for both mobile applications.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 4 (Stop 4: JAN 2026 - JUL 2026 | PT. Pompa Dex Indoguna & PENS) - Aligned Straight with Navbar Left -->
+          <div data-exp-card data-exp-side="left"
+            class="relative lg:absolute lg:top-[1370px] lg:left-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
             <div
               class="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/80 flex gap-4 w-full relative hover:shadow-2xl transition-all">
               <!-- Content -->
@@ -2538,107 +2649,38 @@
             </div>
           </div>
 
-          <!-- Milestone 3 (Stop 3: AUG 2025 - DEC 2025 | PT. Pompa Dex Indoguna) - Aligned Straight with Navbar Right -->
-          <div
-            class="relative lg:absolute lg:top-[1000px] lg:right-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
-            <div
-              class="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/80 flex gap-4 w-full relative hover:shadow-2xl transition-all">
-              <!-- Pill (Facing Road) -->
-              <div
-                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative shadow-inner">
-                <span class="text-slate-900 text-[10px] font-bold tracking-widest whitespace-nowrap -rotate-90">AUG 2025
-                  - DEC 2025</span>
-              </div>
-              <!-- Content -->
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <div
-                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#111] shrink-0 border border-slate-200">
-                    <span class="font-black text-sm">3</span>
-                  </div>
-                  <h3 class="text-base sm:text-lg font-bold text-slate-800">Mobile Developer</h3>
-                </div>
-                <p class="text-[11px] font-bold text-[#111] mb-3">PT. Pompa Dex Indoguna (5Solae Group)<span
-                    class="sm:hidden font-normal text-slate-400 block mt-1">| Aug 2025 - Dec 2025</span></p>
-                <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
-                  <li>Led the initial UI/UX translation and core system implementation of the &ldquo;Sparkling
-                    Kids&rdquo; cross-platform mobile application from scratch using Flutter.</li>
-                  <li>Finalized development and successfully published the &ldquo;Flood Viser&rdquo; remote pump control
-                    and monitoring app to major digital storefronts.</li>
-                  <li>Integrated complex RESTful APIs and implemented efficient state management (GetX/Riverpod) to
-                    ensure stable, real-time data synchronization for both mobile applications.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Milestone 2 (Stop 4: MAR 2024 - JUN 2024 | Concept Projects) - Aligned Straight with Navbar Left -->
-          <div
-            class="relative lg:absolute lg:top-[1370px] lg:left-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
-            <div
-              class="bg-[#F8FDF5]/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-[#E8F5E2] flex gap-4 w-full relative hover:shadow-2xl transition-all">
-              <!-- Content -->
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                  <div
-                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#006BFF] shrink-0 border border-slate-100">
-                    <span class="font-black text-sm">2</span>
-                  </div>
-                  <h3 class="text-base sm:text-lg font-bold text-slate-800">UI/UX Designer</h3>
-                </div>
-                <p class="text-[11px] font-bold text-[#006BFF] mb-3">Concept Projects<span
-                    class="sm:hidden font-normal text-slate-400 block mt-1">| Mar 2024 - Jun 2024</span></p>
-                <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
-                  <li>Conceptualized and designed &ldquo;WayangGo,&rdquo; a gamified mobile application for cultural
-                    education featuring interactive quizzes and reward systems.</li>
-                  <li>Designed the complete end-to-end user journey for &ldquo;HIPAM,&rdquo; modernizing traditional
-                    community water bill payments into a streamlined mobile checkout experience.</li>
-                  <li>Developed high-fidelity interactive prototypes and mapped complex information architecture using
-                    Figma.</li>
-                  <li>Applied user-centric design principles to translate traditional, manual workflows into highly
-                    accessible modern digital platforms.</li>
-                </ul>
-              </div>
-              <!-- Pill (Facing Road) -->
-              <div
-                class="hidden sm:flex w-10 shrink-0 bg-[#006BFF] rounded-full flex-col items-center justify-center py-6 relative shadow-inner overflow-hidden">
-                <span class="text-white text-[10px] font-bold tracking-widest whitespace-nowrap rotate-90">MAR 2024 -
-                  JUN 2024</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Milestone 1 (Stop 5: JAN 2024 - PRESENT | Academic & Personal Projects) - Aligned Straight with Navbar Right -->
-          <div
+          <!-- Milestone 5 (Stop 5: SEP 2026 - PRESENT | PT Catur Sentosa Adiprana Tbk) - Aligned Straight with Navbar Right -->
+          <div data-exp-card data-exp-side="right"
             class="relative lg:absolute lg:top-[1740px] lg:right-0 lg:-translate-y-1/2 z-20 w-full max-w-lg mx-auto lg:max-w-none lg:w-[460px] px-1 sm:px-0">
             <div
-              class="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-200/80 flex gap-4 w-full relative hover:shadow-2xl transition-all">
+              class="bg-[#F8FDF5]/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border border-[#E8F5E2] flex gap-4 w-full relative hover:shadow-2xl transition-all">
               <!-- Pill (Facing Road) -->
               <div
-                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative shadow-inner">
-                <span class="text-slate-900 text-[10px] font-bold tracking-widest whitespace-nowrap -rotate-90">JAN 2024
-                  - PRESENT</span>
+                class="hidden sm:flex w-10 shrink-0 bg-[#CEF330] rounded-full flex-col items-center justify-center py-6 relative overflow-hidden shadow-inner">
+                <span class="text-slate-950 text-[10px] font-black tracking-widest whitespace-nowrap -rotate-90">SEP
+                  2026 - PRESENT</span>
               </div>
               <!-- Content -->
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-1">
                   <div
-                    class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#111] shrink-0 border border-slate-200">
-                    <span class="font-black text-sm">1</span>
+                    class="w-8 h-8 rounded-xl bg-slate-900 shadow-sm flex items-center justify-center text-[#CEF330] shrink-0 border border-slate-800">
+                    <span class="font-black text-sm">5</span>
                   </div>
-                  <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">Fullstack Developer</h3>
+                  <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">Project Digitalization</h3>
                 </div>
-                <p class="text-[11px] font-bold text-[#111] mb-3">Academic &amp; Personal Projects<span
-                    class="sm:hidden font-normal text-slate-400 block mt-1">| Jan 2024 - Present</span></p>
+                <p class="text-[11px] font-bold text-[#006BFF] mb-3">PT Catur Sentosa Adiprana Tbk<span
+                    class="sm:hidden font-normal text-slate-400 block mt-1">| Sep 2026 - Present</span></p>
                 <ul class="text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-2 list-disc pl-3">
-                  <li>Developed a diverse portfolio of full-stack ecosystems, including a GIS-based Billboard Booking
-                    App, an Automated Pharmacy Queuing System, and a Daily News CMS.</li>
-                  <li>Engineered complex database architectures utilizing MySQL, PostgreSQL, Oracle, and MongoDB to
-                    support varied business logic requirements.</li>
-                  <li>Built and consumed RESTful APIs to bridge server-side logic (Laravel, Java Spring Boot, Node.js)
-                    with responsive frontends.</li>
-                  <li>Implemented real-time data synchronization utilizing AJAX and hardware integration for IoT-based
-                    systems like the Automated School Bell.</li>
+                  <li>Architected and delivered &ldquo;SI-APIK&rdquo; (Sistem Informasi Administrasi Pengunduran Diri
+                    Karyawan), a centralized web-based employee offboarding and clearance management platform.</li>
+                  <li>Spearheaded the end-to-end UI/UX modernization of the internal corporate HR App Launcher
+                    dashboard, transforming legacy multi-level navigation into an intuitive, minimalist card-based
+                    portal.</li>
+                  <li>Implemented robust Single Sign-On (SSO) authentication workflows and role-based access control
+                    (RBAC) to securely unify disparate internal HR modules.</li>
+                  <li>Formulated enterprise-grade technical documentation including Sequence Diagrams, database schemas,
+                    and end-to-end security architectures to support seamless organizational scaling.</li>
                 </ul>
               </div>
             </div>
@@ -2646,9 +2688,17 @@
 
           <!-- Mobile Bottom Badge (On Top of Road) -->
           <div class="lg:hidden flex justify-center my-3 relative z-30">
-            <div
-              class="bg-[#CEF330] text-slate-900 font-black text-xs sm:text-sm tracking-[0.2em] px-7 py-2.5 sm:px-8 sm:py-3 rounded-full shadow-xl border-2 border-white uppercase whitespace-nowrap">
-              Start
+            <div data-exp-badge
+              class="bg-slate-900 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-xl border-2 border-white flex items-center gap-2.5 whitespace-nowrap">
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CEF330] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#CEF330]"></span>
+              </span>
+              <span class="text-[#CEF330] font-black text-xs uppercase tracking-wider">Present</span>
+              <span class="text-white/30 text-[10px]">|</span>
+              <span class="text-slate-100 font-bold text-[11px] notranslate" translate="no">PT Catur Sentosa Adiprana
+                Tbk</span>
             </div>
           </div>
 
@@ -8079,7 +8129,8 @@
           </h3>
         </div>
         <div class="flex items-center gap-2">
-          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf" id="modal-cv-download-top"
+          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf"
+            id="modal-cv-download-top"
             class="px-3.5 py-1.5 bg-[#253DE8] text-white hover:bg-[#1a2ec0] text-xs font-extrabold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
             <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -8112,524 +8163,606 @@
 
         <!-- English CV Content -->
         <div id="cv-content-en" class="space-y-8">
-<!-- Header Info -->
-        <div class="text-center border-b border-slate-200 pb-6 space-y-2">
-          <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
-          </h1>
-          <p class="text-base font-bold text-[#253DE8]">Fullstack Developer</p>
-          <p class="text-slate-600 text-xs sm:text-sm">
-            Dsn. Nogo, Ds. Nogojatisari, Kec. Sambeng, Kab. Lamongan, East Java
-          </p>
-          <div
-            class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 pt-1">
-            <span>📧 <a href="mailto:saptaadzanipurnama@gmail.com"
-                class="hover:text-[#253DE8] underline">saptaadzanipurnama@gmail.com</a></span>
-            <span>📞 0821-4332-3186</span>
-            <span>🌐 GitHub: <a href="https://github.com/sapta28" target="_blank"
-                class="text-[#253DE8] hover:underline">github.com/sapta28</a></span>
-            <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/saptaadzanipurnama" target="_blank"
-                class="text-[#253DE8] hover:underline">linkedin.com/in/saptaadzanipurnama</a></span>
-            <span>🚀 Portfolio: <a href="https://sapta28.github.io" target="_blank"
-                class="text-[#253DE8] hover:underline">sapta28.github.io</a></span>
-          </div>
-        </div>
-
-        <!-- 1. Professional Summary -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Professional Summary
-          </h2>
-          <p class="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-            Graduate from the D3 Informatics Engineering program at <span class="pens-institution-name notranslate"
-              translate="no">Electronic Engineering Polytechnic Institute of Surabaya (EEPIS)</span> with a GPA of 3.60
-            and a strong
-            interest in <strong>Mobile Application Development</strong> and <strong>Web Development</strong>.
-            Experienced in UI/UX Design (Figma) and mobile app development using <strong>Flutter &amp; Dart</strong>.
-            Also active as a Frontend and Backend Developer utilizing <strong>PHP, Laravel, JavaScript, Java, Python,
-              and MySQL</strong>. Beyond software development, I have a solid understanding of IT operational support,
-            including <strong>basic network management (TCP/IP, Routing &amp; Switching, Mikrotik/Cisco)</strong> and
-            <strong>troubleshooting</strong> skills to maintain system connectivity and stability. Proficient in
-            building dynamic, responsive, and user-friendly applications. Possess strong teamwork, critical thinking,
-            and effective problem-solving skills.
-          </p>
-        </section>
-
-        <!-- 2. Education -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Education
-          </h2>
-          <div class="space-y-2">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm pens-institution-name notranslate" translate="no">Electronic
-                  Engineering Polytechnic Institute of Surabaya (EEPIS)</h3>
-                <p class="text-slate-600 text-xs italic">D3 Informatics Engineering, PSDKU Lamongan</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2023 - 2026</span>
-            </div>
-
-            <div class="flex justify-between items-start pt-1">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">SMA Negeri 1 Ngimbang, Lamongan</h3>
-                <p class="text-slate-600 text-xs italic">Major: Mathematics and Natural Sciences (MIPA)</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2020 - 2023</span>
+          <!-- Header Info -->
+          <div class="text-center border-b border-slate-200 pb-6 space-y-2">
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
+            </h1>
+            <p class="text-base font-bold text-[#253DE8]">Fullstack Developer</p>
+            <p class="text-slate-600 text-xs sm:text-sm">
+              Dsn. Nogo, Ds. Nogojatisari, Kec. Sambeng, Kab. Lamongan, East Java
+            </p>
+            <div
+              class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 pt-1">
+              <span>📧 <a href="mailto:saptaadzanipurnama@gmail.com"
+                  class="hover:text-[#253DE8] underline">saptaadzanipurnama@gmail.com</a></span>
+              <span>📞 0821-4332-3186</span>
+              <span>🌐 GitHub: <a href="https://github.com/sapta28" target="_blank"
+                  class="text-[#253DE8] hover:underline">github.com/sapta28</a></span>
+              <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/saptaadzanipurnama" target="_blank"
+                  class="text-[#253DE8] hover:underline">linkedin.com/in/saptaadzanipurnama</a></span>
+              <span>🚀 Portfolio: <a href="https://sapta28.github.io" target="_blank"
+                  class="text-[#253DE8] hover:underline">sapta28.github.io</a></span>
             </div>
           </div>
-        </section>
 
-        <!-- 3. Experience -->
-        <section class="space-y-4">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Experience
-          </h2>
+          <!-- 1. Professional Summary -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Professional Summary
+            </h2>
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
+              Graduate from the D3 Informatics Engineering program at <span class="pens-institution-name notranslate"
+                translate="no">Electronic Engineering Polytechnic Institute of Surabaya (EEPIS)</span> with a GPA of
+              3.60
+              and a strong
+              interest in <strong>Mobile Application Development</strong> and <strong>Web Development</strong>.
+              Experienced in UI/UX Design (Figma) and mobile app development using <strong>Flutter &amp; Dart</strong>.
+              Also active as a Frontend and Backend Developer utilizing <strong>PHP, Laravel, JavaScript, Java, Python,
+                and MySQL</strong>. Beyond software development, I have a solid understanding of IT operational support,
+              including <strong>basic network management (TCP/IP, Routing &amp; Switching, Mikrotik/Cisco)</strong> and
+              <strong>troubleshooting</strong> skills to maintain system connectivity and stability. Proficient in
+              building dynamic, responsive, and user-friendly applications. Possess strong teamwork, critical thinking,
+              and effective problem-solving skills.
+            </p>
+          </section>
 
-          <!-- Job 1: PT Catur Sentosa Adiprana Tbk -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Project Digitalization</h3>
-                <p class="text-slate-700 text-xs font-semibold notranslate" translate="no">PT Catur Sentosa Adiprana Tbk</p>
+          <!-- 2. Education -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Education
+            </h2>
+            <div class="space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm pens-institution-name notranslate" translate="no">
+                    Electronic
+                    Engineering Polytechnic Institute of Surabaya (EEPIS)</h3>
+                  <p class="text-slate-600 text-xs italic">D3 Informatics Engineering, PSDKU Lamongan</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2023 - 2026</span>
               </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Sep 2026 – Present</span>
-            </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Architected and delivered <strong>SI-APIK</strong> (Sistem Informasi Administrasi Pengunduran Diri Karyawan), a centralized web-based employee offboarding and clearance management platform.</li>
-              <li>Spearheaded the end-to-end UI/UX modernization of the internal corporate HR App Launcher dashboard (<strong>PeopleHub</strong>), transforming legacy navigation into an intuitive card-based portal.</li>
-              <li>Implemented robust Single Sign-On (SSO) authentication workflows and role-based access control (RBAC) across 13 master roles and 3 territorial scopes (National, Regional, Branch).</li>
-              <li>Formulated enterprise-grade technical documentation including Sequence Diagrams, relational database schemas, and end-to-end security architectures to support seamless organizational scaling.</li>
-            </ul>
-          </div>
 
-          <!-- Job 2: PT. Pompa DEX Indoguna (Software Engineer) -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Software Engineer (R&amp;D Division)</h3>
-                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+              <div class="flex justify-between items-start pt-1">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">SMA Negeri 1 Ngimbang, Lamongan</h3>
+                  <p class="text-slate-600 text-xs italic">Major: Mathematics and Natural Sciences (MIPA)</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2020 - 2023</span>
               </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Jan 2026 – Jul 2026</span>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Developed and maintained <strong>Flood Viser</strong>, an internal mobile application used to remotely
-                control and monitor the company's water pump installations distributed across Indonesia.</li>
-              <li>Led the ongoing development and maintenance for the <strong>Sparkling Kids</strong> mobile application
-                and website, including the implementation of Live Attendance and AI Report Control Center features.</li>
-              <li>Developed an IoT-based fingerprint attendance kiosk integrated with full-stack web and mobile
-                applications.</li>
-              <li>Analyzed and optimized water pump energy consumption through integrated software solutions.</li>
-            </ul>
-          </div>
+          </section>
 
-          <!-- Job 3: PT. Pompa DEX Indoguna (R&D Intern) -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">R&amp;D Intern</h3>
-                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+          <!-- 3. Experience -->
+          <section class="space-y-4">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Experience
+            </h2>
+
+            <!-- Job 1: PT Catur Sentosa Adiprana Tbk -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Project Digitalization</h3>
+                  <p class="text-slate-700 text-xs font-semibold notranslate" translate="no">PT Catur Sentosa Adiprana
+                    Tbk</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Sep 2026 – Present</span>
               </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Jul 2025 – Jan 2026</span>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Architected and delivered <strong>SI-APIK</strong> (Sistem Informasi Administrasi Pengunduran Diri
+                  Karyawan), a centralized web-based employee offboarding and clearance management platform.</li>
+                <li>Spearheaded the end-to-end UI/UX modernization of the internal corporate HR App Launcher dashboard
+                  (<strong>PeopleHub</strong>), transforming legacy navigation into an intuitive card-based portal.</li>
+                <li>Implemented robust Single Sign-On (SSO) authentication workflows and role-based access control
+                  (RBAC) across 13 master roles and 3 territorial scopes (National, Regional, Branch).</li>
+                <li>Formulated enterprise-grade technical documentation including Sequence Diagrams, relational database
+                  schemas, and end-to-end security architectures to support seamless organizational scaling.</li>
+              </ul>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Initiated the early development of the <strong>Sparkling Kids</strong> platform from scratch,
-                including building business flows, mobile applications, websites, core logic, and database architecture.
+
+            <!-- Job 2: PT. Pompa DEX Indoguna (Software Engineer) -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Software Engineer (R&amp;D Division)</h3>
+                  <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Jan 2026 – Jul 2026</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Developed and maintained <strong>Flood Viser</strong>, an internal mobile application used to
+                  remotely
+                  control and monitor the company's water pump installations distributed across Indonesia.</li>
+                <li>Led the ongoing development and maintenance for the <strong>Sparkling Kids</strong> mobile
+                  application
+                  and website, including the implementation of Live Attendance and AI Report Control Center features.
+                </li>
+                <li>Developed an IoT-based fingerprint attendance kiosk integrated with full-stack web and mobile
+                  applications.</li>
+                <li>Analyzed and optimized water pump energy consumption through integrated software solutions.</li>
+              </ul>
+            </div>
+
+            <!-- Job 3: PT. Pompa DEX Indoguna (R&D Intern) -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">R&amp;D Intern</h3>
+                  <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Jul 2025 – Jan 2026</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Initiated the early development of the <strong>Sparkling Kids</strong> platform from scratch,
+                  including building business flows, mobile applications, websites, core logic, and database
+                  architecture.
+                </li>
+                <li>Restructured functional flows and redesigned the user interface on the <strong>Flood Viser</strong>
+                  web application to improve usability and system efficiency.</li>
+              </ul>
+            </div>
+
+            <!-- Job 4: Academic & Personal Projects -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Frontend &amp; Backend Developer</h3>
+                  <p class="text-slate-700 text-xs font-semibold">Academic &amp; Personal Projects</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2023 – Present</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Designed user interfaces using Figma and developed the HIPAM water bill payment mobile application
+                  using Flutter, Laravel, and Oracle.</li>
+                <li>Built an IoT-based automated school bell system controllable via a website, utilizing Arduino IDE,
+                  PHP, JavaScript, and MySQL.</li>
+                <li>Developed a Laravel-based daily news website with CRUD features and an admin dashboard integrated
+                  with
+                  MySQL.</li>
+                <li>Built a web-based clinic queuing system to expedite patient registration processes using PHP,
+                  JavaScript, and MySQL.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 4. Scientific Publications -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Scientific Publications
+            </h2>
+            <div class="space-y-1.5">
+              <h3 class="font-bold text-slate-900 text-sm">
+                Design and Implementation of an IoT-Based Biometric Attendance Kiosk: A Case Study of Sparkling Kids at
+                PT Pompa DEX Indoguna
+              </h3>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li><strong>Published in:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/11702552/proceeding"
+                    target="_blank" rel="noopener noreferrer" class="text-[#253DE8] font-semibold hover:underline">2026
+                    International Electronics Symposium (IES)</a></li>
+                <li><strong>Publisher:</strong> IEEE</li>
+                <li><strong>Date of Conference:</strong> 01&ndash;03 August 2026</li>
+                <li><strong>Conference Location:</strong> Yogyakarta, Indonesia</li>
+                <li><strong>Date Added to IEEE Xplore:</strong> 30 September 2026</li>
+                <li><strong>DOI:</strong> <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[#253DE8] hover:underline font-semibold font-mono">10.1109/IES71033.2026.11702662</a>
+                </li>
+                <li><strong>ISBN Information:</strong> Electronic: 979-8-3195-0556-9 | Print: 979-8-3195-0554-5 | USB:
+                  979-8-3195-0555-2 | PoD: 979-8-3195-0557-6</li>
+                <li><strong>ISSN Information:</strong> Electronic: 2994-368X | PoD: 2994-3698</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 5. Projects -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Projects
+            </h2>
+            <ul class="list-disc list-inside space-y-2.5 text-slate-700 text-xs">
+              <li>
+                <strong>SI-APIK (Employee Offboarding &amp; Clearance Portal)</strong> – <em>Enterprise HR Module, PT
+                  Catur Sentosa Adiprana Tbk</em><br>
+                <span class="pl-4 block">Architected a centralized web-based employee resignation and asset clearance
+                  management platform, integrating multi-tier approval workflows, role-based access control (RBAC), and
+                  exit interview analytics across nationwide branch offices.</span>
               </li>
-              <li>Restructured functional flows and redesigned the user interface on the <strong>Flood Viser</strong>
-                web application to improve usability and system efficiency.</li>
+              <li>
+                <strong>Flood Viser App &amp; Website</strong> – <em>Internal Project, PT. Pompa DEX Indoguna</em><br>
+                <span class="pl-4 block">An internal web and mobile platform built to remotely control and monitor the
+                  performance of company-owned water pumps installed across Indonesia. <strong>(Mobile App released on
+                    the
+                    App Store &amp; Play Store)</strong></span>
+              </li>
+              <li>
+                <strong>Sparkling Kids Mobile App &amp; Web</strong> – <em>Flutter, Laravel, PT. Pompa DEX
+                  Indoguna</em><br>
+                <span class="pl-4 block">An application for managing kids' class schedules and activities, featuring
+                  Live
+                  Attendance, Parallel Schedule Calendar, and an AI Report Control Center. <strong>(Mobile App released
+                    on
+                    the App Store &amp; Play Store)</strong></span>
+              </li>
+              <li>
+                <strong>HIPAM Water Bill Payment App</strong> – <em>Flutter, Laravel, Oracle</em><br>
+                <span class="pl-4 block">A mobile application to facilitate customers in paying water bills, featuring
+                  an
+                  interface designed in Figma and a Laravel backend connected to an Oracle database.</span>
+              </li>
+              <li>
+                <strong>GIS-Based Billboard Booking App</strong> – <em>Flutter, Next.js, Laravel (PHP),
+                  PostgreSQL</em><br>
+                <span class="pl-4 block">A mobile application for booking billboard advertising spaces integrated with a
+                  Geographic Information System (GIS), developed with Flutter for the mobile side, alongside Next.js and
+                  Laravel for backend and database management.</span>
+              </li>
+              <li>
+                <strong>College Major Finder Website</strong> – <em>Laravel, Oracle</em><br>
+                <span class="pl-4 block">An interactive platform for high school students to choose college majors,
+                  equipped with search features and campus mapping.</span>
+              </li>
+              <li>
+                <strong>Lamongan Culinary Website</strong> – <em>JavaScript, Java (Spring Boot), MongoDB</em><br>
+                <span class="pl-4 block">A local culinary recommendation site integrating a NoSQL database and Java
+                  Spring
+                  Boot for backend content management.</span>
+              </li>
+              <li>
+                <strong>Automated Pharmacy Queuing System Website</strong> – <em>HTML, CSS, JavaScript, PHP,
+                  MySQL</em><br>
+                <span class="pl-4 block">A web-based automated queuing system designed to accelerate patient
+                  registration
+                  and prescription waiting times at a pharmacy.</span>
+              </li>
             </ul>
-          </div>
+          </section>
 
-          <!-- Job 4: Academic & Personal Projects -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Frontend &amp; Backend Developer</h3>
-                <p class="text-slate-700 text-xs font-semibold">Academic &amp; Personal Projects</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2023 – Present</span>
+          <!-- 6. Technical Skills -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Technical Skills
+            </h2>
+            <div class="space-y-1.5 text-xs text-slate-800">
+              <p><strong>Web Development:</strong> HTML, CSS, JavaScript, PHP, Laravel, Next.js, Java Spring Boot,
+                Python,
+                Bootstrap</p>
+              <p><strong>Mobile Development:</strong> Flutter, Dart, Figma (UI/UX)</p>
+              <p><strong>State Management:</strong> GetX, Provider, BLoC</p>
+              <p><strong>Database:</strong> MySQL, PostgreSQL, Oracle, MongoDB, Supabase</p>
+              <p><strong>Network:</strong> Linux, DHCP, DNS, NAT, NTP, CISCO</p>
+              <p><strong>IoT:</strong> Arduino IDE, Sensor Integration, C++</p>
+              <p><strong>Version Control:</strong> Git, GitHub</p>
+              <p><strong>AI Agents &amp; Tools:</strong> Gemini, ChatGPT, Anthropic, Open Code, Claude Code, DeepSeek,
+                Blackbox, Grok</p>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Designed user interfaces using Figma and developed the HIPAM water bill payment mobile application
-                using Flutter, Laravel, and Oracle.</li>
-              <li>Built an IoT-based automated school bell system controllable via a website, utilizing Arduino IDE,
-                PHP, JavaScript, and MySQL.</li>
-              <li>Developed a Laravel-based daily news website with CRUD features and an admin dashboard integrated with
-                MySQL.</li>
-              <li>Built a web-based clinic queuing system to expedite patient registration processes using PHP,
-                JavaScript, and MySQL.</li>
+          </section>
+
+          <!-- 7. Soft Skills -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Soft Skills
+            </h2>
+            <p class="text-xs text-slate-800">
+              Teamwork, Communication, Leadership, Critical Thinking, Time Management
+            </p>
+          </section>
+
+          <!-- 8. Certifications & Training -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Certifications &amp; Training
+            </h2>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs">
+              <li>Certified General Security Associate (CGSA - CCTV), Hikvision Certification Program &ndash; Hikvision
+                Digital Technology (Nov 2026)</li>
+              <li>Webinar: Membangun Bisnis Digital Tanpa Menunggu Modal Besar, Department of Informatics and Computer
+                Engineering, PENS (Oct 2026)</li>
+              <li>Author, International Electronics Symposium (IES) 2026, PENS &amp; IEEE Indonesia Section (2026)</li>
+              <li>PENS English Proficiency Test (PEPT), Overall Score: 473, PENS Language and Culture Center (2026)</li>
+              <li>Final Project Award Certificate, 5 Solae Group (2026)</li>
+              <li>5 Solae Group Internship Batch 4 (2026)</li>
+              <li>5 Solae Group Internship Batch 3 (2025)</li>
+              <li>Digital Talent Scholarship (DTS) VSGA - Digital Communication, Kominfo (2025)</li>
+              <li>Frontend and Backend Developer Training (2024)</li>
+              <li>LKMM TD (2024)</li>
+              <li>OSJUR IT MMB PSDKU Lamongan (2024)</li>
+              <li>LKMM PRA-TD (2023)</li>
             </ul>
-          </div>
-        </section>
-
-        <!-- 4. Scientific Publications -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Scientific Publications
-          </h2>
-          <div class="space-y-1.5">
-            <h3 class="font-bold text-slate-900 text-sm">
-              Design and Implementation of an IoT-Based Biometric Attendance Kiosk: A Case Study of Sparkling Kids at PT Pompa DEX Indoguna
-            </h3>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li><strong>Published in:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/11702552/proceeding" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] font-semibold hover:underline">2026 International Electronics Symposium (IES)</a></li>
-              <li><strong>Publisher:</strong> IEEE</li>
-              <li><strong>Date of Conference:</strong> 01&ndash;03 August 2026</li>
-              <li><strong>Conference Location:</strong> Yogyakarta, Indonesia</li>
-              <li><strong>Date Added to IEEE Xplore:</strong> 30 September 2026</li>
-              <li><strong>DOI:</strong> <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] hover:underline font-semibold font-mono">10.1109/IES71033.2026.11702662</a></li>
-              <li><strong>ISBN Information:</strong> Electronic: 979-8-3195-0556-9 | Print: 979-8-3195-0554-5 | USB: 979-8-3195-0555-2 | PoD: 979-8-3195-0557-6</li>
-              <li><strong>ISSN Information:</strong> Electronic: 2994-368X | PoD: 2994-3698</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- 5. Projects -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Projects
-          </h2>
-          <ul class="list-disc list-inside space-y-2.5 text-slate-700 text-xs">
-            <li>
-              <strong>SI-APIK (Employee Offboarding &amp; Clearance Portal)</strong> – <em>Enterprise HR Module, PT Catur Sentosa Adiprana Tbk</em><br>
-              <span class="pl-4 block">Architected a centralized web-based employee resignation and asset clearance management platform, integrating multi-tier approval workflows, role-based access control (RBAC), and exit interview analytics across nationwide branch offices.</span>
-            </li>
-            <li>
-              <strong>Flood Viser App &amp; Website</strong> – <em>Internal Project, PT. Pompa DEX Indoguna</em><br>
-              <span class="pl-4 block">An internal web and mobile platform built to remotely control and monitor the
-                performance of company-owned water pumps installed across Indonesia. <strong>(Mobile App released on the
-                  App Store &amp; Play Store)</strong></span>
-            </li>
-            <li>
-              <strong>Sparkling Kids Mobile App &amp; Web</strong> – <em>Flutter, Laravel, PT. Pompa DEX
-                Indoguna</em><br>
-              <span class="pl-4 block">An application for managing kids' class schedules and activities, featuring Live
-                Attendance, Parallel Schedule Calendar, and an AI Report Control Center. <strong>(Mobile App released on
-                  the App Store &amp; Play Store)</strong></span>
-            </li>
-            <li>
-              <strong>HIPAM Water Bill Payment App</strong> – <em>Flutter, Laravel, Oracle</em><br>
-              <span class="pl-4 block">A mobile application to facilitate customers in paying water bills, featuring an
-                interface designed in Figma and a Laravel backend connected to an Oracle database.</span>
-            </li>
-            <li>
-              <strong>GIS-Based Billboard Booking App</strong> – <em>Flutter, Next.js, Laravel (PHP),
-                PostgreSQL</em><br>
-              <span class="pl-4 block">A mobile application for booking billboard advertising spaces integrated with a
-                Geographic Information System (GIS), developed with Flutter for the mobile side, alongside Next.js and
-                Laravel for backend and database management.</span>
-            </li>
-            <li>
-              <strong>College Major Finder Website</strong> – <em>Laravel, Oracle</em><br>
-              <span class="pl-4 block">An interactive platform for high school students to choose college majors,
-                equipped with search features and campus mapping.</span>
-            </li>
-            <li>
-              <strong>Lamongan Culinary Website</strong> – <em>JavaScript, Java (Spring Boot), MongoDB</em><br>
-              <span class="pl-4 block">A local culinary recommendation site integrating a NoSQL database and Java Spring
-                Boot for backend content management.</span>
-            </li>
-            <li>
-              <strong>Automated Pharmacy Queuing System Website</strong> – <em>HTML, CSS, JavaScript, PHP,
-                MySQL</em><br>
-              <span class="pl-4 block">A web-based automated queuing system designed to accelerate patient registration
-                and prescription waiting times at a pharmacy.</span>
-            </li>
-          </ul>
-        </section>
-
-        <!-- 6. Technical Skills -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Technical Skills
-          </h2>
-          <div class="space-y-1.5 text-xs text-slate-800">
-            <p><strong>Web Development:</strong> HTML, CSS, JavaScript, PHP, Laravel, Next.js, Java Spring Boot, Python,
-              Bootstrap</p>
-            <p><strong>Mobile Development:</strong> Flutter, Dart, Figma (UI/UX)</p>
-            <p><strong>State Management:</strong> GetX, Provider, BLoC</p>
-            <p><strong>Database:</strong> MySQL, PostgreSQL, Oracle, MongoDB, Supabase</p>
-            <p><strong>Network:</strong> Linux, DHCP, DNS, NAT, NTP, CISCO</p>
-            <p><strong>IoT:</strong> Arduino IDE, Sensor Integration, C++</p>
-            <p><strong>Version Control:</strong> Git, GitHub</p>
-            <p><strong>AI Agents &amp; Tools:</strong> Gemini, ChatGPT, Anthropic, Open Code, Claude Code, DeepSeek,
-              Blackbox, Grok</p>
-          </div>
-        </section>
-
-        <!-- 7. Soft Skills -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Soft Skills
-          </h2>
-          <p class="text-xs text-slate-800">
-            Teamwork, Communication, Leadership, Critical Thinking, Time Management
-          </p>
-        </section>
-
-        <!-- 8. Certifications & Training -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Certifications &amp; Training
-          </h2>
-          <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs">
-            <li>Certified General Security Associate (CGSA - CCTV), Hikvision Certification Program &ndash; Hikvision Digital Technology (Nov 2026)</li>
-            <li>Webinar: Membangun Bisnis Digital Tanpa Menunggu Modal Besar, Department of Informatics and Computer Engineering, PENS (Oct 2026)</li>
-            <li>Author, International Electronics Symposium (IES) 2026, PENS &amp; IEEE Indonesia Section (2026)</li>
-            <li>PENS English Proficiency Test (PEPT), Overall Score: 473, PENS Language and Culture Center (2026)</li>
-            <li>Final Project Award Certificate, 5 Solae Group (2026)</li>
-            <li>5 Solae Group Internship Batch 4 (2026)</li>
-            <li>5 Solae Group Internship Batch 3 (2025)</li>
-            <li>Digital Talent Scholarship (DTS) VSGA - Digital Communication, Kominfo (2025)</li>
-            <li>Frontend and Backend Developer Training (2024)</li>
-            <li>LKMM TD (2024)</li>
-            <li>OSJUR IT MMB PSDKU Lamongan (2024)</li>
-            <li>LKMM PRA-TD (2023)</li>
-          </ul>
-        </section>
+          </section>
         </div>
 
         <!-- Indonesian CV Content -->
         <div id="cv-content-id" class="space-y-8 hidden">
-        <!-- Header Info -->
-        <div class="text-center border-b border-slate-200 pb-6 space-y-2">
-          <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
-          </h1>
-          <p class="text-base font-bold text-[#253DE8]">Fullstack Developer</p>
-          <p class="text-slate-600 text-xs sm:text-sm">
-            Dsn. Nogo, Ds. Nogojatisari, Kec. Sambeng, Kab. Lamongan, Jawa Timur
-          </p>
-          <div
-            class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 pt-1">
-            <span>📧 <a href="mailto:saptaadzanipurnama@gmail.com"
-                class="hover:text-[#253DE8] underline">saptaadzanipurnama@gmail.com</a></span>
-            <span>📞 0821-4332-3186</span>
-            <span>🌐 GitHub: <a href="https://github.com/sapta28" target="_blank"
-                class="text-[#253DE8] hover:underline">github.com/sapta28</a></span>
-            <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/saptaadzanipurnama" target="_blank"
-                class="text-[#253DE8] hover:underline">linkedin.com/in/saptaadzanipurnama</a></span>
-            <span>🚀 Portofolio: <a href="https://sapta28.github.io" target="_blank"
-                class="text-[#253DE8] hover:underline">sapta28.github.io</a></span>
-          </div>
-        </div>
-
-        <!-- 1. Ringkasan Profesional -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Ringkasan Profesional
-          </h2>
-          <p class="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-            Lulusan D3 Teknik Informatika dari <strong>Politeknik Elektronika Negeri Surabaya (PENS)</strong> dengan IPK 3.60 yang memiliki minat mendalam dalam <strong>Pengembangan Aplikasi Mobile</strong> dan <strong>Pengembangan Web</strong>. Berpengalaman dalam Desain UI/UX (Figma) serta pengembangan aplikasi mobile menggunakan <strong>Flutter &amp; Dart</strong>. Aktif pula sebagai Frontend dan Backend Developer dengan keahlian <strong>PHP, Laravel, JavaScript, Java, Python, dan MySQL</strong>. Selain pengembangan perangkat lunak, saya memiliki pemahaman kuat dalam dukungan operasional IT, termasuk <strong>manajemen jaringan dasar (TCP/IP, Routing &amp; Switching, Mikrotik/Cisco)</strong> serta kemampuan <strong>troubleshooting</strong> untuk menjaga stabilitas dan konektivitas sistem. Terbiasa membangun aplikasi yang dinamis, responsif, dan ramah pengguna, didukung kerja sama tim yang solid, pemikiran kritis, serta pemecahan masalah yang efektif.
-          </p>
-        </section>
-
-        <!-- 2. Pendidikan -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Pendidikan
-          </h2>
-          <div class="space-y-2">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Politeknik Elektronika Negeri Surabaya (PENS)</h3>
-                <p class="text-slate-600 text-xs italic">D3 Teknik Informatika, PSDKU Lamongan &mdash; IPK: 3.60 / 4.00</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2023 - 2026</span>
-            </div>
-
-            <div class="flex justify-between items-start pt-1">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">SMA Negeri 1 Ngimbang, Lamongan</h3>
-                <p class="text-slate-600 text-xs italic">Jurusan: Matematika dan Ilmu Pengetahuan Alam (MIPA)</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2020 - 2023</span>
+          <!-- Header Info -->
+          <div class="text-center border-b border-slate-200 pb-6 space-y-2">
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight notranslate">Sapta Adzani Purnama
+            </h1>
+            <p class="text-base font-bold text-[#253DE8]">Fullstack Developer</p>
+            <p class="text-slate-600 text-xs sm:text-sm">
+              Dsn. Nogo, Ds. Nogojatisari, Kec. Sambeng, Kab. Lamongan, Jawa Timur
+            </p>
+            <div
+              class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-semibold text-slate-700 pt-1">
+              <span>📧 <a href="mailto:saptaadzanipurnama@gmail.com"
+                  class="hover:text-[#253DE8] underline">saptaadzanipurnama@gmail.com</a></span>
+              <span>📞 0821-4332-3186</span>
+              <span>🌐 GitHub: <a href="https://github.com/sapta28" target="_blank"
+                  class="text-[#253DE8] hover:underline">github.com/sapta28</a></span>
+              <span>💼 LinkedIn: <a href="https://www.linkedin.com/in/saptaadzanipurnama" target="_blank"
+                  class="text-[#253DE8] hover:underline">linkedin.com/in/saptaadzanipurnama</a></span>
+              <span>🚀 Portofolio: <a href="https://sapta28.github.io" target="_blank"
+                  class="text-[#253DE8] hover:underline">sapta28.github.io</a></span>
             </div>
           </div>
-        </section>
 
-        <!-- 3. Pengalaman Kerja -->
-        <section class="space-y-4">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Pengalaman Kerja
-          </h2>
+          <!-- 1. Ringkasan Profesional -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Ringkasan Profesional
+            </h2>
+            <p class="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
+              Lulusan D3 Teknik Informatika dari <strong>Politeknik Elektronika Negeri Surabaya (PENS)</strong> dengan
+              IPK 3.60 yang memiliki minat mendalam dalam <strong>Pengembangan Aplikasi Mobile</strong> dan
+              <strong>Pengembangan Web</strong>. Berpengalaman dalam Desain UI/UX (Figma) serta pengembangan aplikasi
+              mobile menggunakan <strong>Flutter &amp; Dart</strong>. Aktif pula sebagai Frontend dan Backend Developer
+              dengan keahlian <strong>PHP, Laravel, JavaScript, Java, Python, dan MySQL</strong>. Selain pengembangan
+              perangkat lunak, saya memiliki pemahaman kuat dalam dukungan operasional IT, termasuk <strong>manajemen
+                jaringan dasar (TCP/IP, Routing &amp; Switching, Mikrotik/Cisco)</strong> serta kemampuan
+              <strong>troubleshooting</strong> untuk menjaga stabilitas dan konektivitas sistem. Terbiasa membangun
+              aplikasi yang dinamis, responsif, dan ramah pengguna, didukung kerja sama tim yang solid, pemikiran
+              kritis, serta pemecahan masalah yang efektif.
+            </p>
+          </section>
 
-          <!-- Job 1: PT Catur Sentosa Adiprana Tbk -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Project Digitalization</h3>
-                <p class="text-slate-700 text-xs font-semibold notranslate" translate="no">PT Catur Sentosa Adiprana Tbk</p>
+          <!-- 2. Pendidikan -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Pendidikan
+            </h2>
+            <div class="space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Politeknik Elektronika Negeri Surabaya (PENS)</h3>
+                  <p class="text-slate-600 text-xs italic">D3 Teknik Informatika, PSDKU Lamongan &mdash; IPK: 3.60 /
+                    4.00</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2023 - 2026</span>
               </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Sep 2026 – Sekarang</span>
+
+              <div class="flex justify-between items-start pt-1">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">SMA Negeri 1 Ngimbang, Lamongan</h3>
+                  <p class="text-slate-600 text-xs italic">Jurusan: Matematika dan Ilmu Pengetahuan Alam (MIPA)</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2020 - 2023</span>
+              </div>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Merancang dan meluncurkan <strong>SI-APIK</strong> (Sistem Informasi Administrasi Pengunduran Diri Karyawan), platform web terpusat untuk manajemen offboarding dan clearance karyawan perusahaan.</li>
-              <li>Memimpin modernisasi UI/UX dashboard peluncur aplikasi HR internal perusahaan (<strong>PeopleHub</strong>) dari navigasi legacy menjadi portal berbasis kartu yang intuitif.</li>
-              <li>Mengimplementasikan alur otentikasi Single Sign-On (SSO) dan kontrol akses berbasis peran (RBAC) pada 13 master role dan 3 lingkup teritorial (Nasional, Regional, Cabang).</li>
-              <li>Menyusun dokumentasi teknis standar enterprise mencakup Sequence Diagram, skema basis data relasional, dan arsitektur keamanan menyeluruh guna mendukung skalabilitas organisasi.</li>
+          </section>
+
+          <!-- 3. Pengalaman Kerja -->
+          <section class="space-y-4">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Pengalaman Kerja
+            </h2>
+
+            <!-- Job 1: PT Catur Sentosa Adiprana Tbk -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Project Digitalization</h3>
+                  <p class="text-slate-700 text-xs font-semibold notranslate" translate="no">PT Catur Sentosa Adiprana
+                    Tbk</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Sep 2026 – Sekarang</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Merancang dan meluncurkan <strong>SI-APIK</strong> (Sistem Informasi Administrasi Pengunduran Diri
+                  Karyawan), platform web terpusat untuk manajemen offboarding dan clearance karyawan perusahaan.</li>
+                <li>Memimpin modernisasi UI/UX dashboard peluncur aplikasi HR internal perusahaan
+                  (<strong>PeopleHub</strong>) dari navigasi legacy menjadi portal berbasis kartu yang intuitif.</li>
+                <li>Mengimplementasikan alur otentikasi Single Sign-On (SSO) dan kontrol akses berbasis peran (RBAC)
+                  pada 13 master role dan 3 lingkup teritorial (Nasional, Regional, Cabang).</li>
+                <li>Menyusun dokumentasi teknis standar enterprise mencakup Sequence Diagram, skema basis data
+                  relasional, dan arsitektur keamanan menyeluruh guna mendukung skalabilitas organisasi.</li>
+              </ul>
+            </div>
+
+            <!-- Job 2: PT. Pompa DEX Indoguna (Software Engineer) -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Software Engineer (Divisi R&amp;D)</h3>
+                  <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Jan 2026 – Jul 2026</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Mengembangkan dan memelihara <strong>Flood Viser</strong>, aplikasi mobile internal untuk mengontrol
+                  dan memonitor instalasi pompa air milik perusahaan di seluruh Indonesia secara jarak jauh.</li>
+                <li>Memimpin pengembangan berkelanjutan dan pemeliharaan aplikasi mobile dan website <strong>Sparkling
+                    Kids</strong>, termasuk integrasi fitur Live Attendance dan AI Report Control Center.</li>
+                <li>Mengembangkan kios absensi biometrik sidik jari berbasis IoT yang terintegrasi penuh dengan aplikasi
+                  web dan mobile.</li>
+                <li>Menganalisis dan mengoptimalkan efisiensi konsumsi energi pompa air melalui solusi perangkat lunak
+                  terintegrasi.</li>
+              </ul>
+            </div>
+
+            <!-- Job 3: PT. Pompa DEX Indoguna (R&D Intern) -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">R&amp;D Intern</h3>
+                  <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">Jul 2025 – Jan 2026</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Menginisiasi tahap awal pengembangan platform <strong>Sparkling Kids</strong> dari nol, meliputi
+                  perancangan alur bisnis, aplikasi mobile, website, logika inti, dan arsitektur database.</li>
+                <li>Memperbarui alur fungsional dan mendesain ulang antarmuka pengguna pada aplikasi web <strong>Flood
+                    Viser</strong> untuk meningkatkan kenyamanan pengguna dan efisiensi sistem.</li>
+              </ul>
+            </div>
+
+            <!-- Job 4: Academic & Personal Projects -->
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Frontend &amp; Backend Developer</h3>
+                  <p class="text-slate-700 text-xs font-semibold">Proyek Akademik &amp; Mandiri</p>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 italic">2023 – Sekarang</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li>Mendesain antarmuka menggunakan Figma dan mengembangkan aplikasi mobile pembayaran tagihan air HIPAM
+                  menggunakan Flutter, Laravel, dan Oracle.</li>
+                <li>Membangun sistem bel sekolah otomatis berbasis IoT yang dapat dikontrol melalui website dengan
+                  Arduino IDE, PHP, JavaScript, dan MySQL.</li>
+                <li>Mengembangkan website portal berita harian berbasis Laravel dengan fitur CRUD dan dashboard admin
+                  terintegrasi MySQL.</li>
+                <li>Membangun sistem antrean klinik berbasis web untuk mempercepat proses registrasi dan administrasi
+                  pasien menggunakan PHP, JavaScript, dan MySQL.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 4. Publikasi Ilmiah -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Publikasi Ilmiah
+            </h2>
+            <div class="space-y-1.5">
+              <h3 class="font-bold text-slate-900 text-sm">
+                Design and Implementation of an IoT-Based Biometric Attendance Kiosk: A Case Study of Sparkling Kids at
+                PT Pompa DEX Indoguna
+              </h3>
+              <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
+                <li><strong>Dipublikasikan di:</strong> <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/11702552/proceeding" target="_blank"
+                    rel="noopener noreferrer" class="text-[#253DE8] font-semibold hover:underline">2026 International
+                    Electronics Symposium (IES)</a></li>
+                <li><strong>Penerbit:</strong> IEEE</li>
+                <li><strong>Tanggal Konferensi:</strong> 01&ndash;03 Agustus 2026</li>
+                <li><strong>Lokasi Konferensi:</strong> Yogyakarta, Indonesia</li>
+                <li><strong>Ditambahkan ke IEEE Xplore:</strong> 30 September 2026</li>
+                <li><strong>DOI:</strong> <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[#253DE8] hover:underline font-semibold font-mono">10.1109/IES71033.2026.11702662</a>
+                </li>
+                <li><strong>Informasi ISBN:</strong> Electronic: 979-8-3195-0556-9 | Print: 979-8-3195-0554-5 | USB:
+                  979-8-3195-0555-2 | PoD: 979-8-3195-0557-6</li>
+                <li><strong>Informasi ISSN:</strong> Electronic: 2994-368X | PoD: 2994-3698</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 5. Proyek Portofolio -->
+          <section class="space-y-3">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Proyek Pilihan
+            </h2>
+            <ul class="list-disc list-inside space-y-2.5 text-slate-700 text-xs">
+              <li>
+                <strong>SI-APIK (Portal Offboarding &amp; Clearance Karyawan)</strong> – <em>Modul HR Enterprise, PT
+                  Catur Sentosa Adiprana Tbk</em><br>
+                <span class="pl-4 block">Merancang platform web terpusat untuk pengajuan pengunduran diri dan serah
+                  terima aset karyawan, mengintegrasikan alur persetujuan bertingkat, kontrol akses berbasis peran
+                  (RBAC), dan analitik exit interview untuk jaringan kantor cabang nasional.</span>
+              </li>
+              <li>
+                <strong>Flood Viser App &amp; Website</strong> – <em>Proyek Internal, PT. Pompa DEX Indoguna</em><br>
+                <span class="pl-4 block">Platform web dan mobile internal untuk memonitor serta mengontrol performa
+                  instalasi pompa air industri di seluruh Indonesia secara real-time. <strong>(Aplikasi mobile dirilis
+                    resmi di App Store &amp; Play Store)</strong></span>
+              </li>
+              <li>
+                <strong>Sparkling Kids Mobile App &amp; Web</strong> – <em>Flutter, Laravel, PT. Pompa DEX
+                  Indoguna</em><br>
+                <span class="pl-4 block">Aplikasi terpadu manajemen jadwal dan aktivitas kelas anak, dilengkapi fitur
+                  Live Attendance, Kalender Jadwal Paralel, serta AI Report Control Center. <strong>(Aplikasi mobile
+                    dirilis resmi di App Store &amp; Play Store)</strong></span>
+              </li>
+              <li>
+                <strong>Aplikasi Pembayaran Tagihan Air HIPAM</strong> – <em>Flutter, Laravel, Oracle</em><br>
+                <span class="pl-4 block">Aplikasi mobile untuk mempermudah pelanggan dalam membayar tagihan air secara
+                  online, menampilkan antarmuka modern hasil rancangan Figma dan backend Laravel terhubung basis data
+                  Oracle.</span>
+              </li>
+              <li>
+                <strong>Aplikasi Pemesanan Reklame Berbasis GIS</strong> – <em>Flutter, Next.js, Laravel (PHP),
+                  PostgreSQL</em><br>
+                <span class="pl-4 block">Aplikasi mobile pemesanan ruang iklan reklame terintegrasi Geographic
+                  Information System (GIS), dibangun dengan Flutter pada sisi mobile, serta Next.js dan Laravel untuk
+                  manajemen backend dan database.</span>
+              </li>
+              <li>
+                <strong>Website Rekomendasi Jurusan Kuliah</strong> – <em>Laravel, Oracle</em><br>
+                <span class="pl-4 block">Platform interaktif bagi siswa SMA untuk memilih program studi perguruan tinggi
+                  yang sesuai, dilengkapi fitur pencarian pintar dan pemetaan profil kampus.</span>
+              </li>
+              <li>
+                <strong>Website Kuliner Khas Lamongan</strong> – <em>JavaScript, Java (Spring Boot), MongoDB</em><br>
+                <span class="pl-4 block">Website direktori dan rekomendasi kuliner lokal Lamongan dengan integrasi basis
+                  data NoSQL MongoDB dan backend Java Spring Boot.</span>
+              </li>
+              <li>
+                <strong>Website Sistem Antrean Apotek Otomatis</strong> – <em>HTML, CSS, JavaScript, PHP, MySQL</em><br>
+                <span class="pl-4 block">Sistem antrean apotek otomatis berbasis web yang dirancang untuk mempercepat
+                  registrasi pasien dan efisiensi waktu pengambilan obat resep.</span>
+              </li>
             </ul>
-          </div>
+          </section>
 
-          <!-- Job 2: PT. Pompa DEX Indoguna (Software Engineer) -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Software Engineer (Divisi R&amp;D)</h3>
-                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Jan 2026 – Jul 2026</span>
+          <!-- 6. Keterampilan Teknis -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Keterampilan Teknis
+            </h2>
+            <div class="space-y-1.5 text-xs text-slate-800">
+              <p><strong>Pengembangan Web:</strong> HTML, CSS, JavaScript, PHP, Laravel, Next.js, Java Spring Boot,
+                Python, Bootstrap</p>
+              <p><strong>Pengembangan Mobile:</strong> Flutter, Dart, Figma (UI/UX)</p>
+              <p><strong>Manajemen State:</strong> GetX, Provider, BLoC</p>
+              <p><strong>Basis Data:</strong> MySQL, PostgreSQL, Oracle, MongoDB, Supabase</p>
+              <p><strong>Jaringan &amp; Sistem:</strong> Linux, DHCP, DNS, NAT, NTP, CISCO</p>
+              <p><strong>IoT &amp; Embedded:</strong> Arduino IDE, Sensor Integration, C++</p>
+              <p><strong>Kontrol Versi:</strong> Git, GitHub</p>
+              <p><strong>AI Agents &amp; Tools:</strong> Gemini, ChatGPT, Anthropic, Open Code, Claude Code, DeepSeek,
+                Blackbox, Grok</p>
             </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Mengembangkan dan memelihara <strong>Flood Viser</strong>, aplikasi mobile internal untuk mengontrol dan memonitor instalasi pompa air milik perusahaan di seluruh Indonesia secara jarak jauh.</li>
-              <li>Memimpin pengembangan berkelanjutan dan pemeliharaan aplikasi mobile dan website <strong>Sparkling Kids</strong>, termasuk integrasi fitur Live Attendance dan AI Report Control Center.</li>
-              <li>Mengembangkan kios absensi biometrik sidik jari berbasis IoT yang terintegrasi penuh dengan aplikasi web dan mobile.</li>
-              <li>Menganalisis dan mengoptimalkan efisiensi konsumsi energi pompa air melalui solusi perangkat lunak terintegrasi.</li>
+          </section>
+
+          <!-- 7. Keterampilan Interpersonal -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Keterampilan Interpersonal
+            </h2>
+            <p class="text-xs text-slate-800">
+              Kerja Sama Tim, Komunikasi, Kepemimpinan, Pemikiran Kritis, Manajemen Waktu
+            </p>
+          </section>
+
+          <!-- 8. Sertifikasi & Pelatihan -->
+          <section class="space-y-2">
+            <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
+              Sertifikasi &amp; Pelatihan
+            </h2>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs">
+              <li>Certified General Security Associate (CGSA - CCTV), Hikvision Digital Technology (Nov 2026)</li>
+              <li>Webinar: Membangun Bisnis Digital Tanpa Menunggu Modal Besar, PENS (Okt 2026)</li>
+              <li>Author, International Electronics Symposium (IES) 2026, PENS &amp; IEEE Indonesia Section (2026)</li>
+              <li>PENS English Proficiency Test (PEPT), Skor Keseluruhan: 473, Pusat Bahasa dan Budaya PENS (2026)</li>
+              <li>Sertifikat Penghargaan Tugas Akhir, 5 Solae Group (2026)</li>
+              <li>Magang 5 Solae Group Batch 4 (2026)</li>
+              <li>Magang 5 Solae Group Batch 3 (2025)</li>
+              <li>Digital Talent Scholarship (DTS) VSGA - Komunikasi Digital, Kominfo (2025)</li>
+              <li>Pelatihan Frontend dan Backend Developer (2024)</li>
+              <li>LKMM TD (2024)</li>
+              <li>OSJUR IT MMB PSDKU Lamongan (2024)</li>
+              <li>LKMM PRA-TD (2023)</li>
             </ul>
-          </div>
-
-          <!-- Job 3: PT. Pompa DEX Indoguna (R&D Intern) -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">R&amp;D Intern</h3>
-                <p class="text-slate-700 text-xs font-semibold">PT. Pompa DEX Indoguna</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">Jul 2025 – Jan 2026</span>
-            </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Menginisiasi tahap awal pengembangan platform <strong>Sparkling Kids</strong> dari nol, meliputi perancangan alur bisnis, aplikasi mobile, website, logika inti, dan arsitektur database.</li>
-              <li>Memperbarui alur fungsional dan mendesain ulang antarmuka pengguna pada aplikasi web <strong>Flood Viser</strong> untuk meningkatkan kenyamanan pengguna dan efisiensi sistem.</li>
-            </ul>
-          </div>
-
-          <!-- Job 4: Academic & Personal Projects -->
-          <div class="space-y-1.5 pt-1">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="font-bold text-slate-900 text-sm">Frontend &amp; Backend Developer</h3>
-                <p class="text-slate-700 text-xs font-semibold">Proyek Akademik &amp; Mandiri</p>
-              </div>
-              <span class="text-xs font-semibold text-slate-500 italic">2023 – Sekarang</span>
-            </div>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li>Mendesain antarmuka menggunakan Figma dan mengembangkan aplikasi mobile pembayaran tagihan air HIPAM menggunakan Flutter, Laravel, dan Oracle.</li>
-              <li>Membangun sistem bel sekolah otomatis berbasis IoT yang dapat dikontrol melalui website dengan Arduino IDE, PHP, JavaScript, dan MySQL.</li>
-              <li>Mengembangkan website portal berita harian berbasis Laravel dengan fitur CRUD dan dashboard admin terintegrasi MySQL.</li>
-              <li>Membangun sistem antrean klinik berbasis web untuk mempercepat proses registrasi dan administrasi pasien menggunakan PHP, JavaScript, dan MySQL.</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- 4. Publikasi Ilmiah -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Publikasi Ilmiah
-          </h2>
-          <div class="space-y-1.5">
-            <h3 class="font-bold text-slate-900 text-sm">
-              Design and Implementation of an IoT-Based Biometric Attendance Kiosk: A Case Study of Sparkling Kids at PT Pompa DEX Indoguna
-            </h3>
-            <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs pl-1">
-              <li><strong>Dipublikasikan di:</strong> <a href="https://ieeexplore.ieee.org/xpl/conhome/11702552/proceeding" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] font-semibold hover:underline">2026 International Electronics Symposium (IES)</a></li>
-              <li><strong>Penerbit:</strong> IEEE</li>
-              <li><strong>Tanggal Konferensi:</strong> 01&ndash;03 Agustus 2026</li>
-              <li><strong>Lokasi Konferensi:</strong> Yogyakarta, Indonesia</li>
-              <li><strong>Ditambahkan ke IEEE Xplore:</strong> 30 September 2026</li>
-              <li><strong>DOI:</strong> <a href="https://doi.org/10.1109/IES71033.2026.11702662" target="_blank" rel="noopener noreferrer" class="text-[#253DE8] hover:underline font-semibold font-mono">10.1109/IES71033.2026.11702662</a></li>
-              <li><strong>Informasi ISBN:</strong> Electronic: 979-8-3195-0556-9 | Print: 979-8-3195-0554-5 | USB: 979-8-3195-0555-2 | PoD: 979-8-3195-0557-6</li>
-              <li><strong>Informasi ISSN:</strong> Electronic: 2994-368X | PoD: 2994-3698</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- 5. Proyek Portofolio -->
-        <section class="space-y-3">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Proyek Pilihan
-          </h2>
-          <ul class="list-disc list-inside space-y-2.5 text-slate-700 text-xs">
-            <li>
-              <strong>SI-APIK (Portal Offboarding &amp; Clearance Karyawan)</strong> – <em>Modul HR Enterprise, PT Catur Sentosa Adiprana Tbk</em><br>
-              <span class="pl-4 block">Merancang platform web terpusat untuk pengajuan pengunduran diri dan serah terima aset karyawan, mengintegrasikan alur persetujuan bertingkat, kontrol akses berbasis peran (RBAC), dan analitik exit interview untuk jaringan kantor cabang nasional.</span>
-            </li>
-            <li>
-              <strong>Flood Viser App &amp; Website</strong> – <em>Proyek Internal, PT. Pompa DEX Indoguna</em><br>
-              <span class="pl-4 block">Platform web dan mobile internal untuk memonitor serta mengontrol performa instalasi pompa air industri di seluruh Indonesia secara real-time. <strong>(Aplikasi mobile dirilis resmi di App Store &amp; Play Store)</strong></span>
-            </li>
-            <li>
-              <strong>Sparkling Kids Mobile App &amp; Web</strong> – <em>Flutter, Laravel, PT. Pompa DEX Indoguna</em><br>
-              <span class="pl-4 block">Aplikasi terpadu manajemen jadwal dan aktivitas kelas anak, dilengkapi fitur Live Attendance, Kalender Jadwal Paralel, serta AI Report Control Center. <strong>(Aplikasi mobile dirilis resmi di App Store &amp; Play Store)</strong></span>
-            </li>
-            <li>
-              <strong>Aplikasi Pembayaran Tagihan Air HIPAM</strong> – <em>Flutter, Laravel, Oracle</em><br>
-              <span class="pl-4 block">Aplikasi mobile untuk mempermudah pelanggan dalam membayar tagihan air secara online, menampilkan antarmuka modern hasil rancangan Figma dan backend Laravel terhubung basis data Oracle.</span>
-            </li>
-            <li>
-              <strong>Aplikasi Pemesanan Reklame Berbasis GIS</strong> – <em>Flutter, Next.js, Laravel (PHP), PostgreSQL</em><br>
-              <span class="pl-4 block">Aplikasi mobile pemesanan ruang iklan reklame terintegrasi Geographic Information System (GIS), dibangun dengan Flutter pada sisi mobile, serta Next.js dan Laravel untuk manajemen backend dan database.</span>
-            </li>
-            <li>
-              <strong>Website Rekomendasi Jurusan Kuliah</strong> – <em>Laravel, Oracle</em><br>
-              <span class="pl-4 block">Platform interaktif bagi siswa SMA untuk memilih program studi perguruan tinggi yang sesuai, dilengkapi fitur pencarian pintar dan pemetaan profil kampus.</span>
-            </li>
-            <li>
-              <strong>Website Kuliner Khas Lamongan</strong> – <em>JavaScript, Java (Spring Boot), MongoDB</em><br>
-              <span class="pl-4 block">Website direktori dan rekomendasi kuliner lokal Lamongan dengan integrasi basis data NoSQL MongoDB dan backend Java Spring Boot.</span>
-            </li>
-            <li>
-              <strong>Website Sistem Antrean Apotek Otomatis</strong> – <em>HTML, CSS, JavaScript, PHP, MySQL</em><br>
-              <span class="pl-4 block">Sistem antrean apotek otomatis berbasis web yang dirancang untuk mempercepat registrasi pasien dan efisiensi waktu pengambilan obat resep.</span>
-            </li>
-          </ul>
-        </section>
-
-        <!-- 6. Keterampilan Teknis -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Keterampilan Teknis
-          </h2>
-          <div class="space-y-1.5 text-xs text-slate-800">
-            <p><strong>Pengembangan Web:</strong> HTML, CSS, JavaScript, PHP, Laravel, Next.js, Java Spring Boot, Python, Bootstrap</p>
-            <p><strong>Pengembangan Mobile:</strong> Flutter, Dart, Figma (UI/UX)</p>
-            <p><strong>Manajemen State:</strong> GetX, Provider, BLoC</p>
-            <p><strong>Basis Data:</strong> MySQL, PostgreSQL, Oracle, MongoDB, Supabase</p>
-            <p><strong>Jaringan &amp; Sistem:</strong> Linux, DHCP, DNS, NAT, NTP, CISCO</p>
-            <p><strong>IoT &amp; Embedded:</strong> Arduino IDE, Sensor Integration, C++</p>
-            <p><strong>Kontrol Versi:</strong> Git, GitHub</p>
-            <p><strong>AI Agents &amp; Tools:</strong> Gemini, ChatGPT, Anthropic, Open Code, Claude Code, DeepSeek, Blackbox, Grok</p>
-          </div>
-        </section>
-
-        <!-- 7. Keterampilan Interpersonal -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Keterampilan Interpersonal
-          </h2>
-          <p class="text-xs text-slate-800">
-            Kerja Sama Tim, Komunikasi, Kepemimpinan, Pemikiran Kritis, Manajemen Waktu
-          </p>
-        </section>
-
-        <!-- 8. Sertifikasi & Pelatihan -->
-        <section class="space-y-2">
-          <h2 class="text-base font-bold text-[#253DE8] border-b border-[#253DE8]/30 pb-1 uppercase tracking-wide">
-            Sertifikasi &amp; Pelatihan
-          </h2>
-          <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs">
-            <li>Certified General Security Associate (CGSA - CCTV), Hikvision Digital Technology (Nov 2026)</li>
-            <li>Webinar: Membangun Bisnis Digital Tanpa Menunggu Modal Besar, PENS (Okt 2026)</li>
-            <li>Author, International Electronics Symposium (IES) 2026, PENS &amp; IEEE Indonesia Section (2026)</li>
-            <li>PENS English Proficiency Test (PEPT), Skor Keseluruhan: 473, Pusat Bahasa dan Budaya PENS (2026)</li>
-            <li>Sertifikat Penghargaan Tugas Akhir, 5 Solae Group (2026)</li>
-            <li>Magang 5 Solae Group Batch 4 (2026)</li>
-            <li>Magang 5 Solae Group Batch 3 (2025)</li>
-            <li>Digital Talent Scholarship (DTS) VSGA - Komunikasi Digital, Kominfo (2025)</li>
-            <li>Pelatihan Frontend dan Backend Developer (2024)</li>
-            <li>LKMM TD (2024)</li>
-            <li>OSJUR IT MMB PSDKU Lamongan (2024)</li>
-            <li>LKMM PRA-TD (2023)</li>
-          </ul>
-        </section>
+          </section>
         </div>
 
       </div>
@@ -8639,7 +8772,8 @@
         class="px-6 py-4 bg-slate-50 border-t border-slate-200 rounded-b-3xl flex flex-col sm:flex-row items-center justify-between gap-3">
         <p class="text-[11px] text-slate-500 notranslate">Sapta Adzani Purnama — Curriculum Vitae (CV)</p>
         <div class="flex items-center gap-3">
-          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf" id="modal-cv-download-bottom"
+          <a href="assets/CV_Sapta_Adzani_Purnama.pdf?v=14" download="CV_Sapta_Adzani_Purnama.pdf"
+            id="modal-cv-download-bottom"
             class="px-4 py-2 bg-[#253DE8] hover:bg-[#1a2ec0] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
             <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -8823,6 +8957,67 @@
   <script defer type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+
+
+  <script>
+    // Career roadmap: reveal road + stops progressively from Start down to Present while scrolling
+    (function () {
+      const view = document.getElementById('view-experience');
+      const wrap = view && view.querySelector('[data-exp-roadmap]');
+      if (!wrap) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const roadD = wrap.querySelector('[data-exp-road-desktop]');
+      const roadM = wrap.querySelector('[data-exp-road-mobile]');
+      const items = Array.from(wrap.querySelectorAll('[data-exp-card], [data-exp-badge], .exp-stop'));
+      let ticking = false;
+
+      function centerY(el, wr) {
+        if (el.classList.contains('exp-stop')) {
+          return parseFloat(el.getAttribute('data-exp-y')) / 2020 * wr.height;
+        }
+        const r = el.getBoundingClientRect();
+        return r.top + r.height / 2 - wr.top;
+      }
+      function clip(el, p, h) {
+        if (!el) return;
+        el.style.clipPath = p >= 1 ? 'none' : 'inset(-60px -60px ' + (p <= 0 ? '100%' : 'calc(' + ((1 - p) * 100) + '% - 36px)') + ' -60px)';
+      }
+      function update() {
+        ticking = false;
+        if (!view.classList.contains('active-view')) return;
+        const wr = wrap.getBoundingClientRect();
+        const front = reduce ? Infinity : window.innerHeight * 0.85 - wr.top;
+        const p = reduce ? 1 : Math.min(1, Math.max(0, front / wr.height));
+        clip(roadD, p); clip(roadM, p);
+        let n = 0;
+        items.forEach(function (el) {
+          if (el.classList.contains('exp-in')) return;
+          if (centerY(el, wr) <= front - 24) {
+            const target = el.hasAttribute('data-exp-card') ? el.firstElementChild : el;
+            if (target && target !== el) target.style.transitionDelay = (n * 90) + 'ms';
+            el.style.transitionDelay = (n * 90) + 'ms';
+            el.classList.add('exp-in');
+            n++;
+          }
+        });
+      }
+      function request() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      function reset() {
+        items.forEach(function (el) { el.classList.remove('exp-in'); el.style.transitionDelay = ''; });
+        clip(roadD, 0); clip(roadM, 0);
+      }
+
+      wrap.classList.add('exp-anim');
+      reset();
+      window.addEventListener('scroll', request, { passive: true });
+      window.addEventListener('resize', request);
+      new MutationObserver(function () {
+        if (view.classList.contains('active-view')) { reset(); setTimeout(request, 120); }
+        else reset();
+      }).observe(view, { attributes: true, attributeFilter: ['class'] });
+      if (view.classList.contains('active-view')) setTimeout(request, 120);
+    })();
+  </script>
 
   <script>
     // Certificate Modal Data & Logic
