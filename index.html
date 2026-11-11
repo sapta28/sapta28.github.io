@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
   <!-- Preload Critical Above-The-Fold Hero Image -->
-  <link rel="preload" as="image" href="assets/profile_sapta_crossed_arms.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/profile_sapta_crossed_arms.png?v=4" type="image/png" fetchpriority="high">
 
   <!-- Fonts -->
   <link
@@ -187,23 +187,20 @@
       }
     }
 
-    /* Floating Bubble Animations for Tech Icons */
+    /* Floating Bubble Animations for Tech Icons (100% GPU Composited) */
     @keyframes bubble-float-1 {
 
       0%,
       100% {
-        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
-        border-radius: 50%;
+        transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
       }
 
       33% {
-        transform: translateY(-18px) translateX(8px) scale(1.04) rotate(3deg);
-        border-radius: 46% 54% 48% 52% / 53% 47% 53% 47%;
+        transform: translate3d(8px, -18px, 0) scale(1.04) rotate(3deg);
       }
 
       66% {
-        transform: translateY(-8px) translateX(-8px) scale(0.96) rotate(-2deg);
-        border-radius: 54% 46% 52% 48% / 47% 53% 47% 53%;
+        transform: translate3d(-8px, -8px, 0) scale(0.96) rotate(-2deg);
       }
     }
 
@@ -211,18 +208,15 @@
 
       0%,
       100% {
-        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
-        border-radius: 50%;
+        transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
       }
 
       33% {
-        transform: translateY(-12px) translateX(-10px) scale(0.96) rotate(-4deg);
-        border-radius: 52% 48% 54% 46% / 48% 52% 46% 54%;
+        transform: translate3d(-10px, -12px, 0) scale(0.96) rotate(-4deg);
       }
 
       66% {
-        transform: translateY(-22px) translateX(8px) scale(1.04) rotate(4deg);
-        border-radius: 48% 52% 46% 54% / 52% 48% 54% 46%;
+        transform: translate3d(8px, -22px, 0) scale(1.04) rotate(4deg);
       }
     }
 
@@ -230,18 +224,15 @@
 
       0%,
       100% {
-        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
-        border-radius: 50%;
+        transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
       }
 
       33% {
-        transform: translateY(-15px) translateX(-8px) scale(1.02) rotate(4deg);
-        border-radius: 48% 52% 52% 48% / 51% 49% 52% 48%;
+        transform: translate3d(-8px, -15px, 0) scale(1.02) rotate(4deg);
       }
 
       66% {
-        transform: translateY(-8px) translateX(10px) scale(0.98) rotate(-3deg);
-        border-radius: 52% 48% 48% 52% / 49% 51% 48% 52%;
+        transform: translate3d(10px, -8px, 0) scale(0.98) rotate(-3deg);
       }
     }
 
@@ -249,19 +240,27 @@
 
       0%,
       100% {
-        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
-        border-radius: 50%;
+        transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
       }
 
       33% {
-        transform: translateY(-22px) translateX(8px) scale(0.96) rotate(-3deg);
-        border-radius: 53% 47% 49% 51% / 48% 52% 51% 49%;
+        transform: translate3d(8px, -22px, 0) scale(0.96) rotate(-3deg);
       }
 
       66% {
-        transform: translateY(-10px) translateX(-8px) scale(1.04) rotate(3deg);
-        border-radius: 47% 53% 51% 49% / 52% 48% 49% 51%;
+        transform: translate3d(-8px, -10px, 0) scale(1.04) rotate(3deg);
       }
+    }
+
+    .animate-float-1,
+    .animate-float-2,
+    .animate-float-3,
+    .animate-float-4 {
+      background: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     .animate-float-1 {
@@ -334,6 +333,122 @@
     .exp-anim .exp-stop.exp-in circle { transform: scale(1); }
     @media (prefers-reduced-motion: reduce) {
       .exp-anim [data-exp-card] > div, .exp-anim [data-exp-badge], .exp-anim .exp-stop, .exp-anim .exp-stop circle { transition: none !important; }
+    }
+
+    /* Home page: purposeful initial-load entrance & scroll-down reveal choreography */
+    #view-home {
+      overflow-x: clip;
+    }
+    #view-home.active-view.home-anim {
+      animation: none;
+    }
+    .home-anim [data-home-reveal]:not(.home-in) {
+      opacity: 0;
+      filter: blur(5px);
+      transform: translate3d(var(--home-x, 0px), var(--home-y, 24px), 0) scale(var(--home-scale, 0.985));
+    }
+    .home-anim [data-home-reveal="fade-right"]:not(.home-in) {
+      --home-x: -20px;
+      --home-y: 0px;
+      --home-scale: 1;
+    }
+    .home-anim [data-home-reveal="fade-left"]:not(.home-in) {
+      --home-x: 24px;
+      --home-y: 0px;
+      --home-scale: 1;
+    }
+    .home-anim [data-home-reveal="zoom-up"]:not(.home-in) {
+      --home-x: 0px;
+      --home-y: 28px;
+      --home-scale: 0.955;
+    }
+    .home-anim [data-home-reveal="card-up"]:not(.home-in) {
+      --home-x: 0px;
+      --home-y: 32px;
+      --home-scale: 0.972;
+    }
+    .home-anim [data-home-reveal="star-pop"]:not(.home-in) {
+      opacity: 0;
+      filter: blur(3px);
+      transform: scale(0.35) rotate(-25deg);
+    }
+    .home-anim [data-home-reveal]:not(.home-done) {
+      transition:
+        opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        filter 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, filter, transform;
+      backface-visibility: hidden;
+    }
+    .home-anim [data-home-lime]:not(.home-in) {
+      opacity: 0;
+      --tw-translate-x: 64px;
+      --tw-scale-x: 0.9;
+      --tw-scale-y: 0.9;
+    }
+    .home-anim [data-home-lime]:not(.home-done) {
+      transition:
+        opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 1.25s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, transform;
+      backface-visibility: hidden;
+    }
+    .home-anim [data-home-bubble]:not(.home-in) {
+      opacity: 0;
+      scale: 0.35;
+      filter: blur(4px);
+    }
+    .home-anim [data-home-bubble]:not(.home-done) {
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        filter 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        scale 0.95s cubic-bezier(0.22, 1.28, 0.36, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, filter, scale;
+    }
+    .home-anim .scard[data-home-scard]:not(.home-in) {
+      opacity: 0;
+      filter: blur(5px);
+    }
+    .home-anim .scard.center[data-home-scard]:not(.home-in) {
+      transform: translate3d(0, 34px, 0) scale(0.94);
+    }
+    @media (min-width: 1025px) {
+      .home-anim .scard.side-left[data-home-scard]:not(.home-in) {
+        transform: translate3d(-32px, 28px, 0) rotateY(-22deg) scale(0.82);
+      }
+      .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
+        transform: translate3d(32px, 28px, 0) rotateY(22deg) scale(0.82);
+      }
+    }
+    @media (max-width: 1024px) {
+      .home-anim .scard.side-left[data-home-scard]:not(.home-in),
+      .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
+        transform: translate3d(0, 30px, 0) scale(0.96);
+      }
+    }
+    .home-anim .scard[data-home-scard]:not(.home-done) {
+      transition:
+        opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        filter 1.0s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, filter, transform;
+      backface-visibility: hidden;
+    }
+    .home-anim.home-resetting *,
+    .home-anim.home-resetting {
+      transition: none !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .home-anim [data-home-reveal],
+      .home-anim [data-home-lime],
+      .home-anim [data-home-bubble],
+      .home-anim .scard[data-home-scard] {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        scale: 1 !important;
+        transition: none !important;
+      }
     }
 
     /* SPA View switching */
@@ -715,12 +830,17 @@
               </div>
             </div>
             <div class="relative z-10 -mt-4 sm:-mt-8 lg:-mt-16 -mb-4 sm:-mb-12 lg:-mb-20">
-              <picture>
-                <source srcset="assets/profile_sapta_crossed_arms.webp" type="image/webp">
-                <img src="assets/profile_sapta_crossed_arms.png" alt="Sapta - Developer Portrait (Bersedekap)"
-                  width="655" height="1024" fetchpriority="high" decoding="async"
-                  class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block drop-shadow-2xl relative z-10">
-              </picture>
+              <video autoplay loop muted playsinline preload="auto"
+                poster="assets/profile_sapta_crossed_arms.png?v=4"
+                width="656" height="1024"
+                style="transform: translateZ(0); backface-visibility: hidden;"
+                class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block relative z-10 pointer-events-none">
+                <source src="assets/profile_sapta_hero.mov?v=4" type='video/mp4; codecs="hvc1"'>
+                <source src="assets/profile_sapta_hero.mov?v=4" type="video/quicktime">
+                <img src="assets/profile_sapta_crossed_arms.png?v=4" alt="Sapta - Developer Portrait (Bersedekap)"
+                  width="656" height="1024"
+                  class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block relative z-10">
+              </video>
 
               <!-- ICONS REMOVED FROM HERE -->
             </div>
@@ -6998,19 +7118,18 @@
     // SPA Router & Navigation matching screenshot exactly
     function navigateTo(route) {
       const targetRoute = (route || 'home').toLowerCase().trim();
+      const targetPage = document.getElementById('view-' + targetRoute) || document.getElementById('view-home');
 
-      // Hide all view pages
+      // Hide other view pages without toggling display:none on the already-active targetPage
       document.querySelectorAll('.view-page').forEach(page => {
-        page.classList.remove('active-view');
+        if (page !== targetPage) {
+          page.classList.remove('active-view');
+        }
       });
 
       // Show target page view
-      const targetPage = document.getElementById('view-' + targetRoute);
-      if (targetPage) {
+      if (targetPage && !targetPage.classList.contains('active-view')) {
         targetPage.classList.add('active-view');
-      } else {
-        const homePage = document.getElementById('view-home');
-        if (homePage) homePage.classList.add('active-view');
       }
 
       // Update Browser Title
@@ -8972,7 +9091,6 @@
 
     // On page load: restore language preference
     window.addEventListener('load', function () {
-      window.scrollTo(0, 0);
       let currentLang = localStorage.getItem('lang') || 'en';
       updateLangUI(currentLang);
 
@@ -9066,6 +9184,312 @@
         window.scrollTo(0, 0);
         setTimeout(request, 250);
       }
+    })();
+  </script>
+
+  <script>
+    // Home page: initial-load entrance choreography & scroll-down section reveal
+    (function () {
+      const homeView = document.getElementById('view-home');
+      if (!homeView) return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const heroItems = [];
+      const scrollGroups = [];
+      const allAnimated = new Set();
+      let timers = [];
+      let io = null;
+
+      function registerHero(el, attrName, attrVal, delay) {
+        if (!el) return;
+        el.setAttribute(attrName, attrVal || '');
+        heroItems.push({ el: el, delay: delay || 0 });
+        allAnimated.add(el);
+      }
+
+      function registerScrollGroup(triggerEl, items) {
+        if (!triggerEl || !items || !items.length) return;
+        const valid = [];
+        items.forEach(function (item) {
+          if (!item || !item.el) return;
+          item.el.setAttribute(item.attr, item.val || '');
+          valid.push({ el: item.el, delay: item.delay || 0 });
+          allAnimated.add(item.el);
+        });
+        if (valid.length) {
+          scrollGroups.push({ trigger: triggerEl, items: valid, triggered: false });
+        }
+      }
+
+      // 1. HERO SECTION (Initial Load Entrance)
+      const heroSection = homeView.querySelector('section');
+      if (heroSection) {
+        // Left floating social bar items
+        const socialBar = heroSection.querySelector('.lg\\:flex.flex-col.items-center.gap-6');
+        if (socialBar) {
+          Array.from(socialBar.children).forEach(function (child, idx) {
+            registerHero(child, 'data-home-reveal', 'fade-right', 120 + idx * 70);
+          });
+        }
+
+        // Left Hero Text Column
+        const leftCol = heroSection.querySelector('.lg\\:col-span-7');
+        if (leftCol) {
+          const textStack = leftCol.querySelector('.space-y-4');
+          if (textStack) {
+            Array.from(textStack.children).forEach(function (child, idx) {
+              registerHero(child, 'data-home-reveal', 'fade-up', 60 + idx * 85);
+            });
+          }
+          const btnRow = leftCol.querySelector('.flex.flex-wrap.items-center.gap-4');
+          registerHero(btnRow, 'data-home-reveal', 'fade-up', 400);
+
+          const infoBar = leftCol.querySelector('.border-t.border-slate-200');
+          if (infoBar) {
+            registerHero(infoBar, 'data-home-reveal', 'fade-up', 470);
+            Array.from(infoBar.children).forEach(function (infoItem, idx) {
+              registerHero(infoItem, 'data-home-reveal', 'fade-up', 500 + idx * 75);
+            });
+          }
+        }
+
+        // Right Hero Portrait, Lime Backdrop & Floating Tech Bubbles
+        const rightCol = heroSection.querySelector('.lg\\:col-span-5');
+        if (rightCol) {
+          const limeBars = rightCol.querySelectorAll('.bg-\\[\\#CEF330\\]');
+          limeBars.forEach(function (bar, idx) {
+            registerHero(bar, 'data-home-lime', 'true', 90 + idx * 90);
+          });
+
+          const pic = rightCol.querySelector('picture');
+          if (pic && pic.parentElement) {
+            registerHero(pic.parentElement, 'data-home-reveal', 'zoom-up', 160);
+          }
+
+          const bubbles = rightCol.querySelectorAll('.animate-float-1, .animate-float-2, .animate-float-3, .animate-float-4');
+          bubbles.forEach(function (bubble, idx) {
+            registerHero(bubble, 'data-home-bubble', 'true', 260 + idx * 42);
+          });
+        }
+      }
+
+      // 2. MARQUEE SEPARATOR BAND
+      const marqueeBand = homeView.querySelector('.bg-\\[\\#CEF330\\].py-4');
+      if (marqueeBand) {
+        registerHero(marqueeBand, 'data-home-reveal', 'fade-up', 440);
+      }
+
+      // 3. SERVICES SECTION (Scroll-Triggered)
+      const servicesSec = document.getElementById('services-home-section');
+      if (servicesSec) {
+        const watermark = servicesSec.querySelector('.select-none.pointer-events-none');
+        const headerBar = servicesSec.querySelector('.border-b.border-white\\/15');
+        registerScrollGroup(headerBar || servicesSec, [
+          { el: watermark, attr: 'data-home-reveal', val: 'fade-right', delay: 0 },
+          { el: headerBar, attr: 'data-home-reveal', val: 'fade-up', delay: 70 }
+        ]);
+
+        const serviceGrid = servicesSec.querySelector('.grid');
+        if (serviceGrid) {
+          const cards = Array.from(serviceGrid.children);
+          registerScrollGroup(serviceGrid, cards.map(function (card, idx) {
+            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 140 };
+          }));
+        }
+
+        const viewAllServices = servicesSec.querySelector('.mt-10');
+        if (viewAllServices) {
+          registerScrollGroup(viewAllServices, [
+            { el: viewAllServices, attr: 'data-home-reveal', val: 'fade-up', delay: 100 }
+          ]);
+        }
+      }
+
+      // 4. FEATURED PROJECTS SECTION (Scroll-Triggered)
+      const projectsSec = document.getElementById('projects-home-section');
+      if (projectsSec) {
+        const projHeader = projectsSec.querySelector('.max-w-6xl.mx-auto.mb-6');
+        if (projHeader) {
+          const spans = Array.from(projHeader.querySelectorAll('.text-left > span'));
+          if (spans.length) {
+            registerScrollGroup(projHeader, spans.map(function (sp, idx) {
+              return { el: sp, attr: 'data-home-reveal', val: 'fade-up', delay: idx * 95 };
+            }));
+          } else {
+            registerScrollGroup(projHeader, [
+              { el: projHeader, attr: 'data-home-reveal', val: 'fade-up', delay: 0 }
+            ]);
+          }
+        }
+
+        const coverflow = projectsSec.querySelector('.static-coverflow');
+        if (coverflow) {
+          const scards = Array.from(coverflow.querySelectorAll('.scard'));
+          registerScrollGroup(coverflow, scards.map(function (card, idx) {
+            return { el: card, attr: 'data-home-scard', val: 'true', delay: idx * 130 };
+          }));
+        }
+
+        const viewAllProjects = projectsSec.querySelector('.mt-10');
+        if (viewAllProjects) {
+          registerScrollGroup(viewAllProjects, [
+            { el: viewAllProjects, attr: 'data-home-reveal', val: 'fade-up', delay: 120 }
+          ]);
+        }
+      }
+
+      // 5. CERTIFICATES SECTION (Scroll-Triggered)
+      const certsSec = document.getElementById('certificates-home-section');
+      if (certsSec) {
+        const certBox = certsSec.querySelector('.bg-\\[\\#F3F4F0\\]');
+        const certHeader = certsSec.querySelector('.mb-12');
+        if (certHeader) {
+          const headerChildren = Array.from(certHeader.children);
+          registerScrollGroup(certHeader, [
+            { el: certBox, attr: 'data-home-reveal', val: 'fade-up', delay: 0 }
+          ].concat(headerChildren.map(function (ch, idx) {
+            return { el: ch, attr: 'data-home-reveal', val: 'fade-up', delay: 90 + idx * 90 };
+          })));
+        }
+
+        const certGrid = certsSec.querySelector('.grid');
+        if (certGrid) {
+          const certCards = Array.from(certGrid.children);
+          registerScrollGroup(certGrid, certCards.map(function (card, idx) {
+            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 140 };
+          }));
+        }
+
+        const viewAllCerts = certsSec.querySelector('.mt-10');
+        if (viewAllCerts) {
+          registerScrollGroup(viewAllCerts, [
+            { el: viewAllCerts, attr: 'data-home-reveal', val: 'fade-up', delay: 100 }
+          ]);
+        }
+      }
+
+      // 6. FOOTER QUOTE SECTION (Scroll-Triggered)
+      const quoteWrap = homeView.querySelector('.pb-12.w-full');
+      if (quoteWrap) {
+        const stars = Array.from(quoteWrap.querySelectorAll('.absolute'));
+        const quoteHeading = quoteWrap.querySelector('h3');
+        const quoteAuthor = quoteWrap.querySelector('.mt-6');
+        const quoteItems = [];
+        stars.forEach(function (st, idx) {
+          quoteItems.push({ el: st, attr: 'data-home-reveal', val: 'star-pop', delay: idx * 140 });
+        });
+        if (quoteHeading) quoteItems.push({ el: quoteHeading, attr: 'data-home-reveal', val: 'fade-up', delay: 80 });
+        if (quoteAuthor) quoteItems.push({ el: quoteAuthor, attr: 'data-home-reveal', val: 'fade-up', delay: 190 });
+        registerScrollGroup(quoteWrap, quoteItems);
+      }
+
+      function markDone(el) {
+        if (!el || el.classList.contains('home-done')) return;
+        el.classList.add('home-done');
+        el.style.removeProperty('--home-delay');
+      }
+
+      function revealItem(el, delay) {
+        if (!el || el.classList.contains('home-in')) return;
+        if (reduceMotion) {
+          el.classList.add('home-in', 'home-done');
+          return;
+        }
+        el.style.setProperty('--home-delay', delay + 'ms');
+        el.classList.add('home-in');
+        const tid = setTimeout(function () {
+          markDone(el);
+        }, delay + 1280);
+        timers.push(tid);
+      }
+
+      function clearAllTimers() {
+        timers.forEach(function (t) { clearTimeout(t); });
+        timers = [];
+      }
+
+      function setupObserver() {
+        if (io) io.disconnect();
+        io = new IntersectionObserver(function (entries) {
+          if (!homeView.classList.contains('active-view')) return;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            scrollGroups.forEach(function (grp) {
+              if (grp.trigger === entry.target && !grp.triggered) {
+                grp.triggered = true;
+                grp.items.forEach(function (item) {
+                  revealItem(item.el, item.delay);
+                });
+                io.unobserve(grp.trigger);
+              }
+            });
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -6% 0px'
+        });
+
+        scrollGroups.forEach(function (grp) {
+          if (!grp.triggered && grp.trigger) {
+            io.observe(grp.trigger);
+          }
+        });
+      }
+
+      function playHomeAnimations() {
+        clearAllTimers();
+        if (io) io.disconnect();
+
+        homeView.classList.add('home-anim', 'home-resetting');
+        allAnimated.forEach(function (el) {
+          el.classList.remove('home-in', 'home-done');
+          el.style.removeProperty('--home-delay');
+        });
+        scrollGroups.forEach(function (grp) {
+          grp.triggered = false;
+        });
+
+        // Force reflow so initial hidden states commit without transition
+        void homeView.offsetWidth;
+        homeView.classList.remove('home-resetting');
+
+        // Trigger Hero entrance smoothly after paint settles
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            if (!homeView.classList.contains('active-view')) return;
+            heroItems.forEach(function (item) {
+              revealItem(item.el, item.delay);
+            });
+            setupObserver();
+          });
+        });
+      }
+
+      // Initialize: prepare hidden state immediately, then launch after DOMContentLoaded settles
+      homeView.classList.add('home-anim');
+      function startInitialHome() {
+        if (homeView.classList.contains('active-view')) {
+          playHomeAnimations();
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          setTimeout(startInitialHome, 40);
+        });
+      } else {
+        setTimeout(startInitialHome, 40);
+      }
+
+      // Re-run cleanly when navigating back to Home view from another tab
+      let wasActive = homeView.classList.contains('active-view');
+      new MutationObserver(function () {
+        const isActive = homeView.classList.contains('active-view');
+        if (isActive && !wasActive) {
+          window.scrollTo(0, 0);
+          playHomeAnimations();
+        }
+        wasActive = isActive;
+      }).observe(homeView, { attributes: true, attributeFilter: ['class'] });
     })();
   </script>
 
