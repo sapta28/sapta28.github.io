@@ -7,6 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sapta Adzani Purnama | Portfolio - Software Engineer & Mobile Developer</title>
 
+  <!-- Reset scroll to top on refresh/reload (preventing browser restoring mid-page scroll) -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- Favicon / Website Tab Icon & Google Search Icon (Absolute URLs for Googlebot Favicon Indexing) -->
   <link rel="icon" type="image/x-icon" href="https://sapta28.github.io/favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="https://sapta28.github.io/favicon.ico">
@@ -7054,8 +7062,8 @@
       // Close mobile menu drawer
       closeMobileMenu();
 
-      // Scroll to top smoothly
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Reset scroll to top immediately on navigation
+      window.scrollTo(0, 0);
     }
 
     // Contextual Contact Service Selection
@@ -8093,8 +8101,20 @@
     const yr = document.getElementById('current-year');
     if (yr) yr.textContent = new Date().getFullYear();
 
+    // Reset scroll to top before page unload/reload
+    window.addEventListener('beforeunload', () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    });
+
     // Initialize on DOM ready
     document.addEventListener('DOMContentLoaded', () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
       handleRouteHash(window.location.hash.replace('#', ''));
       setTimeout(typeLoop, 500);
       renderProjectsGallery();
@@ -8102,6 +8122,7 @@
       // Route based on initial window hash
       const initialHash = window.location.hash.replace('#', '');
       navigateTo(initialHash || 'home');
+      window.scrollTo(0, 0);
     });
   </script>
 
@@ -8951,6 +8972,7 @@
 
     // On page load: restore language preference
     window.addEventListener('load', function () {
+      window.scrollTo(0, 0);
       let currentLang = localStorage.getItem('lang') || 'en';
       updateLangUI(currentLang);
 
@@ -9035,9 +9057,15 @@
       window.addEventListener('resize', request);
       new MutationObserver(function () {
         reset();
-        if (view.classList.contains('active-view')) setTimeout(request, 250);
+        if (view.classList.contains('active-view')) {
+          window.scrollTo(0, 0);
+          setTimeout(request, 250);
+        }
       }).observe(view, { attributes: true, attributeFilter: ['class'] });
-      if (view.classList.contains('active-view')) setTimeout(request, 250);
+      if (view.classList.contains('active-view')) {
+        window.scrollTo(0, 0);
+        setTimeout(request, 250);
+      }
     })();
   </script>
 
