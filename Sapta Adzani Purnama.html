@@ -63,8 +63,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
-  <!-- Preload Critical Above-The-Fold Hero Image -->
-  <link rel="preload" as="image" href="assets/profile_sapta_crossed_arms.png?v=4" type="image/png" fetchpriority="high">
+  <!-- Preload Critical Above-The-Fold Hero Portrait -->
+  <link rel="preload" as="image" href="assets/profile_sapta_hero_start.png?v=8" type="image/png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/profile_sapta_crossed_arms.png?v=8" type="image/png">
 
   <!-- Fonts -->
   <link
@@ -344,94 +345,87 @@
     }
     .home-anim [data-home-reveal]:not(.home-in) {
       opacity: 0;
-      filter: blur(5px);
-      transform: translate3d(var(--home-x, 0px), var(--home-y, 24px), 0) scale(var(--home-scale, 0.985));
+      transform: translate3d(var(--home-x, 0px), var(--home-y, 16px), 0) scale(var(--home-scale, 0.99));
     }
     .home-anim [data-home-reveal="fade-right"]:not(.home-in) {
-      --home-x: -20px;
+      --home-x: -16px;
       --home-y: 0px;
       --home-scale: 1;
     }
     .home-anim [data-home-reveal="fade-left"]:not(.home-in) {
-      --home-x: 24px;
+      --home-x: 16px;
       --home-y: 0px;
       --home-scale: 1;
     }
     .home-anim [data-home-reveal="zoom-up"]:not(.home-in) {
       --home-x: 0px;
-      --home-y: 28px;
-      --home-scale: 0.955;
+      --home-y: 16px;
+      --home-scale: 0.98;
     }
     .home-anim [data-home-reveal="card-up"]:not(.home-in) {
       --home-x: 0px;
-      --home-y: 32px;
-      --home-scale: 0.972;
+      --home-y: 20px;
+      --home-scale: 0.985;
     }
     .home-anim [data-home-reveal="star-pop"]:not(.home-in) {
       opacity: 0;
-      filter: blur(3px);
-      transform: scale(0.35) rotate(-25deg);
+      transform: scale(0.6) rotate(-15deg);
     }
     .home-anim [data-home-reveal]:not(.home-done) {
       transition:
-        opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        filter 0.95s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, filter, transform;
+        opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, transform;
       backface-visibility: hidden;
     }
     .home-anim [data-home-lime]:not(.home-in) {
       opacity: 0;
-      --tw-translate-x: 64px;
-      --tw-scale-x: 0.9;
-      --tw-scale-y: 0.9;
+      --tw-translate-x: 32px;
+      --tw-scale-x: 0.95;
+      --tw-scale-y: 0.95;
     }
     .home-anim [data-home-lime]:not(.home-done) {
       transition:
-        opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 1.25s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
       will-change: opacity, transform;
       backface-visibility: hidden;
     }
     .home-anim [data-home-bubble]:not(.home-in) {
       opacity: 0;
-      scale: 0.35;
-      filter: blur(4px);
+      scale: 0.5;
     }
     .home-anim [data-home-bubble]:not(.home-done) {
       transition:
-        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        filter 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        scale 0.95s cubic-bezier(0.22, 1.28, 0.36, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, filter, scale;
+        opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        scale 0.6s cubic-bezier(0.22, 1.28, 0.36, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, scale;
     }
     .home-anim .scard[data-home-scard]:not(.home-in) {
       opacity: 0;
-      filter: blur(5px);
     }
     .home-anim .scard.center[data-home-scard]:not(.home-in) {
-      transform: translate3d(0, 34px, 0) scale(0.94);
+      transform: translate3d(0, 24px, 0) scale(0.96);
     }
     @media (min-width: 1025px) {
       .home-anim .scard.side-left[data-home-scard]:not(.home-in) {
-        transform: translate3d(-32px, 28px, 0) rotateY(-22deg) scale(0.82);
+        transform: translate3d(-24px, 20px, 0) rotateY(-18deg) scale(0.85);
       }
       .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
-        transform: translate3d(32px, 28px, 0) rotateY(22deg) scale(0.82);
+        transform: translate3d(24px, 20px, 0) rotateY(18deg) scale(0.85);
       }
     }
     @media (max-width: 1024px) {
       .home-anim .scard.side-left[data-home-scard]:not(.home-in),
       .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
-        transform: translate3d(0, 30px, 0) scale(0.96);
+        transform: translate3d(0, 20px, 0) scale(0.97);
       }
     }
     .home-anim .scard[data-home-scard]:not(.home-done) {
       transition:
-        opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        filter 1.0s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, filter, transform;
+        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, transform;
       backface-visibility: hidden;
     }
     .home-anim.home-resetting *,
@@ -830,14 +824,14 @@
               </div>
             </div>
             <div class="relative z-10 -mt-4 sm:-mt-8 lg:-mt-16 -mb-4 sm:-mb-12 lg:-mb-20">
-              <video autoplay loop muted playsinline preload="auto"
-                poster="assets/profile_sapta_crossed_arms.png?v=4"
+              <video id="hero-portrait-video" autoplay muted playsinline preload="auto"
+                poster="assets/profile_sapta_hero_start.png?v=8"
                 width="656" height="1024"
                 style="transform: translateZ(0); backface-visibility: hidden;"
                 class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block relative z-10 pointer-events-none">
-                <source src="assets/profile_sapta_hero.mov?v=4" type='video/mp4; codecs="hvc1"'>
-                <source src="assets/profile_sapta_hero.mov?v=4" type="video/quicktime">
-                <img src="assets/profile_sapta_crossed_arms.png?v=4" alt="Sapta - Developer Portrait (Bersedekap)"
+                <source src="assets/profile_sapta_hero.mov?v=8" type='video/mp4; codecs="hvc1"'>
+                <source src="assets/profile_sapta_hero.webm?v=8" type="video/webm">
+                <img src="assets/profile_sapta_crossed_arms.png?v=8" alt="Sapta - Developer Portrait (Bersedekap)"
                   width="656" height="1024"
                   class="w-auto h-auto max-h-[380px] sm:max-h-[530px] lg:max-h-[600px] object-contain block relative z-10">
               </video>
@@ -9228,7 +9222,7 @@
         const socialBar = heroSection.querySelector('.lg\\:flex.flex-col.items-center.gap-6');
         if (socialBar) {
           Array.from(socialBar.children).forEach(function (child, idx) {
-            registerHero(child, 'data-home-reveal', 'fade-right', 120 + idx * 70);
+            registerHero(child, 'data-home-reveal', 'fade-right', idx * 40);
           });
         }
 
@@ -9238,17 +9232,17 @@
           const textStack = leftCol.querySelector('.space-y-4');
           if (textStack) {
             Array.from(textStack.children).forEach(function (child, idx) {
-              registerHero(child, 'data-home-reveal', 'fade-up', 60 + idx * 85);
+              registerHero(child, 'data-home-reveal', 'fade-up', idx * 30);
             });
           }
           const btnRow = leftCol.querySelector('.flex.flex-wrap.items-center.gap-4');
-          registerHero(btnRow, 'data-home-reveal', 'fade-up', 400);
+          registerHero(btnRow, 'data-home-reveal', 'fade-up', 90);
 
           const infoBar = leftCol.querySelector('.border-t.border-slate-200');
           if (infoBar) {
-            registerHero(infoBar, 'data-home-reveal', 'fade-up', 470);
+            registerHero(infoBar, 'data-home-reveal', 'fade-up', 120);
             Array.from(infoBar.children).forEach(function (infoItem, idx) {
-              registerHero(infoItem, 'data-home-reveal', 'fade-up', 500 + idx * 75);
+              registerHero(infoItem, 'data-home-reveal', 'fade-up', 140 + idx * 35);
             });
           }
         }
@@ -9258,17 +9252,12 @@
         if (rightCol) {
           const limeBars = rightCol.querySelectorAll('.bg-\\[\\#CEF330\\]');
           limeBars.forEach(function (bar, idx) {
-            registerHero(bar, 'data-home-lime', 'true', 90 + idx * 90);
+            registerHero(bar, 'data-home-lime', 'true', idx * 30);
           });
-
-          const pic = rightCol.querySelector('picture');
-          if (pic && pic.parentElement) {
-            registerHero(pic.parentElement, 'data-home-reveal', 'zoom-up', 160);
-          }
 
           const bubbles = rightCol.querySelectorAll('.animate-float-1, .animate-float-2, .animate-float-3, .animate-float-4');
           bubbles.forEach(function (bubble, idx) {
-            registerHero(bubble, 'data-home-bubble', 'true', 260 + idx * 42);
+            registerHero(bubble, 'data-home-bubble', 'true', 60 + idx * 25);
           });
         }
       }
@@ -9276,7 +9265,7 @@
       // 2. MARQUEE SEPARATOR BAND
       const marqueeBand = homeView.querySelector('.bg-\\[\\#CEF330\\].py-4');
       if (marqueeBand) {
-        registerHero(marqueeBand, 'data-home-reveal', 'fade-up', 440);
+        registerHero(marqueeBand, 'data-home-reveal', 'fade-up', 160);
       }
 
       // 3. SERVICES SECTION (Scroll-Triggered)
@@ -9436,9 +9425,32 @@
         });
       }
 
-      function playHomeAnimations() {
+      function replayHeroPortrait() {
+        const v = document.getElementById('hero-portrait-video');
+        if (!v) return;
+        try {
+          v.currentTime = 0;
+          const p = v.play();
+          if (p && typeof p.catch === 'function') {
+            p.catch(function () {});
+          }
+        } catch (e) {}
+      }
+
+      function revealHeroImmediately() {
+        heroItems.forEach(function (item) {
+          revealItem(item.el, item.delay);
+        });
+        setupObserver();
+      }
+
+      function playHomeAnimations(isViewSwitch) {
         clearAllTimers();
         if (io) io.disconnect();
+
+        if (isViewSwitch) {
+          replayHeroPortrait();
+        }
 
         homeView.classList.add('home-anim', 'home-resetting');
         allAnimated.forEach(function (el) {
@@ -9453,32 +9465,29 @@
         void homeView.offsetWidth;
         homeView.classList.remove('home-resetting');
 
-        // Trigger Hero entrance smoothly after paint settles
+        // Trigger Hero entrance immediately on the very next frame
         requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            if (!homeView.classList.contains('active-view')) return;
-            heroItems.forEach(function (item) {
-              revealItem(item.el, item.delay);
-            });
-            setupObserver();
-          });
+          if (!homeView.classList.contains('active-view')) return;
+          revealHeroImmediately();
         });
       }
 
-      // Initialize: prepare hidden state immediately, then launch after DOMContentLoaded settles
+      // Initialize synchronously before first paint: zero blink, instant entrance
       homeView.classList.add('home-anim');
-      function startInitialHome() {
-        if (homeView.classList.contains('active-view')) {
-          playHomeAnimations();
-        }
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
-          setTimeout(startInitialHome, 40);
+      if (homeView.classList.contains('active-view')) {
+        requestAnimationFrame(function () {
+          if (!homeView.classList.contains('active-view')) return;
+          revealHeroImmediately();
+          replayHeroPortrait();
         });
-      } else {
-        setTimeout(startInitialHome, 40);
       }
+
+      // Replay cleanly on browser bfcache restore
+      window.addEventListener('pageshow', function (ev) {
+        if (ev.persisted && homeView.classList.contains('active-view')) {
+          playHomeAnimations(true);
+        }
+      });
 
       // Re-run cleanly when navigating back to Home view from another tab
       let wasActive = homeView.classList.contains('active-view');
@@ -9486,7 +9495,7 @@
         const isActive = homeView.classList.contains('active-view');
         if (isActive && !wasActive) {
           window.scrollTo(0, 0);
-          playHomeAnimations();
+          playHomeAnimations(true);
         }
         wasActive = isActive;
       }).observe(homeView, { attributes: true, attributeFilter: ['class'] });
