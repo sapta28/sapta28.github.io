@@ -344,87 +344,88 @@
     }
     .home-anim [data-home-reveal]:not(.home-in) {
       opacity: 0;
-      transform: translate3d(var(--home-x, 0px), var(--home-y, 16px), 0) scale(var(--home-scale, 0.99));
+      translate: var(--home-x, 0px) var(--home-y, 22px);
+      scale: var(--home-scale, 0.985);
     }
     .home-anim [data-home-reveal="fade-right"]:not(.home-in) {
-      --home-x: -16px;
+      --home-x: -22px;
       --home-y: 0px;
       --home-scale: 1;
     }
     .home-anim [data-home-reveal="fade-left"]:not(.home-in) {
-      --home-x: 16px;
+      --home-x: 22px;
       --home-y: 0px;
       --home-scale: 1;
     }
     .home-anim [data-home-reveal="zoom-up"]:not(.home-in) {
       --home-x: 0px;
-      --home-y: 16px;
-      --home-scale: 0.98;
+      --home-y: 22px;
+      --home-scale: 0.97;
     }
     .home-anim [data-home-reveal="card-up"]:not(.home-in) {
       --home-x: 0px;
-      --home-y: 20px;
-      --home-scale: 0.985;
+      --home-y: 28px;
+      --home-scale: 0.978;
     }
     .home-anim [data-home-reveal="star-pop"]:not(.home-in) {
       opacity: 0;
-      transform: scale(0.6) rotate(-15deg);
+      scale: 0.5;
+      rotate: -18deg;
     }
     .home-anim [data-home-reveal]:not(.home-done) {
       transition:
-        opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, transform;
+        opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        translate 0.95s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        scale 0.95s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        rotate 0.95s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, translate, scale;
       backface-visibility: hidden;
     }
     .home-anim [data-home-lime]:not(.home-in) {
       opacity: 0;
-      --tw-translate-x: 32px;
-      --tw-scale-x: 0.95;
-      --tw-scale-y: 0.95;
+      translate: 52px 0px;
+      scale: 0.93;
     }
     .home-anim [data-home-lime]:not(.home-done) {
       transition:
-        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, transform;
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        translate 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        scale 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, translate, scale;
       backface-visibility: hidden;
+    }
+    #hero-bubbles-container > div {
+      z-index: 20;
     }
     .home-anim [data-home-bubble]:not(.home-in) {
       opacity: 0;
-      scale: 0.5;
+      z-index: 5;
     }
     .home-anim [data-home-bubble]:not(.home-done) {
-      transition:
-        opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        scale 0.6s cubic-bezier(0.22, 1.28, 0.36, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, scale;
+      transition: none !important;
+      will-change: translate, scale, rotate, opacity;
     }
     .home-anim .scard[data-home-scard]:not(.home-in) {
       opacity: 0;
-    }
-    .home-anim .scard.center[data-home-scard]:not(.home-in) {
-      transform: translate3d(0, 24px, 0) scale(0.96);
+      translate: 0px 30px;
+      scale: 0.95;
     }
     @media (min-width: 1025px) {
       .home-anim .scard.side-left[data-home-scard]:not(.home-in) {
-        transform: translate3d(-24px, 20px, 0) rotateY(-18deg) scale(0.85);
+        translate: -28px 24px;
+        scale: 0.92;
       }
       .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
-        transform: translate3d(24px, 20px, 0) rotateY(18deg) scale(0.85);
-      }
-    }
-    @media (max-width: 1024px) {
-      .home-anim .scard.side-left[data-home-scard]:not(.home-in),
-      .home-anim .scard.side-right[data-home-scard]:not(.home-in) {
-        transform: translate3d(0, 20px, 0) scale(0.97);
+        translate: 28px 24px;
+        scale: 0.92;
       }
     }
     .home-anim .scard[data-home-scard]:not(.home-done) {
       transition:
-        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms),
-        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--home-delay, 0ms) !important;
-      will-change: opacity, transform;
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        translate 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms),
+        scale 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--home-delay, 0ms) !important;
+      will-change: opacity, translate, scale;
       backface-visibility: hidden;
     }
     .home-anim.home-resetting *,
@@ -838,8 +839,8 @@
               <!-- ICONS REMOVED FROM HERE -->
             </div>
             <!-- DUMMY CONTAINER FOR ICONS (EXACT SIZE AS GRAY CARD) -->
-            <div
-              class="absolute w-[280px] h-[340px] sm:w-[380px] sm:h-[450px] lg:w-[420px] lg:h-[550px] bottom-0 z-20 pointer-events-none">
+            <div id="hero-bubbles-container"
+              class="absolute w-[280px] h-[340px] sm:w-[380px] sm:h-[450px] lg:w-[420px] lg:h-[550px] bottom-0 pointer-events-none">
               <!-- ===== LEFT SIDE (7 ikon) ===== -->
               <!-- L1. Next.js -->
               <div
@@ -9255,8 +9256,9 @@
           });
 
           const bubbles = rightCol.querySelectorAll('.animate-float-1, .animate-float-2, .animate-float-3, .animate-float-4');
-          bubbles.forEach(function (bubble, idx) {
-            registerHero(bubble, 'data-home-bubble', 'true', 60 + idx * 25);
+          bubbles.forEach(function (bubble) {
+            bubble.setAttribute('data-home-bubble', 'true');
+            allAnimated.add(bubble);
           });
         }
       }
@@ -9281,14 +9283,14 @@
         if (serviceGrid) {
           const cards = Array.from(serviceGrid.children);
           registerScrollGroup(serviceGrid, cards.map(function (card, idx) {
-            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 140 };
+            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 95 };
           }));
         }
 
         const viewAllServices = servicesSec.querySelector('.mt-10');
         if (viewAllServices) {
           registerScrollGroup(viewAllServices, [
-            { el: viewAllServices, attr: 'data-home-reveal', val: 'fade-up', delay: 100 }
+            { el: viewAllServices, attr: 'data-home-reveal', val: 'fade-up', delay: 75 }
           ]);
         }
       }
@@ -9301,7 +9303,7 @@
           const spans = Array.from(projHeader.querySelectorAll('.text-left > span'));
           if (spans.length) {
             registerScrollGroup(projHeader, spans.map(function (sp, idx) {
-              return { el: sp, attr: 'data-home-reveal', val: 'fade-up', delay: idx * 95 };
+              return { el: sp, attr: 'data-home-reveal', val: 'fade-up', delay: idx * 75 };
             }));
           } else {
             registerScrollGroup(projHeader, [
@@ -9314,14 +9316,14 @@
         if (coverflow) {
           const scards = Array.from(coverflow.querySelectorAll('.scard'));
           registerScrollGroup(coverflow, scards.map(function (card, idx) {
-            return { el: card, attr: 'data-home-scard', val: 'true', delay: idx * 130 };
+            return { el: card, attr: 'data-home-scard', val: 'true', delay: idx * 95 };
           }));
         }
 
         const viewAllProjects = projectsSec.querySelector('.mt-10');
         if (viewAllProjects) {
           registerScrollGroup(viewAllProjects, [
-            { el: viewAllProjects, attr: 'data-home-reveal', val: 'fade-up', delay: 120 }
+            { el: viewAllProjects, attr: 'data-home-reveal', val: 'fade-up', delay: 80 }
           ]);
         }
       }
@@ -9336,7 +9338,7 @@
           registerScrollGroup(certHeader, [
             { el: certBox, attr: 'data-home-reveal', val: 'fade-up', delay: 0 }
           ].concat(headerChildren.map(function (ch, idx) {
-            return { el: ch, attr: 'data-home-reveal', val: 'fade-up', delay: 90 + idx * 90 };
+            return { el: ch, attr: 'data-home-reveal', val: 'fade-up', delay: 70 + idx * 70 };
           })));
         }
 
@@ -9344,14 +9346,14 @@
         if (certGrid) {
           const certCards = Array.from(certGrid.children);
           registerScrollGroup(certGrid, certCards.map(function (card, idx) {
-            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 140 };
+            return { el: card, attr: 'data-home-reveal', val: 'card-up', delay: idx * 95 };
           }));
         }
 
         const viewAllCerts = certsSec.querySelector('.mt-10');
         if (viewAllCerts) {
           registerScrollGroup(viewAllCerts, [
-            { el: viewAllCerts, attr: 'data-home-reveal', val: 'fade-up', delay: 100 }
+            { el: viewAllCerts, attr: 'data-home-reveal', val: 'fade-up', delay: 75 }
           ]);
         }
       }
@@ -9364,10 +9366,10 @@
         const quoteAuthor = quoteWrap.querySelector('.mt-6');
         const quoteItems = [];
         stars.forEach(function (st, idx) {
-          quoteItems.push({ el: st, attr: 'data-home-reveal', val: 'star-pop', delay: idx * 140 });
+          quoteItems.push({ el: st, attr: 'data-home-reveal', val: 'star-pop', delay: idx * 95 });
         });
-        if (quoteHeading) quoteItems.push({ el: quoteHeading, attr: 'data-home-reveal', val: 'fade-up', delay: 80 });
-        if (quoteAuthor) quoteItems.push({ el: quoteAuthor, attr: 'data-home-reveal', val: 'fade-up', delay: 190 });
+        if (quoteHeading) quoteItems.push({ el: quoteHeading, attr: 'data-home-reveal', val: 'fade-up', delay: 60 });
+        if (quoteAuthor) quoteItems.push({ el: quoteAuthor, attr: 'data-home-reveal', val: 'fade-up', delay: 140 });
         registerScrollGroup(quoteWrap, quoteItems);
       }
 
@@ -9385,9 +9387,17 @@
         }
         el.style.setProperty('--home-delay', delay + 'ms');
         el.classList.add('home-in');
+        const onEnd = function (ev) {
+          if (ev.target === el && (ev.propertyName === 'translate' || ev.propertyName === 'opacity')) {
+            el.removeEventListener('transitionend', onEnd);
+            markDone(el);
+          }
+        };
+        el.addEventListener('transitionend', onEnd);
         const tid = setTimeout(function () {
+          el.removeEventListener('transitionend', onEnd);
           markDone(el);
-        }, delay + 1280);
+        }, delay + 1250);
         timers.push(tid);
       }
 
@@ -9413,8 +9423,8 @@
             });
           });
         }, {
-          threshold: 0.08,
-          rootMargin: '0px 0px -6% 0px'
+          threshold: 0.04,
+          rootMargin: '0px 0px -3% 0px'
         });
 
         scrollGroups.forEach(function (grp) {
@@ -9454,15 +9464,103 @@
         } catch (e) {}
       }
 
+      let bubbleOrbitAnims = [];
+
+      function cancelBubbleOrbits() {
+        bubbleOrbitAnims.forEach(function (anim) {
+          try { anim.cancel(); } catch (e) {}
+        });
+        bubbleOrbitAnims = [];
+      }
+
+      function playBubbleOrbits() {
+        cancelBubbleOrbits();
+        const container = document.getElementById('hero-bubbles-container');
+        if (!container) return;
+        const rawBubbles = Array.from(container.querySelectorAll('[data-home-bubble]'));
+        if (!rawBubbles.length) return;
+
+        if (reduceMotion || typeof rawBubbles[0].animate !== 'function') {
+          rawBubbles.forEach(function (b) {
+            b.style.zIndex = '20';
+            b.classList.add('home-in', 'home-done');
+          });
+          return;
+        }
+
+        // Interleave left (0..6) and right (7..13) bubbles for balanced spiral reveal
+        const half = Math.ceil(rawBubbles.length / 2);
+        const ordered = [];
+        for (let i = 0; i < half; i++) {
+          if (rawBubbles[i]) ordered.push(rawBubbles[i]);
+          if (rawBubbles[i + half]) ordered.push(rawBubbles[i + half]);
+        }
+
+        const cw = container.clientWidth || 420;
+        const ch = container.clientHeight || 550;
+        const cx = cw * 0.50;
+        const cy = ch * 0.45;
+        const sweepRad = (200 * Math.PI) / 180; // clockwise orbital sweep
+
+        ordered.forEach(function (bubble, idx) {
+          const bx = bubble.offsetLeft + bubble.offsetWidth * 0.5;
+          const by = bubble.offsetTop + bubble.offsetHeight * 0.5;
+          const vx = bx - cx;
+          const vy = by - cy;
+          const R = Math.hypot(vx, vy) || 120;
+          const finalAngle = Math.atan2(vy, vx);
+
+          const steps = 16;
+          const frames = [];
+          for (let s = 0; s <= steps; s++) {
+            const p = s / steps;
+            const angEase = 1 - Math.pow(1 - p, 2.7);
+            const radEase = 0.14 + 0.86 * Math.pow(Math.sin(p * Math.PI * 0.5), 1.35);
+            const r = R * radEase;
+            const theta = finalAngle - sweepRad * (1 - angEase);
+            const dx = (s === steps) ? 0 : (r * Math.cos(theta) - vx);
+            const dy = (s === steps) ? 0 : (r * Math.sin(theta) - vy);
+            const sc = (s === steps) ? 1 : (0.38 + 0.62 * angEase);
+            const rot = (s === steps) ? 0 : (-40 * (1 - angEase));
+            const op = Math.min(1, p / 0.24);
+            const zVal = p < 0.45 ? 5 : 20;
+            frames.push({
+              offset: p,
+              translate: dx.toFixed(1) + 'px ' + dy.toFixed(1) + 'px',
+              scale: sc.toFixed(3),
+              rotate: rot.toFixed(1) + 'deg',
+              opacity: op.toFixed(3),
+              zIndex: zVal
+            });
+          }
+
+          bubble.classList.add('home-in');
+          const anim = bubble.animate(frames, {
+            duration: 1250,
+            delay: idx * 42,
+            easing: 'linear',
+            fill: 'both'
+          });
+          anim.onfinish = function () {
+            bubble.style.zIndex = '20';
+            markDone(bubble);
+            try { anim.cancel(); } catch (e) {}
+          };
+          bubbleOrbitAnims.push(anim);
+        });
+      }
+
       function revealHeroImmediately() {
         heroItems.forEach(function (item) {
           revealItem(item.el, item.delay);
         });
+        playBubbleOrbits();
         setupObserver();
       }
 
       function playHomeAnimations(isViewSwitch) {
         clearAllTimers();
+        cancelBubbleOrbits();
         if (io) io.disconnect();
 
         if (isViewSwitch) {
@@ -9473,6 +9571,7 @@
         allAnimated.forEach(function (el) {
           el.classList.remove('home-in', 'home-done');
           el.style.removeProperty('--home-delay');
+          el.style.removeProperty('z-index');
         });
         scrollGroups.forEach(function (grp) {
           grp.triggered = false;
