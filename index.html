@@ -1129,14 +1129,16 @@
       pointer-events: auto;
     }
 
-    #nav-wheel-svg {
-      will-change: transform;
-      transform: rotate(0deg);
-      transition: filter 0.25s ease;
+    #nav-globe-canvas {
+      display: block;
+      pointer-events: none;
+      border-radius: 9999px;
+      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
-    #nav-wheel-btn:hover #nav-wheel-svg {
-      filter: drop-shadow(0 0 8px rgba(206, 243, 48, 0.65));
+    #nav-wheel-btn:hover #nav-globe-canvas {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 10px rgba(206, 243, 48, 0.7));
     }
 
     /* SPA View switching */
@@ -1332,19 +1334,9 @@
           </button>
         </div>
 
-        <!-- Centered Scroll-Reactive Wheel Icon (visible when navbar shrinks on scroll) -->
+        <!-- Centered Scroll-Reactive 3D Earth Globe (visible when navbar shrinks on scroll) -->
         <button id="nav-wheel-btn" type="button" aria-label="Expand navigation menu" title="Expand navigation">
-          <svg id="nav-wheel-svg" class="w-8 h-8" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="18" cy="18" r="14.5" stroke="#CEF330" stroke-width="2" stroke-dasharray="5 3.5"
-              stroke-linecap="round" />
-            <circle cx="18" cy="18" r="10.2" stroke="rgba(255,255,255,0.28)" stroke-width="1.25" />
-            <path d="M18 4.2V11.5M18 24.5V31.8M4.2 18H11.5M24.5 18H31.8" stroke="#CEF330" stroke-width="2"
-              stroke-linecap="round" />
-            <path d="M8.25 8.25L13.3 13.3M22.7 22.7L27.75 27.75M27.75 8.25L22.7 13.3M13.3 22.7L8.25 27.75"
-              stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="18" cy="18" r="4" fill="#CEF330" />
-            <circle cx="18" cy="18" r="1.6" fill="#020617" />
-          </svg>
+          <canvas id="nav-globe-canvas" width="92" height="92" class="w-[46px] h-[46px] rounded-full"></canvas>
         </button>
       </div>
 
@@ -7993,34 +7985,211 @@
       mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     }
 
-    // Navbar Morph-to-Wheel & Scroll-Rhythm Rotation
+    // Navbar Morph-to-3D-Globe & Scroll-Rhythm 3D Rotation
     const navCapsule = document.getElementById('nav-capsule');
     const navWheelBtn = document.getElementById('nav-wheel-btn');
-    const navWheelSvg = document.getElementById('nav-wheel-svg');
+    const navGlobeCanvas = document.getElementById('nav-globe-canvas');
 
-    (function initNavbarWheel() {
-      if (!navCapsule) return;
-      let targetWheelDeg = 0;
-      let currentWheelDeg = 0;
-      let wheelRaf = null;
+    (function initNavbarGlobe() {
+      if (!navCapsule || !navGlobeCanvas) return;
+      const ctx = navGlobeCanvas.getContext('2d');
+      if (!ctx) return;
+
+      const CONTINENTS = [
+        // Africa
+        [[37,10],[32,32],[12,44],[12,51],[5,50],[-5,40],[-12,40],[-26,33],[-34,26],[-34,18],[-17,12],[-5,12],[4,9],[5,1],[4,-7],[14,-17],[21,-17],[28,-13],[36,-6],[36,0],[37,10]],
+        // Madagascar
+        [[-12,49],[-16,50],[-25,47],[-25,44],[-16,44],[-12,49]],
+        // Europe
+        [[36,-5],[43,-9],[44,-1],[48,-5],[50,2],[54,8],[57,8],[55,21],[60,28],[70,28],[71,24],[62,5],[58,6],[54,0],[50,-5],[44,-1],[36,-5]],
+        // UK
+        [[50,-5],[54,-3],[58,-5],[58,-3],[56,0],[51,1],[50,-5]],
+        // Asia
+        [[77,105],[73,80],[70,60],[60,60],[50,55],[42,50],[38,48],[32,35],[30,32],[27,34],[22,39],[12,44],[14,53],[24,57],[25,62],[25,67],[20,70],[10,76],[8,77],[13,80],[22,89],[16,96],[10,99],[1,104],[5,103],[10,105],[21,108],[22,114],[30,122],[39,118],[39,125],[43,131],[50,140],[55,136],[60,165],[66,170],[70,178],[67,-168],[65,-172],[66,170],[70,160],[73,140],[77,105]],
+        // Japan
+        [[45,142],[43,145],[35,140],[31,131],[34,131],[38,139],[45,142]],
+        // Indonesia / Maritime SE Asia
+        [[-6,106],[-8,115],[-8,125],[-4,138],[-2,141],[-1,130],[4,118],[5,96],[1,104],[-6,106]],
+        // Australia
+        [[-12,136],[-14,144],[-24,153],[-38,150],[-38,140],[-35,115],[-22,114],[-15,124],[-12,136]],
+        // New Zealand
+        [[-35,173],[-41,175],[-46,168],[-41,172],[-35,173]],
+        // North America
+        [[71,-156],[70,-130],[55,-130],[50,-125],[38,-123],[32,-117],[23,-110],[19,-105],[16,-93],[15,-88],[8,-77],[9,-79],[16,-83],[21,-87],[22,-97],[29,-94],[25,-80],[31,-81],[35,-75],[41,-72],[44,-66],[47,-53],[52,-56],[58,-63],[62,-65],[64,-77],[58,-80],[52,-80],[57,-92],[63,-91],[69,-97],[70,-130],[71,-156]],
+        // South America
+        [[12,-72],[10,-62],[5,-53],[-3,-38],[-10,-36],[-23,-42],[-35,-55],[-53,-68],[-55,-66],[-52,-75],[-41,-73],[-33,-72],[-18,-71],[-5,-81],[4,-77],[12,-72]],
+        // Antarctica
+        [[-65,-64],[-68,-30],[-72,20],[-66,80],[-65,110],[-68,140],[-72,170],[-70,-160],[-72,-120],[-70,-80],[-65,-64]]
+      ];
+
+      const w = navGlobeCanvas.width;
+      const h = navGlobeCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const R = w * 0.41;
+
+      // Earth axial tilt (23.4 deg) and slight pitch down (14 deg) for 3D depth
+      const tilt = 23.4 * Math.PI / 180;
+      const cosT = Math.cos(tilt);
+      const sinT = Math.sin(tilt);
+      const pitch = 14 * Math.PI / 180;
+      const cosP = Math.cos(pitch);
+      const sinP = Math.sin(pitch);
+
+      function draw3DGlobe(rotDeg) {
+        ctx.clearRect(0, 0, w, h);
+        const rotRad = rotDeg * Math.PI / 180;
+
+        function project(latDeg, lonDeg) {
+          const phi = latDeg * Math.PI / 180;
+          const lam = (lonDeg * Math.PI / 180) + rotRad;
+
+          const x0 = Math.cos(phi) * Math.sin(lam);
+          const y0 = -Math.sin(phi);
+          const z0 = Math.cos(phi) * Math.cos(lam);
+
+          // Axial tilt around Z
+          const x1 = x0 * cosT - y0 * sinT;
+          const y1 = x0 * sinT + y0 * cosT;
+          const z1 = z0;
+
+          // Pitch tilt around X
+          const x2 = x1;
+          const y2 = y1 * cosP - z1 * sinP;
+          const z2 = y1 * sinP + z1 * cosP;
+
+          return { x: cx + R * x2, y: cy + R * y2, z: z2 };
+        }
+
+        // Atmosphere halo
+        const halo = ctx.createRadialGradient(cx, cy, R * 0.75, cx, cy, R * 1.15);
+        halo.addColorStop(0, 'rgba(37, 61, 232, 0.45)');
+        halo.addColorStop(0.5, 'rgba(206, 243, 48, 0.3)');
+        halo.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(cx, cy, R * 1.16, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Base Ocean Sphere
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.clip();
+
+        const ocean = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.35, R * 0.08, cx, cy, R);
+        ocean.addColorStop(0, '#1d4ed8');
+        ocean.addColorStop(0.45, '#0f172a');
+        ocean.addColorStop(1, '#020617');
+        ctx.fillStyle = ocean;
+        ctx.fillRect(0, 0, w, h);
+
+        // Latitude parallels
+        ctx.lineWidth = 1;
+        [-60, -30, 0, 30, 60].forEach(function (lat) {
+          ctx.strokeStyle = lat === 0 ? 'rgba(206, 243, 48, 0.4)' : 'rgba(8, 194, 255, 0.18)';
+          ctx.beginPath();
+          let first = true;
+          for (let lon = -180; lon <= 180; lon += 4) {
+            const pt = project(lat, lon);
+            if (pt.z > -0.05) {
+              if (first) { ctx.moveTo(pt.x, pt.y); first = false; }
+              else { ctx.lineTo(pt.x, pt.y); }
+            } else {
+              first = true;
+            }
+          }
+          ctx.stroke();
+        });
+
+        // Longitude meridians
+        for (let m = 0; m < 360; m += 45) {
+          ctx.strokeStyle = 'rgba(8, 194, 255, 0.18)';
+          ctx.beginPath();
+          let first = true;
+          for (let lat = -90; lat <= 90; lat += 4) {
+            const pt = project(lat, m);
+            if (pt.z > -0.05) {
+              if (first) { ctx.moveTo(pt.x, pt.y); first = false; }
+              else { ctx.lineTo(pt.x, pt.y); }
+            } else {
+              first = true;
+            }
+          }
+          ctx.stroke();
+        }
+
+        // Continents
+        CONTINENTS.forEach(function (poly) {
+          ctx.beginPath();
+          let drawn = false;
+          let lastPt = null;
+
+          poly.forEach(function (coord) {
+            const pt = project(coord[0], coord[1]);
+            if (pt.z > -0.08) {
+              if (!drawn) {
+                ctx.moveTo(pt.x, pt.y);
+                drawn = true;
+              } else {
+                ctx.lineTo(pt.x, pt.y);
+              }
+            } else {
+              if (lastPt && lastPt.z > -0.08) {
+                ctx.lineTo(pt.x, pt.y);
+              }
+              drawn = false;
+            }
+            lastPt = pt;
+          });
+
+          ctx.fillStyle = 'rgba(206, 243, 48, 0.95)';
+          ctx.strokeStyle = '#CEF330';
+          ctx.lineWidth = 1.4;
+          ctx.lineJoin = 'round';
+          ctx.fill();
+          ctx.stroke();
+        });
+
+        // Specular crescent shine
+        const shine = ctx.createRadialGradient(cx - R * 0.42, cy - R * 0.42, 0, cx - R * 0.25, cy - R * 0.25, R * 0.88);
+        shine.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+        shine.addColorStop(0.25, 'rgba(206, 243, 48, 0.15)');
+        shine.addColorStop(0.65, 'rgba(0, 0, 0, 0.15)');
+        shine.addColorStop(1, 'rgba(0, 0, 0, 0.65)');
+        ctx.fillStyle = shine;
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.restore();
+
+        // Outer sphere glowing border
+        ctx.strokeStyle = 'rgba(206, 243, 48, 0.9)';
+        ctx.lineWidth = 1.75;
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Pre-render initial frame
+      draw3DGlobe(0);
+
+      let targetGlobeDeg = 0;
+      let currentGlobeDeg = 0;
+      let globeRaf = null;
       let scrollIdleTimer = null;
       let lastScrollY = window.scrollY || window.pageYOffset || 0;
 
-      function animateWheel() {
-        const diff = targetWheelDeg - currentWheelDeg;
+      function animateGlobe() {
+        const diff = targetGlobeDeg - currentGlobeDeg;
         if (Math.abs(diff) < 0.05) {
-          currentWheelDeg = targetWheelDeg;
-          if (navWheelSvg) {
-            navWheelSvg.style.transform = 'rotate(' + currentWheelDeg.toFixed(2) + 'deg)';
-          }
-          wheelRaf = null;
+          currentGlobeDeg = targetGlobeDeg;
+          draw3DGlobe(currentGlobeDeg);
+          globeRaf = null;
           return;
         }
-        currentWheelDeg += diff * 0.18;
-        if (navWheelSvg) {
-          navWheelSvg.style.transform = 'rotate(' + currentWheelDeg.toFixed(2) + 'deg)';
-        }
-        wheelRaf = requestAnimationFrame(animateWheel);
+        currentGlobeDeg += diff * 0.18;
+        draw3DGlobe(currentGlobeDeg);
+        globeRaf = requestAnimationFrame(animateGlobe);
       }
 
       function expandNavbar() {
@@ -8037,7 +8206,7 @@
         }
       }
 
-      function shrinkToWheel() {
+      function shrinkToGlobe() {
         navCapsule.classList.add('nav-is-wheel', 'shadow-2xl', 'border-white/20');
       }
 
@@ -8046,9 +8215,10 @@
         const delta = Math.abs(y - lastScrollY);
         lastScrollY = y;
 
-        targetWheelDeg = y * 0.45;
-        if (!wheelRaf && navWheelSvg) {
-          wheelRaf = requestAnimationFrame(animateWheel);
+        // 3D rotation linked directly to scroll position
+        targetGlobeDeg = y * 0.55;
+        if (!globeRaf) {
+          globeRaf = requestAnimationFrame(animateGlobe);
         }
 
         if (y <= 30 || isMenuOpen) {
@@ -8057,7 +8227,7 @@
         }
 
         if (delta >= 1) {
-          shrinkToWheel();
+          shrinkToGlobe();
 
           if (scrollIdleTimer) {
             clearTimeout(scrollIdleTimer);
