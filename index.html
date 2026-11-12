@@ -445,6 +445,431 @@
       }
     }
 
+    /* Projects Page: Signature 3D Fan-In, Stamp Pop, Filter Domino & Interactive Specular Tilt */
+    #view-projects {
+      overflow-x: clip !important;
+      perspective: 1400px;
+    }
+    #view-projects.active-view.proj-anim {
+      animation: none;
+    }
+    @keyframes proj-star-spin {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.14); }
+    }
+    @keyframes proj-ring-float {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(6px, -10px, 0) scale(1.1); }
+    }
+    @keyframes proj-stamp-pop {
+      0% { opacity: 0; transform: scale(0.42) rotate(-14deg) translateY(12px); }
+      62% { opacity: 1; transform: scale(1.09) rotate(-4deg) translateY(-2px); }
+      82% { transform: scale(0.97) rotate(-1.5deg) translateY(0); }
+      100% { opacity: 1; transform: scale(1) rotate(-2deg) translateY(0); }
+    }
+    @keyframes proj-pill-unfold {
+      0% { opacity: 0; clip-path: inset(0 46% 0 46% round 9999px); transform: scale(0.88); }
+      100% { opacity: 1; clip-path: inset(0 0 0 0 round 9999px); transform: scale(1); }
+    }
+    @keyframes proj-headline-tilt {
+      0% { opacity: 0; transform: perspective(900px) rotateX(18deg) translate3d(0, 26px, 0); }
+      100% { opacity: 1; transform: perspective(900px) rotateX(0deg) translate3d(0, 0, 0); }
+    }
+    @keyframes proj-filter-domino {
+      0% { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.82); }
+      70% { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.03); }
+      100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+    #view-projects.proj-anim .proj-orn-star.proj-in {
+      animation: proj-star-spin 14s ease-in-out infinite;
+    }
+    #view-projects.proj-anim .proj-orn-ring.proj-in {
+      animation: proj-ring-float 7s ease-in-out infinite;
+    }
+    #view-projects.proj-anim .proj-pill:not(.proj-in),
+    #view-projects.proj-anim .proj-headline:not(.proj-in),
+    #view-projects.proj-anim .proj-stamp:not(.proj-in),
+    #view-projects.proj-anim .proj-filter-btn:not(.proj-in) {
+      opacity: 0;
+    }
+    #view-projects.proj-anim .proj-pill.proj-in {
+      animation: proj-pill-unfold 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    #view-projects.proj-anim .proj-headline.proj-in {
+      animation: proj-headline-tilt 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+      transform-origin: center bottom;
+    }
+    #view-projects.proj-anim .proj-stamp.proj-in {
+      animation: proj-stamp-pop 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+    }
+    #view-projects.proj-anim .proj-filter-btn.proj-in {
+      animation: proj-filter-domino 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--proj-f-delay, 0ms) both;
+    }
+
+    /* Project Cards 3D Directional Fan-In & Interactive Tilt + Sheen */
+    #projects-grid {
+      perspective: 1400px;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #projects-grid.proj-switching {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0) scale(0.985);
+    }
+    #projects-grid .scard.proj-card {
+      transform-style: preserve-3d;
+      will-change: opacity, transform;
+    }
+    #projects-grid .scard.proj-card.proj-pending:not(.proj-card-in) {
+      opacity: 0;
+      transform: perspective(1100px) rotateY(var(--proj-ry-in, 0deg)) rotateX(var(--proj-rx-in, 12deg)) translate3d(var(--proj-x-in, 0px), var(--proj-y-in, 44px), 0) scale(0.91);
+    }
+    #projects-grid .scard.proj-card.proj-pending.proj-card-in {
+      opacity: 1;
+      transform: perspective(1100px) rotateY(0deg) rotateX(0deg) translate3d(0, 0, 0) scale(1);
+      transition:
+        opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--proj-c-delay, 0ms),
+        transform 1.28s cubic-bezier(0.16, 1, 0.3, 1) var(--proj-c-delay, 0ms) !important;
+    }
+    #projects-grid .scard.proj-card.proj-ready {
+      transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease !important;
+      transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translate3d(0, var(--lift-y, 0px), 0) scale(var(--tilt-scale, 1));
+    }
+    #projects-grid .scard.proj-card.proj-ready:hover {
+      --lift-y: -8px;
+      --tilt-scale: 1.02;
+      box-shadow: 0 30px 60px rgba(0, 107, 255, 0.24), 0 12px 24px rgba(15, 23, 42, 0.45);
+      border-top-color: rgba(206, 243, 48, 0.45);
+    }
+    /* Inner camera-focus zoom settle & badge pop */
+    #projects-grid .scard.proj-card.proj-pending:not(.proj-card-in) .scard-img img {
+      transform: scale(1.1);
+    }
+    #projects-grid .scard.proj-card.proj-pending.proj-card-in .scard-img img {
+      transform: scale(1);
+      transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1) var(--proj-c-delay, 0ms);
+    }
+    #projects-grid .scard.proj-card.proj-pending:not(.proj-card-in) .scard-badge {
+      opacity: 0;
+      transform: scale(0.55) translateY(-6px);
+    }
+    #projects-grid .scard.proj-card.proj-pending.proj-card-in .scard-badge {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition:
+        opacity 0.72s ease calc(var(--proj-c-delay, 0ms) + 280ms),
+        transform 0.88s cubic-bezier(0.22, 1.28, 0.36, 1) calc(var(--proj-c-delay, 0ms) + 280ms);
+    }
+    /* Specular light sweep across thumbnail on hover */
+    #projects-grid .scard.proj-card .scard-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.48) 50%, transparent 75%);
+      transform: translateX(-140%);
+      transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 15;
+    }
+    #projects-grid .scard.proj-card:hover .scard-img::after {
+      transform: translateX(140%);
+    }
+    #projects-grid .scard.proj-card:hover .proj-detail-arrow {
+      transform: translateX(4px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #view-projects .proj-orn-star,
+      #view-projects .proj-orn-ring,
+      #view-projects .proj-pill,
+      #view-projects .proj-headline,
+      #view-projects .proj-stamp,
+      #view-projects .proj-filter-btn,
+      #projects-grid .scard.proj-card {
+        opacity: 1 !important;
+        clip-path: none !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* =========================================================================
+       CERTIFICATES PAGE CHOREOGRAPHY (Luxury Editorial Veil & Foil Gleam)
+       ========================================================================= */
+    #view-certificates.active-view.cert-anim {
+      animation: none;
+      overflow-x: clip !important;
+    }
+
+    #view-certificates .cert-pill,
+    #view-certificates .cert-headline,
+    #view-certificates .cert-quote,
+    #view-certificates .cert-stat,
+    #view-certificates .cert-spotlight,
+    #view-certificates .cert-divider-title,
+    #view-certificates .cert-divider-line,
+    #view-certificates .cert-card {
+      will-change: transform, opacity, clip-path;
+    }
+
+    #view-certificates.cert-anim .cert-pill:not(.cert-in) {
+      opacity: 0;
+      translate: -18px 0;
+      clip-path: inset(0 100% 0 0);
+    }
+    #view-certificates.cert-anim .cert-pill.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      clip-path: inset(0 0% 0 0);
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        translate 1s cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #view-certificates.cert-anim .cert-headline:not(.cert-in) {
+      opacity: 0;
+      translate: 0 28px;
+      clip-path: inset(0 0 100% 0);
+    }
+    #view-certificates.cert-anim .cert-headline.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      clip-path: inset(0 0 0% 0);
+      transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
+        translate 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
+        clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+    }
+
+    /* Prism shimmer across "Research." badge */
+    #view-certificates .cert-research-badge {
+      position: relative;
+      overflow: hidden;
+    }
+    #view-certificates .cert-research-badge::after {
+      content: "";
+      position: absolute;
+      inset: -40% -60%;
+      background: linear-gradient(
+        112deg,
+        transparent 35%,
+        rgba(206, 243, 48, 0.42) 48%,
+        rgba(255, 255, 255, 0.55) 52%,
+        transparent 65%
+      );
+      transform: translateX(-120%);
+      pointer-events: none;
+    }
+    #view-certificates.cert-anim .cert-headline.cert-in .cert-research-badge::after {
+      animation: certBadgePrism 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.72s forwards;
+    }
+    @keyframes certBadgePrism {
+      0% { transform: translateX(-120%); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateX(130%); opacity: 0; }
+    }
+
+    #view-certificates.cert-anim .cert-quote:not(.cert-in) {
+      opacity: 0;
+      translate: 0 22px;
+      scale: 0.965;
+    }
+    #view-certificates.cert-anim .cert-quote.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      transition:
+        opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
+        translate 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
+        scale 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+    }
+
+    #view-certificates.cert-anim .cert-stat:not(.cert-in) {
+      opacity: 0;
+      translate: 0 24px;
+      scale: 0.93;
+    }
+    #view-certificates.cert-anim .cert-stat.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0.32s),
+        translate 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0.32s),
+        scale 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0.32s);
+    }
+
+    /* Obsidian Spotlight Card diagonal prestige unveil + light sweep */
+    #view-certificates.cert-anim .cert-spotlight:not(.cert-in) {
+      opacity: 0;
+      translate: 32px 26px;
+      scale: 0.94;
+      rotate: 1.4deg;
+    }
+    #view-certificates.cert-anim .cert-spotlight.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      rotate: 0deg;
+      transition:
+        opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+        translate 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+        scale 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+        rotate 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    }
+    #view-certificates .cert-spotlight-card {
+      position: relative;
+    }
+    #view-certificates .cert-spotlight-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        118deg,
+        transparent 30%,
+        rgba(206, 243, 48, 0.14) 46%,
+        rgba(255, 255, 255, 0.16) 50%,
+        rgba(37, 61, 232, 0.18) 55%,
+        transparent 70%
+      );
+      transform: translateX(-130%);
+      pointer-events: none;
+      z-index: 20;
+    }
+    #view-certificates.cert-anim .cert-spotlight.cert-in .cert-spotlight-card::after {
+      animation: certSpotlightSweep 1.7s cubic-bezier(0.16, 1, 0.3, 1) 0.78s forwards;
+    }
+    @keyframes certSpotlightSweep {
+      0% { transform: translateX(-130%); opacity: 0; }
+      18% { opacity: 1; }
+      100% { transform: translateX(130%); opacity: 0; }
+    }
+
+    /* Section divider hairline draw */
+    #view-certificates.cert-anim .cert-divider-title:not(.cert-in) {
+      opacity: 0;
+      translate: -20px 0;
+    }
+    #view-certificates.cert-anim .cert-divider-title.cert-in {
+      opacity: 1;
+      translate: 0 0;
+      transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.36s,
+        translate 1s cubic-bezier(0.16, 1, 0.3, 1) 0.36s;
+    }
+    #view-certificates.cert-anim .cert-divider-line:not(.cert-in) {
+      opacity: 0;
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+    #view-certificates.cert-anim .cert-divider-line.cert-in {
+      opacity: 1;
+      transform-origin: left center;
+      transform: scaleX(1);
+      transition:
+        opacity 0.6s ease 0.42s,
+        transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.42s;
+    }
+
+    /* Certificate Grid Cards: Silk Velvet Lift + Foil Gleam */
+    #view-certificates .cert-card {
+      position: relative;
+      overflow: hidden;
+    }
+    #view-certificates .cert-card::after {
+      content: "";
+      position: absolute;
+      inset: -25%;
+      background: linear-gradient(
+        115deg,
+        transparent 36%,
+        rgba(37, 61, 232, 0.08) 46%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(206, 243, 48, 0.14) 55%,
+        transparent 64%
+      );
+      transform: translateX(-135%);
+      pointer-events: none;
+      z-index: 15;
+    }
+    #view-certificates .cert-card.cert-done:hover::after {
+      animation: certCardFoil 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes certCardFoil {
+      0% { transform: translateX(-135%); }
+      100% { transform: translateX(135%); }
+    }
+
+    #view-certificates.cert-anim .cert-card:not(.cert-in):not(.cert-done) {
+      opacity: 0;
+      translate: 0 44px;
+      scale: 0.95;
+      rotate: var(--cert-tilt, -0.8deg);
+    }
+    #view-certificates.cert-anim .cert-card.cert-in:not(.cert-done) {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      rotate: 0deg;
+      transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0ms),
+        translate 1.18s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0ms),
+        scale 1.18s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0ms),
+        rotate 1.18s cubic-bezier(0.16, 1, 0.3, 1) var(--cert-delay, 0ms);
+    }
+    #view-certificates .cert-card.cert-done {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      rotate: 0deg;
+      will-change: auto;
+      transition:
+        translate 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease;
+    }
+    #view-certificates .cert-card.cert-done:hover {
+      translate: 0 -7px;
+      box-shadow: 0 24px 48px -14px rgba(37, 61, 232, 0.2), 0 8px 18px -8px rgba(15, 23, 42, 0.08);
+    }
+    #view-certificates .cert-card .cert-arrow-badge {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+    }
+    #view-certificates .cert-card .cert-arrow-badge svg {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #view-certificates .cert-card.cert-done:hover .cert-arrow-badge {
+      transform: scale(1.08);
+    }
+    #view-certificates .cert-card.cert-done:hover .cert-arrow-badge svg {
+      transform: translate(2px, -2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #view-certificates .cert-pill,
+      #view-certificates .cert-headline,
+      #view-certificates .cert-quote,
+      #view-certificates .cert-stat,
+      #view-certificates .cert-spotlight,
+      #view-certificates .cert-divider-title,
+      #view-certificates .cert-divider-line,
+      #view-certificates .cert-card {
+        opacity: 1 !important;
+        clip-path: none !important;
+        translate: none !important;
+        scale: none !important;
+        rotate: none !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+      #view-certificates .cert-research-badge::after,
+      #view-certificates .cert-spotlight-card::after,
+      #view-certificates .cert-card::after {
+        display: none !important;
+      }
+    }
+
     /* SPA View switching */
     .view-page {
       display: none !important;
@@ -1931,12 +2356,12 @@
     <div id="view-projects" class="view-page max-w-7xl mx-auto px-6 pt-8 pb-24 relative overflow-hidden hidden">
 
       <!-- Decorative Ornaments -->
-      <div class="absolute top-20 left-10 text-pink-400 opacity-60">
+      <div class="proj-orn-star absolute top-20 left-10 text-pink-400 opacity-60">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2L15 9l7 1-5 5 1 7-7-4-7 4 1-7-5-5 7-1z" />
         </svg>
       </div>
-      <div class="absolute top-40 right-20 text-[#CEF330] opacity-60">
+      <div class="proj-orn-ring absolute top-40 right-20 text-[#CEF330] opacity-60">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10" />
           <circle cx="12" cy="12" r="4" />
@@ -1948,15 +2373,15 @@
 
         <!-- Top Pill -->
         <div
-          class="bg-pink-50 text-pink-500 font-extrabold text-[10px] sm:text-xs px-6 py-2 rounded-full tracking-widest uppercase shadow-sm">
+          class="proj-pill bg-pink-50 text-pink-500 font-extrabold text-[10px] sm:text-xs px-6 py-2 rounded-full tracking-widest uppercase shadow-sm">
           Professional Portfolio &amp; Projects
         </div>
 
         <!-- Big Headline -->
-        <h1 class="text-[40px] sm:text-6xl md:text-[76px] font-extrabold text-slate-800 tracking-tight leading-[1.05]">
+        <h1 class="proj-headline text-[40px] sm:text-6xl md:text-[76px] font-extrabold text-slate-800 tracking-tight leading-[1.05]">
           Explore my best work, <br class="hidden md:block">
           with complete <span
-            class="inline-block bg-[#6C5CE7] text-white px-5 py-1 rounded-xl transform -rotate-2 shadow-xl leading-none mt-3 md:mt-0">details.</span>
+            class="proj-stamp inline-block bg-[#6C5CE7] text-white px-5 py-1 rounded-xl transform -rotate-2 shadow-xl leading-none mt-3 md:mt-0">details.</span>
         </h1>
 
         <!-- Subtitle -->
@@ -7314,14 +7739,18 @@
       // Extract unique tags
       const allTags = ['ALL', 'MOBILE', 'WEBSITE', 'IOT', 'AI', 'UI/UX'];
 
+      const projectsViewEl = document.getElementById('view-projects');
+      const keepFilterIn = projectsViewEl && projectsViewEl.classList.contains('proj-headers-ready') ? 'proj-in' : '';
+
       // Render filter buttons
-      filterContainer.innerHTML = allTags.map(tag => {
+      filterContainer.innerHTML = allTags.map((tag, idx) => {
         const count = getFilteredProjects(tag).length;
         const isActive = selectedTag === tag;
         return `
           <button 
             onclick="filterProjects('${tag}')"
-            class="relative px-6 py-2.5 text-xs font-bold rounded-full transition-all cursor-pointer border ${isActive
+            style="--proj-f-delay: ${180 + idx * 75}ms;"
+            class="proj-filter-btn ${keepFilterIn} relative px-6 py-2.5 text-xs font-bold rounded-full transition-all cursor-pointer border ${isActive
             ? 'bg-[#006BFF] text-white border-[#006BFF]'
             : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
           }"
@@ -7349,7 +7778,7 @@
           const role = (currentLang === 'id' && project.role_id) ? project.role_id : (project.role || 'Developer');
           const client = (currentLang === 'id' && project.client_id) ? project.client_id : (project.client || 'Client');
           return `
-            <div class="scard center-dark cursor-pointer !w-full hover:-translate-y-2 transition-transform duration-300 group" style="min-height: 420px; transform: scale(1);" onclick="openProjectModal('${project.id}')">
+            <div class="scard center-dark proj-card proj-ready cursor-pointer !w-full group" style="min-height: 420px;" onclick="openProjectModal('${project.id}')">
               
               <div class="scard-img !bg-white !p-3">
                 <span class="scard-badge absolute top-3 left-3 bg-[#006BFF] text-white px-3 py-1 rounded-full text-[9px] font-extrabold flex items-center gap-1 z-20 shadow-md">
@@ -7377,7 +7806,7 @@
                 <!-- View Detail Button -->
                 <button class="mt-4 w-full bg-[#CEF330]/10 hover:bg-[#CEF330] text-[#CEF330] hover:text-slate-950 border border-[#CEF330]/30 font-bold py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
                   View Detail
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  <svg class="proj-detail-arrow transition-transform duration-300" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
               </div>
             </div>
@@ -7390,11 +7819,32 @@
           </div>
         `;
       }
+
+      if (typeof window.attachProjectTiltListeners === 'function') {
+        window.attachProjectTiltListeners();
+      }
     }
 
     function filterProjects(tag) {
+      if (selectedTag === tag) return;
       selectedTag = tag;
-      renderProjectsGallery();
+      const gridContainer = document.getElementById('projects-grid');
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (gridContainer && !reduceMotion) {
+        gridContainer.classList.add('proj-switching');
+        setTimeout(() => {
+          renderProjectsGallery();
+          gridContainer.classList.remove('proj-switching');
+          if (typeof window.animateProjectCards === 'function') {
+            window.animateProjectCards(false);
+          }
+        }, 250);
+      } else {
+        renderProjectsGallery();
+        if (typeof window.animateProjectCards === 'function') {
+          window.animateProjectCards(false);
+        }
+      }
     }
 
     // Case Study Modal Logic
@@ -9615,6 +10065,379 @@
         }
         wasActive = isActive;
       }).observe(homeView, { attributes: true, attributeFilter: ['class'] });
+    })();
+
+    // Projects Page Signature Choreography: 3D Fan-In Cards, Stamp Pop, Filter Domino & Pointer Tilt
+    (function initProjectsChoreography() {
+      const projView = document.getElementById('view-projects');
+      if (!projView) return;
+
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const canTilt = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      let cardIO = null;
+      let cardTimers = [];
+
+      function clearCardTimers() {
+        cardTimers.forEach(function (t) { clearTimeout(t); });
+        cardTimers = [];
+      }
+
+      window.attachProjectTiltListeners = function () {
+        if (reduceMotion || !canTilt) return;
+        const cards = projView.querySelectorAll('#projects-grid .scard.proj-card');
+        cards.forEach(function (card) {
+          if (card.dataset.tiltBound === '1') return;
+          card.dataset.tiltBound = '1';
+
+          card.addEventListener('mousemove', function (e) {
+            if (!card.classList.contains('proj-ready')) return;
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width - 0.5;
+            const py = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.setProperty('--tilt-x', (-py * 8).toFixed(2) + 'deg');
+            card.style.setProperty('--tilt-y', (px * 8).toFixed(2) + 'deg');
+          });
+
+          card.addEventListener('mouseleave', function () {
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+          });
+        });
+      };
+
+      window.animateProjectCards = function (withHeaderDelay) {
+        clearCardTimers();
+        if (cardIO) cardIO.disconnect();
+
+        const grid = document.getElementById('projects-grid');
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll('.scard.proj-card'));
+        if (!cards.length) return;
+
+        if (reduceMotion) {
+          cards.forEach(function (c) {
+            c.classList.remove('proj-pending');
+            c.classList.add('proj-ready');
+          });
+          return;
+        }
+
+        const cols = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+        const baseDelay = withHeaderDelay ? 240 : 40;
+
+        cards.forEach(function (card, idx) {
+          card.classList.remove('proj-card-in', 'proj-ready');
+          card.classList.add('proj-pending');
+          const col = idx % cols;
+          let ry = '0deg', rx = '12deg', xIn = '0px', yIn = '44px';
+          if (cols === 3) {
+            if (col === 0) { ry = '14deg'; rx = '6deg'; xIn = '-32px'; yIn = '42px'; }
+            else if (col === 1) { ry = '0deg'; rx = '14deg'; xIn = '0px'; yIn = '52px'; }
+            else { ry = '-14deg'; rx = '6deg'; xIn = '32px'; yIn = '42px'; }
+          } else if (cols === 2) {
+            if (col === 0) { ry = '12deg'; rx = '6deg'; xIn = '-24px'; yIn = '40px'; }
+            else { ry = '-12deg'; rx = '6deg'; xIn = '24px'; yIn = '40px'; }
+          } else {
+            ry = (idx % 2 === 0 ? 8 : -8) + 'deg';
+            rx = '10deg';
+            xIn = '0px';
+            yIn = '38px';
+          }
+          card.style.setProperty('--proj-ry-in', ry);
+          card.style.setProperty('--proj-rx-in', rx);
+          card.style.setProperty('--proj-x-in', xIn);
+          card.style.setProperty('--proj-y-in', yIn);
+          card.style.setProperty('--proj-c-delay', (baseDelay + col * 140) + 'ms');
+        });
+
+        void grid.offsetWidth;
+
+        function triggerCard(card) {
+          if (!card || card.classList.contains('proj-card-in')) return;
+          card.classList.add('proj-card-in');
+          const delayMs = parseInt(card.style.getPropertyValue('--proj-c-delay') || '0', 10) || 0;
+          const finishCard = function () {
+            card.classList.remove('proj-pending', 'proj-card-in');
+            card.classList.add('proj-ready');
+          };
+          const onEnd = function (ev) {
+            if (ev.target === card && ev.propertyName === 'transform') {
+              card.removeEventListener('transitionend', onEnd);
+              finishCard();
+            }
+          };
+          card.addEventListener('transitionend', onEnd);
+          const tid = setTimeout(function () {
+            card.removeEventListener('transitionend', onEnd);
+            finishCard();
+          }, delayMs + 1400);
+          cardTimers.push(tid);
+        }
+
+        cardIO = new IntersectionObserver(function (entries) {
+          if (!projView.classList.contains('active-view')) return;
+          let visibleOrder = 0;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            const c = entry.target;
+            if (c.classList.contains('proj-card-in')) return;
+            const rect = c.getBoundingClientRect();
+            const isBelowFirstFold = rect.top > window.innerHeight * 0.72;
+            if (isBelowFirstFold && !withHeaderDelay) {
+              c.style.setProperty('--proj-c-delay', (visibleOrder * 130) + 'ms');
+            }
+            visibleOrder++;
+            triggerCard(c);
+            cardIO.unobserve(c);
+          });
+        }, {
+          threshold: 0.05,
+          rootMargin: '0px 0px -3% 0px'
+        });
+
+        cards.forEach(function (c) {
+          cardIO.observe(c);
+        });
+      };
+
+      function playProjectsEntrance() {
+        if (!projView.classList.contains('active-view')) return;
+        projView.classList.add('proj-anim');
+        projView.classList.remove('proj-headers-ready');
+
+        const headerEls = projView.querySelectorAll('.proj-orn-star, .proj-orn-ring, .proj-pill, .proj-headline, .proj-stamp, .proj-filter-btn');
+        headerEls.forEach(function (el) {
+          el.classList.remove('proj-in');
+        });
+        void projView.offsetWidth;
+
+        const runSync = function () {
+          if (!projView.classList.contains('active-view')) return;
+          projView.classList.add('proj-headers-ready');
+          projView.querySelectorAll('.proj-orn-star, .proj-orn-ring, .proj-pill, .proj-headline, .proj-stamp, .proj-filter-btn').forEach(function (el) {
+            el.classList.add('proj-in');
+          });
+          window.animateProjectCards(true);
+          window.attachProjectTiltListeners();
+        };
+
+        requestAnimationFrame(function () {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+              requestAnimationFrame(runSync);
+            }, { once: true });
+          } else {
+            runSync();
+          }
+        });
+      }
+
+      if (projView.classList.contains('active-view')) {
+        playProjectsEntrance();
+      }
+
+      let wasProjActive = projView.classList.contains('active-view');
+      new MutationObserver(function () {
+        const isProjActive = projView.classList.contains('active-view');
+        if (isProjActive && !wasProjActive) {
+          playProjectsEntrance();
+        } else if (!isProjActive && wasProjActive) {
+          clearCardTimers();
+          if (cardIO) cardIO.disconnect();
+        }
+        wasProjActive = isProjActive;
+      }).observe(projView, { attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
+
+  <script>
+    (function initCertificatesChoreography() {
+      const certView = document.getElementById('view-certificates');
+      if (!certView) return;
+
+      const prefersReduced =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const leftCol = certView.querySelector('.lg\\:col-span-7');
+      const pill = leftCol ? leftCol.querySelector('.inline-flex') : null;
+      const headline = certView.querySelector('h1');
+      const researchBadge = headline ? headline.querySelector('span.bg-slate-900') : null;
+      const quoteBox = certView.querySelector('.border-l-4');
+      const statsWrap = leftCol ? leftCol.querySelector('.flex.flex-wrap') : null;
+      const stats = statsWrap ? Array.from(statsWrap.children) : [];
+      const spotlight = certView.querySelector('.lg\\:col-span-5');
+      const spotlightCard = spotlight ? spotlight.querySelector('.bg-gradient-to-br') : null;
+      const dividerTitle = certView.querySelector('h2');
+      const dividerLine = dividerTitle ? dividerTitle.nextElementSibling : null;
+      const cards = Array.from(certView.querySelectorAll('[onclick^="openCertificateModal"]'));
+
+      if (pill) pill.classList.add('cert-pill');
+      if (headline) headline.classList.add('cert-headline');
+      if (researchBadge) researchBadge.classList.add('cert-research-badge');
+      if (quoteBox) quoteBox.classList.add('cert-quote');
+      stats.forEach(function (stat, idx) {
+        stat.classList.add('cert-stat');
+        stat.style.setProperty('--cert-delay', (0.30 + idx * 0.11).toFixed(2) + 's');
+      });
+      if (spotlight) spotlight.classList.add('cert-spotlight');
+      if (spotlightCard) spotlightCard.classList.add('cert-spotlight-card');
+      if (dividerTitle) dividerTitle.classList.add('cert-divider-title');
+      if (dividerLine) dividerLine.classList.add('cert-divider-line');
+
+      const tilts = ['-0.85deg', '0deg', '0.85deg'];
+      cards.forEach(function (card, idx) {
+        card.classList.add('cert-card');
+        card.style.setProperty('--cert-tilt', tilts[idx % 3]);
+        const arrowBadge = card.querySelector('span.rounded-full');
+        if (arrowBadge) arrowBadge.classList.add('cert-arrow-badge');
+      });
+
+      const heroTargets = [pill, headline, quoteBox, ...stats, spotlight, dividerTitle, dividerLine].filter(Boolean);
+      const cardTimers = [];
+      let cardIO = null;
+
+      function clearCardTimers() {
+        while (cardTimers.length) {
+          clearTimeout(cardTimers.pop());
+        }
+      }
+
+      function markDone(card) {
+        if (!card || card.classList.contains('cert-done')) return;
+        card.classList.add('cert-done');
+      }
+
+      function revealCard(card, delayMs) {
+        if (!card || card.classList.contains('cert-in')) return;
+        const d = Math.max(0, delayMs || 0);
+        card.style.setProperty('--cert-delay', d + 'ms');
+        card.classList.add('cert-in');
+
+        const onEnd = function (ev) {
+          if (ev.target !== card) return;
+          if (ev.propertyName === 'translate' || ev.propertyName === 'opacity') {
+            card.removeEventListener('transitionend', onEnd);
+            markDone(card);
+          }
+        };
+        card.addEventListener('transitionend', onEnd);
+        cardTimers.push(setTimeout(function () {
+          card.removeEventListener('transitionend', onEnd);
+          markDone(card);
+        }, d + 1380));
+      }
+
+      function observeCards() {
+        if (cardIO) {
+          cardIO.disconnect();
+          cardIO = null;
+        }
+        clearCardTimers();
+
+        if (prefersReduced || !('IntersectionObserver' in window)) {
+          cards.forEach(function (card) {
+            card.classList.add('cert-in', 'cert-done');
+          });
+          return;
+        }
+
+        const pendingCards = [];
+        let batchTimer = null;
+
+        function flushBatch() {
+          batchTimer = null;
+          pendingCards.sort(function (a, b) {
+            return cards.indexOf(a) - cards.indexOf(b);
+          });
+          pendingCards.forEach(function (card, orderIdx) {
+            revealCard(card, Math.min(orderIdx, 5) * 105);
+          });
+          pendingCards.length = 0;
+        }
+
+        cardIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            cardIO.unobserve(card);
+            if (!card.classList.contains('cert-in')) {
+              pendingCards.push(card);
+            }
+          });
+          if (pendingCards.length && !batchTimer) {
+            batchTimer = requestAnimationFrame(flushBatch);
+          }
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -36px 0px'
+        });
+
+        const vh = window.innerHeight || 900;
+        let initialIdx = 0;
+        cards.forEach(function (card) {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < vh * 0.94 && rect.bottom > 0) {
+            revealCard(card, 380 + initialIdx * 105);
+            initialIdx += 1;
+          } else {
+            cardIO.observe(card);
+          }
+        });
+      }
+
+      function playCertificatesEntrance() {
+        clearCardTimers();
+        if (cardIO) {
+          cardIO.disconnect();
+          cardIO = null;
+        }
+
+        if (prefersReduced) {
+          certView.classList.remove('cert-anim');
+          heroTargets.forEach(function (el) { el.classList.add('cert-in'); });
+          cards.forEach(function (c) { c.classList.add('cert-in', 'cert-done'); });
+          return;
+        }
+
+        heroTargets.forEach(function (el) { el.classList.remove('cert-in'); });
+        cards.forEach(function (c) { c.classList.remove('cert-in', 'cert-done'); });
+
+        certView.classList.add('cert-anim');
+        void certView.offsetWidth;
+
+        const runSync = function () {
+          requestAnimationFrame(function () {
+            heroTargets.forEach(function (el) { el.classList.add('cert-in'); });
+            observeCards();
+          });
+        };
+
+        requestAnimationFrame(function () {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+              requestAnimationFrame(runSync);
+            }, { once: true });
+          } else {
+            runSync();
+          }
+        });
+      }
+
+      if (certView.classList.contains('active-view')) {
+        playCertificatesEntrance();
+      }
+
+      let wasCertActive = certView.classList.contains('active-view');
+      new MutationObserver(function () {
+        const isCertActive = certView.classList.contains('active-view');
+        if (isCertActive && !wasCertActive) {
+          playCertificatesEntrance();
+        } else if (!isCertActive && wasCertActive) {
+          clearCardTimers();
+          if (cardIO) cardIO.disconnect();
+        }
+        wasCertActive = isCertActive;
+      }).observe(certView, { attributes: true, attributeFilter: ['class'] });
     })();
   </script>
 
